@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="passwordsCss.css" />
+  </head>
+  <body>
+    <div class="classMainDiv">
+      <div class="classCenterDiv">
+        <h1 class="classMainTitle">Password Generator</h1>
+        <div class="classPassword">
+          <input type="text" class="classInput" id="passwordTxt" />
+          <div class="classCopyDiv" id="clipboardId">
+            <img src="images/cliboard.png" alt="image copy" />
+          </div>
+        </div>
+        <div class="classDivProperty">
+          <p class="lengthTextClass">Password length</p>
+          <input type="number" class="classNumber" id="inputLength" />
+        </div>
+        <div class="classText">
+          <p class="classP">Includes uppercase letters</p>
+          <input type="checkbox" class="classCb" id="cbUpper" />
+        </div>
+        <div class="classDivProperty">
+          <p class="classP">Includes lowercase letters</p>
+          <input type="checkbox" class="classCb" id="cbLower" />
+        </div>
+        <div class="classDivProperty">
+          <p class="classP">Includes numbers</p>
+          <input type="checkbox" class="classCb" id="cbNumber" />
+        </div>
+        <div class="classDivProperty">
+          <p class="classP">Includes symbols</p>
+          <input type="checkbox" class="classCb" id="cbSymbole" />
+        </div>
+        <div class="classBtnGenerate" id="btnGenerate">
+          <p style="color: white">Generate password</p>
+        </div>
+      </div>
+    </div>
+    <script src="password.js"></script>
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="pagecss.css" />
+  </head>
+  <body>
+    <div class="allScreen">
+      <form class="myForm">
+        <h1 class="title">Sign Up Today!</h1>
+
+        <label for="fullname">full name</label>
+        <input
+          type="text"
+          name="fullname"
+          placeholder="full name"
+          autocomplete="fullname"
+          required
+          pattern="[A-Za-z\s]+"
+        />
+        <label for="phonenumber">phone number</label>
+        <input
+          type="text"
+          name="phonenumber"
+          placeholder="phone number"
+          autocomplete="phonenumber"
+          required
+          pattern="\d{3}-\d{3}-\d{4}"
+        />
+        <label for="emailaddress">email address</label>
+        <input
+          type="text"
+          name="emailaddress"
+          placeholder="email address"
+          autocomplete="emailaddress"
+          required
+          pattern=".*@.*"
+        />
+        <label for="web">website url</label>
+        <input
+          type="text"
+          name="web"
+          placeholder="website url"
+          autocomplete="web"
+          required
+          pattern="https://.*"
+        />
+        <label for="pass">password</label>
+        <input
+          type="password"
+          name="pass"
+          placeholder="password"
+          autocomplete="pass"
+          required
+          pattern=".{8,}"
+        />
+        <label for="con">confirm password</label>
+        <input
+          type="password"
+          name="con"
+          placeholder="confirm password"
+          autocomplete="con"
+          required
+          pattern=".{8,}"
+        />
+        <input
+          type="submit"
+          class="register"
+          value="Register"
+          id="registerId"
+        />
+        <input
+          type="button"
+          class="goodBottom"
+          value="Don't Hesitate!"
+          id="subRegister"
+        />
+      </form>
+    </div>
+
+     <script src="pagejs.js"></script>
+  </body>
+</html>

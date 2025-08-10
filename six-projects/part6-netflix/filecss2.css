@@ -1,0 +1,109 @@
+body {
+  margin: 0px;
+}
+
+@keyframes start {
+  from {
+    transform: translate(-36rem);
+  }
+  to {
+    transform: translate(0px);
+  }
+}
+
+.doAnim {
+  animation: 0.2s start linear forwards;
+  
+}
+.reverseAnim {
+  animation: 0.2s start reverse forwards;
+}
+.classMenu {
+  position: absolute;
+  z-index: 2;
+  padding: 2.6rem;
+}
+.classDivWhite {
+  position: absolute;
+  z-index: 5;
+  height: 100vh;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  transform: translate(-36rem);
+  background-color: white;
+}
+.classDivCenter {
+  width: 20rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 2.6rem;
+}
+
+.classImage {
+  width: 50%;
+  height: auto;
+}
+
+.classLink {
+  color: black;
+}
+
+.classLink2 {
+  color: black;
+  margin-left: 3.3rem;
+}
+
+.classImage {
+  width: 2rem;
+  height: 2rem;
+  padding: 2rem;
+}
+
+.classDivRed {
+  width: 33rem;
+  height: 100vh;
+  background-color: red;
+  position: absolute;
+  z-index: 4;
+  transform: translate(-36rem);
+}
+
+.classDivBlack {
+  width: 35rem;
+  height: 100vh;
+  background-color: black;
+  margin-left: 0px;
+  position: absolute;
+  z-index: 3;
+  transform: translate(-36rem);
+}
+
+.classDivMain {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  z-index: 1;
+}
+
+.classDivInner {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+}
+
+.classPCenter {
+  width: 100%;
+  text-align: center;
+}
+
+.classDiv {
+  width: 100%;
+  height: fit-content;
+  text-align: center;
+}
