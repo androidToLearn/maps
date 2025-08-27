@@ -1,0 +1,327 @@
+{"all" : [
+  {
+    "firstName": "נחום",
+    "birthYear": 2010,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "הוא זכה בשם מקסים, כי אין קסם יותר גדול מהקסמים שמקסים מפיץ. חתלתולון פינוקון שיקסים וימלא את הבית באהבה בלי סוף",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/MjAzODE2Nw.jpg",
+    "id": "788cb793-c8df-4a3f-81b4-de0fdacc9565"
+  },
+  {
+    "firstName": "ישעיהו",
+    "birthYear": 2005,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "ישעיהו הוא פשוט בון בון חמודון, שיש לו רגל אחורית קצת עקומה, מה שלא מפריע לו להגיע לכל פינה ולפזר ים של מתיקות ואהבה. עדין וכובש",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/MTc4NTU0MQ.jpg",
+    "id": "b1930d44-9523-4371-8fea-7a2baffa3e78"
+  },
+  {
+    "firstName": "דוד",
+    "birthYear": 2013,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "דוד המהמם! חתלתולון מושלם שמחכה לבית חם בו יוכל להתפנק בלי סוף",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/MjA0ODAxNQ.jpg",
+    "id": "1cace479-4c4b-4e1b-8647-746bcfb9eb18"
+  },
+  {
+    "firstName": "בילי",
+    "birthYear": 2006,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "חתלתולון סופר עדין עם עיניים ירוקות כובשות ומהפנטות, מחכה להפיץ בבית אהבה וקסם בלי סוף",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/MTg5MDc5NQ.jpg",
+    "id": "7b564af9-4fce-4152-9035-68415819c3bf"
+  },
+  {
+    "firstName": "אפי",
+    "birthYear": 2014,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "ממתק בינלאומי, מתוק, חברותי ועדין, שימלא לכם את הלב ויגרום לכם להתאהב",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/a5.jpg",
+    "id": "e5eb9bf3-9fed-48a2-97a6-32565f42a7dc"
+  },
+  {
+    "firstName": "שלמה",
+    "birthYear": 2009,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "נסיך בלבן, מחכה לגדול בבית בו יוכל להפוך למלך אמיתי. פארוק המתוק, גורון מקסים וחברותי",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/EVyLrfuaN.jpg",
+    "id": "7d231b5a-5677-4aef-a358-9c49d3d6d6e3"
+  },
+  {
+    "firstName": "נאווה",
+    "birthYear": 2016,
+    "animalType": "חתול",
+    "gender": "נקבה",
+    "description": "פרווה לבנה להתכרבל בטוחה, עין ירוקה ועין כחולה, פשוט פאר היצירה. לבנה המהממת, חתולונת מדהימה, פינוקית ומקסימה, לבית בו תוכל להיות נסיכה.",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/9qk.jpg",
+    "id": "fb373d27-fb3a-49b7-81b1-0bf9c35b4fa1"
+  },
+  {
+    "firstName": "שושי",
+    "birthYear": 2014,
+    "animalType": "חתול",
+    "gender": "נקבה",
+    "description": "החתולונת שמצויירת בצורה מושלמת אטרדיאס המהממת, חתלתולונת לאנשים שאוהבים להתפנק ומחכים לפרטנרית שאיתה אפשר בלי סוף להתחבק",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/sLD7-g5Kn.jpg",
+    "id": "8243a8e6-9318-4c81-a9ed-3899c326a739"
+  },
+  {
+    "firstName": "מיקי",
+    "birthYear": 2008,
+    "animalType": "חתול",
+    "gender": "נקבה",
+    "description": "יפהפיה עדינה ומתוקה כל כך, ביישנית ומקסימה, כל כך אוהבת חברת חתולים ותהיה תוספת מצויינת בבית עם עוד חברים",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/a2m.jpg",
+    "id": "9407c85e-0899-4bc1-a80e-c68082af84fb"
+  },
+  {
+    "firstName": "שולה",
+    "birthYear": 2016,
+    "animalType": "חתול",
+    "gender": "נקבה",
+    "description": "את שולה היפהפיה נטשו מחוץ לבית המחסה והמתוקה הזאת מאז רק מבקשת שמישהו יחבק ולעולם לא ירפה. חתולונת מדהימה. עדינה",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/e9r.jpg",
+    "id": "c9170ec7-fafe-4c9c-92f0-cd4f0c8d56cf"
+  },
+  {
+    "firstName": "יוסף",
+    "birthYear": 2014,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "תיקו מהממיקו! חתלתולון מושלם, עדין וכל כך כך מתוק, שהחיים לצידו פשוט יצבעו בוורוד",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/d6c.jpg",
+    "id": "ec033269-a4bd-4df2-9bb3-03823d031457"
+  },
+  {
+    "firstName": "מינה",
+    "birthYear": 2015,
+    "animalType": "חתול",
+    "gender": "נקבה",
+    "description": "ביום ובלילה היא תעניק לכם כמויות אדירות של אהבה! מינה המהממת, חתלתולונת מקסימה שתמלא כל כל בים של אהבה",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/MTUzNzkyNw.jpg",
+    "id": "d1df143f-1814-441c-80da-cac94f8fdd74"
+  },
+  {
+    "firstName": "מישקה",
+    "birthYear": 2006,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "מתיקות שיא של חתלתולון, יושב ומחכה לבית שיאהב המון. דנון המהממון, חצי ינשוף חצי חתול, עם אף שדורש מלא נשיקות",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/dr1.jpg",
+    "id": "234be8be-d2a1-4303-93c4-bb570adcd9be"
+  },
+  {
+    "firstName": "וויליאם",
+    "birthYear": 2005,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "רון הג'ינג'ולון הוא גורון מתבגר עדין ומתוק. ביישן שבעדינות ובסבלנות נפתח, אבל כל זה יוכל לקרות רק אם יהיה לו",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/9lb.png",
+    "id": "ed1da557-127f-4978-8fad-9d086a9aae48"
+  },
+  {
+    "firstName": "אבשלום",
+    "birthYear": 2008,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "אבשלום החתולון שיגרום ללב שלכם להפתח ולהסתובב פשוט מאוהבים כל כך! ממרח בינלאומי שניגש לכל מי שמגיע לחתולייה.",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/ci1.jpg",
+    "id": "9a5e1ab1-f2a2-4e33-84f3-f7b135a852ef"
+  },
+  {
+    "firstName": "אביגיל",
+    "birthYear": 2018,
+    "animalType": "חתול",
+    "gender": "נקבה",
+    "description": "אביגיל היפהפיה! חתלתולונת עדינה ומקסימה, תמלא כל בית במלא אור ואהבה",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/c4c.jpg",
+    "id": "9f49e37d-8021-47d2-9fd5-23df0afe4fbe"
+  },
+  {
+    "firstName": "מיכאל",
+    "birthYear": 2012,
+    "animalType": "חתול",
+    "gender": "זכר",
+    "description": "כדור שוקולד מתוק, רשו החתלתולון, יכניס אליכם הביתה אור ואהבה ומתיקות שתרחיב את הלב והנשמה",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/Wj3cPisYq.jpg",
+    "id": "14641783-1d07-4239-99b3-446ad7fd0ca8"
+  },
+  {
+    "firstName": "עופרה",
+    "birthYear": 2020,
+    "animalType": "חתול",
+    "gender": "נקבה",
+    "description": "יפהפיה עדינה ומקסימה, מאוד חששנית ולכן מתאימה לבית בו יש עוד חתולון כי מבני האדם היא חוששת המון",
+    "pictureUrl": "https://cdn2.thecatapi.com/images/csk.jpg",
+    "id": "6b9568f6-b955-4c74-bafb-671c9d9f2fcf"
+  },
+  {
+    "firstName": "אלכס",
+    "birthYear": 2008,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "אחד המתוקים שיש, כלבלבון עמוס באהבה, משתובב ומתפנק בלי הפסקה ומצחיק בלי סוף. סמית יגרום לכם להשאר צעירים לנצח ולאהוב",
+    "pictureUrl": "https://images.dog.ceo/breeds/schipperke/n02104365_7956.jpg",
+    "id": "6dda0968-63e5-4fd1-b887-32756405b35a"
+  },
+  {
+    "firstName": "נחמה",
+    "birthYear": 2006,
+    "animalType": "כלב",
+    "gender": "נקבה",
+    "description": "הכלבלבונת שלא מפסירה לחייך, הגיעה אלינו כשהיתה מאוד חולה וגם אז, דאגה לחייך לכל מי שהיה סביבה. נחמה המדהימה! הכלבה שהחיים לצידה יהיו עמוסים באהבה וחיוכים בלי הפסקה",
+    "pictureUrl": "https://images.dog.ceo/breeds/puggle/IMG_104450.jpg",
+    "id": "f89fb089-f16f-4235-98ea-9c887037d91d"
+  },
+  {
+    "firstName": "גוליבר",
+    "birthYear": 2018,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "גורון שובבון מצחיקון, שאוהב מלא תשומת לב, להשתובב ולפזר כמויות גדולות של אהבה. צדף מחכה למאמצים שידעו שזכו בממתק של",
+    "pictureUrl": "https://images.dog.ceo/breeds/dhole/n02115913_2524.jpg",
+    "id": "a17c3700-a0d9-4897-b3e9-135fd5702ebf"
+  },
+  {
+    "firstName": "גולומב",
+    "birthYear": 2019,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "אחד האהובים, העדינים, המתוקים שכל כך סובל בכלוב כבר שנים (!) וחייב לצאת מכאן בדחיפות. ",
+    "pictureUrl": "https://images.dog.ceo/breeds/terrier-australian/n02096294_568.jpg",
+    "id": "0e6c3e5b-b4aa-4ece-a2f8-dd649e55d189"
+  },
+  {
+    "firstName": "אליזבת",
+    "birthYear": 2010,
+    "animalType": "כלב",
+    "gender": "נקבה",
+    "description": "יפה כזאת לא פוגשים בכל יום! בלאדי המקסימה! כלבלבונת עדינה וביישנית שזקוקה לזמן שלה על מנת להפתח ולהתחבר לאנשים חדשים",
+    "pictureUrl": "https://images.dog.ceo/breeds/stbernard/n02109525_10992.jpg",
+    "id": "c48f583a-64a3-472e-b1a2-2568b95c60a1"
+  },
+  {
+    "firstName": "יוכבד",
+    "birthYear": 2008,
+    "animalType": "כלב",
+    "gender": "נקבה",
+    "description": "הכלבלבונת שתעשה לכם שמח בלב! עליזה המשגעת! כלבה מלאת שמחת חיים ואנרגיות שעושות תמיד לחייך. אוהבת לשחק עם מלא חברים",
+    "pictureUrl": "https://images.dog.ceo/breeds/bluetick/n02088632_3478.jpg",
+    "id": "41542307-57fe-4c59-b227-8f36b903eb7d"
+  },
+  {
+    "firstName": "בנימין",
+    "birthYear": 2018,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "בנימין הכלבלב שיכניס לחייכם אהבה והמון שמחה, הוא הגיע אלינו בתור גור קטן עם שבר שתוקן אומץ ואז חזר לכלוב",
+    "pictureUrl": "data:image/jpeg;base64,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",
+    "id": "cb72f4d7-bcaa-4cb6-acc6-f47da09c9223"
+  },
+  {
+    "firstName": "יוחנן",
+    "birthYear": 2013,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "כוכב כדורגל מגיל צעיר, בקאם המתוק מחכה לכבוש לבבות גדולים. גורון משגע, מעורב בכל טוב ויגדל להיות גדול וחתיך",
+    "pictureUrl": "https://images.dog.ceo/breeds/malamute/n02110063_12139.jpg",
+    "id": "3c5a87c5-a036-45e1-8346-1d1404403c3d"
+  },
+  {
+    "firstName": "ליאור",
+    "birthYear": 2015,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "חמידות שיא של כלבלבון שמעט חששן ולכן זקוק למאמצים עם ניסיון וסבלנות, כדי שיוכל להפתח ולהפוך לממרח",
+    "pictureUrl": "https://images.dog.ceo/breeds/brabancon/n02112706_1418.jpg",
+    "id": "6cbaf2da-b067-4d55-b492-c34a4b0e3536"
+  },
+  {
+    "firstName": "גלית",
+    "birthYear": 2020,
+    "animalType": "כלב",
+    "gender": "נקבה",
+    "description": "כלבה עם העיניים הכי טובות בעולם, נמצאה עם פצעי שפשוף נרחבים לאורך רגליה. היא טופלה והחלימה",
+    "pictureUrl": "https://images.dog.ceo/breeds/pointer-german/n02100236_4288.jpg",
+    "id": "4ba0fc67-006d-4000-a209-69ab8383b95e"
+  },
+  {
+    "firstName": "עידן",
+    "birthYear": 2012,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "הוא עדין ומתוק, הוא קצת הולך לאיבוד בין מאות כלבלבים, הוא ביישן במפגש ראשון, אבל הוא הכי שווה את ההשקעה",
+    "pictureUrl": "https://images.dog.ceo/breeds/redbone/n02090379_3721.jpg",
+    "id": "73799062-a5e9-48d9-8866-5fc02ecf1a03"
+  },
+  {
+    "firstName": "אופיר",
+    "birthYear": 2016,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "כדור מתוק של שוקולד שננטש במרפאה ורוצה עכשיו לצאת מכאן מהר ולגדול בבית שעליו לעולם לא יוותר.",
+    "pictureUrl": "https://images.dog.ceo/breeds/elkhound-norwegian/n02091467_1213.jpg",
+    "id": "e3cad7ac-31ee-43f3-aa9d-322e9fb924e6"
+  },
+  {
+    "firstName": "ניצן",
+    "birthYear": 2011,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "חתיך משגע שהגיע אלינו עם שלל בעיות אורטופדיות. טופל והחלים, עומד, מתהלך ומתרוצץ על 4 רגליים ומחכה לבית",
+    "pictureUrl": "https://images.dog.ceo/breeds/bluetick/n02088632_336.jpg",
+    "id": "72be2363-83d2-48b9-860c-309ede85a874"
+  },
+  {
+    "firstName": "רונית",
+    "birthYear": 2017,
+    "animalType": "כלב",
+    "gender": "נקבה",
+    "description": "כלבה של אהבה, שמאוד טריטוריאלית ולא מסתדרת עם כלבים אחרים ולכן ננטשה כל כך הרבה פעמים. שבורת לב וצמאה לאהבה, רונית רוצה הפעם להגיע לבית- לתמיד!",
+    "pictureUrl": "https://post.medicalnewstoday.com/wp-content/uploads/sites/3/2020/02/322868_1100-732x549.jpg",
+    "id": "46bd6c6a-d504-4138-89f6-d406a9afa96e"
+  },
+  {
+    "firstName": "אורורה",
+    "birthYear": 2010,
+    "animalType": "כלב",
+    "gender": "נקבה",
+    "description": "כלבלבונת עם לב גדול שמצוייר על פניה ומרמז על אהבתה הגדולה. ליצ'י היא כלבה לעצלנים, אוהבת להתפנק ולהסתלבט",
+    "pictureUrl": "https://images.dog.ceo/breeds/terrier-australian/n02096294_7641.jpg",
+    "id": "9768a304-e6a1-448a-bc75-3c0ee1ed2720"
+  },
+  {
+    "firstName": "משה",
+    "birthYear": 2019,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description": "כלבלב עדין ביישן וחששן, שזקוק למאמצים סבלניים שיעניקו לו ביטחון כדי שיוכל להפוך לכלבלב מאושר שימלא את הבית באהבה",
+    "pictureUrl": "https://images.dog.ceo/breeds/setter-irish/n02100877_71.jpg",
+    "id": "da4acc16-6eb1-4479-b46d-28e8d7ee8ec1"
+  },
+  {
+    "firstName": "יפים",
+    "birthYear": 2008,
+    "animalType": "כלב",
+    "gender": "זכר",
+    "description":"הוא כלב מקסים, מאוד לחוץ במפגש ראשון אבל כשנרגע נותן ומבקש כל כך הרבה אהבה.",
+    "pictureUrl": "https://images.dog.ceo/breeds/deerhound-scottish/n02092002_11131.jpg",
+    "id": "15218fdb-74d6-4009-843a-5441094b2a6d"
+  },
+  {
+    "firstName": "שולמית",
+    "birthYear": 2014,
+    "animalType": "כלב",
+    "gender": "נקבה",
+    "description": "גורונת מתוקה נמצאה על ידי חיילים יקרים, שוכבת עם קרע כואב בבטנה. היא עברה תפירה על ידי כירורג מומחה, החלימה ושוקמה ועכשיו המתוקונת הזאת מחכה לבית בו תוכל להכניס ים של אהבה",
+    "pictureUrl": "https://images.dog.ceo/breeds/terrier-scottish/n02097298_3611.jpg",
+    "id": "a1aca41c-d520-43eb-bedf-b68f03337c03"
+  }
+]
+}

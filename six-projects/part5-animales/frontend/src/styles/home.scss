@@ -1,0 +1,148 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background: linear-gradient(to right, gray, black);
+  margin-top: 50px;
+}
+
+.mainImage {
+  width: 50%;
+  height: 100%;
+}
+
+body {
+  margin: 0px;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: end;
+  padding-right: 6.25rem;
+  padding-top: 6.25rem;
+  color: rgb(255, 208, 0);
+  width: 50vw;
+  height: 100vh;
+}
+
+.title {
+  width: fit-content;
+  height: fit-content;
+  font-size: 1.875rem;
+  margin: 0px;
+  font-family: cursive;
+}
+
+.contentDescription {
+  font-size: 1.25rem;
+  margin: 0px;
+  text-align: end;
+  font-family: cursive;
+}
+
+.threeLastContainer {
+  width: fit-content;
+  height: fit-content;
+  margin-top: 30vh;
+}
+
+.threeLast {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.rowLasts {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    background: none;
+    background-color: black;
+    height: fit-content;
+    margin-top: 100px;
+    justify-content: end;
+    padding-bottom: 300px;
+  }
+
+  .container::-webkit-scrollbar{
+    scrollbar-width: 0px;
+  }
+
+  .threeLastContainer{
+    margin-top: 100px;
+  }
+
+  
+  body{
+  background-color: black;
+      padding-bottom: 400px;
+          overflow: scroll;
+
+
+  }
+  .mainImage{
+    display: none;
+  }
+
+  .buttonSeeAll{
+    position: relative;
+    left: 400px;
+    top: 400px;
+  }
+
+}
+
+@media (max-width: 600px) {
+.container {
+    background: none;
+    background-color: black;
+    height: fit-content;
+    margin-top: 100px;
+    justify-content: end;
+    padding-bottom: 300px;
+    
+  }
+
+  .container::-webkit-scrollbar{
+    scrollbar-width: 0px;
+  }
+
+  .threeLastContainer{
+    margin-top: 100px;
+    display: none;
+  }
+
+  
+  body{
+  background-color: black;
+      padding-bottom: 400px;
+          overflow: scroll;
+
+
+  }
+  .mainImage{
+    display: none;
+  }
+
+  .buttonSeeAll{
+    position: relative;
+    left: 400px;
+    top: 400px;
+  }
+
+}

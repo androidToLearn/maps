@@ -1,0 +1,100 @@
+body {
+  background: linear-gradient(to top, gray, black);
+}
+
+.btnHomePageDescription {
+  width: fit-content;
+  height: fit-content;
+  color: black;
+  background-color: rgb(255, 208, 0);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 100px;
+  padding-right: 100px;
+  border-radius: 10px;
+  position: absolute;
+  left: 0px;
+  top: 50px;
+  font-size: 20px;
+  background-image: url("public/images/home.png");
+  background-repeat: repeat;
+  background-size: 40px;
+}
+
+.titlePage {
+  color: black;
+  margin-left: 9.375rem;
+  background-color: white;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  border-radius: 0.625rem;
+  text-decoration: underline;
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+}
+
+.blackSquare {
+  color: black;
+  background-color: white;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-radius: 0.625rem;
+  text-decoration: underline;
+  padding-left: 5rem;
+  padding-right: 5rem;
+  border: 0.125rem solid black;
+}
+
+.animalAdopt {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: end;
+  padding: 2.5rem;
+  border: 0.125rem solid black;
+  background-color: rgb(226, 223, 223);
+  width: fit-content;
+  height: 22.5rem;
+  border-radius: 1.875rem;
+  margin-top: 2.1875rem;
+  margin-right: 1.875rem;
+}
+
+.animalAdopt label {
+  margin-top: 0.625rem;
+  width: 100%;
+  margin-bottom: 0.3125rem;
+  text-align: start;
+}
+
+.animalAdopt input[type="text"] {
+  width: 15.625rem;
+  height: 3.125rem;
+  padding-left: 2.5rem;
+  padding-right: 0.625rem;
+  border-top-left-radius: 0.3125rem;
+  border-top-right-radius: 0.3125rem;
+  outline: none;
+  border: none;
+}
+
+.submit {
+  margin-top: 1.875rem;
+  width: 6.25rem;
+  padding: 0.625rem;
+}
+
+.underLine {
+  width: 15.625rem;
+  height: 0.1875rem;
+  background-color: rgb(255, 208, 0);
+  padding-left: 2.5rem;
+  padding-right: 0.625rem;
+}
+
+.myIconField {
+  position: relative;
+  left: -90%;
+  top: -7%;
+  margin-bottom: -8%;
+}

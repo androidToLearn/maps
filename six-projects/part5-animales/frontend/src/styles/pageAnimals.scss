@@ -1,0 +1,223 @@
+
+body{
+  overflow: hidden;
+}
+.containerAll {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+
+.btnHomePageAnimals {
+  width: fit-content;
+  height: fit-content;
+  color: black;
+  background-color: rgb(255, 208, 0);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  padding-right: 60px;
+  border-radius: 10px;
+  position: absolute;
+  left: 200px;
+  top: 50px;
+  font-size: 20px;
+  background-image: url('public/images/home.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-x: 100%;
+}
+
+.btnHomePageAnimals:hover {
+  box-shadow: 0px 0.125rem 2.5rem gray;
+}
+.noFoundP{
+  background-color: black;
+  color: white;
+  font-size: 1.5625rem;
+  width: fit-content;
+  height: fit-content;
+}
+
+.search {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: 3.125rem;
+  position: relative;
+  z-index: 2;
+  border: 1.875rem;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.inputName {
+  width: 18.75rem;
+  height: 100%;
+  background-color: white;
+  border-top-left-radius: 1.875rem;
+  border-bottom-left-radius: 1.875rem;
+  outline: none;
+  border: none;
+  padding-left: 1.25rem;
+}
+
+.selectGender {
+  width: 7.5rem;
+  background-color: white;
+  height: calc(100%);
+  border: 0.0625rem solid rgb(202, 193, 193);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.selectAge {
+  width: 7.5rem;
+  background-color: white;
+  height: calc(100%);
+  border: 0.0625rem solid rgb(202, 193, 193);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputName:focus {
+  box-shadow: 0px 0px 0.625rem gray;
+}
+
+.containerScrolled {
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin-top: -6.25rem;
+  padding-top: 6.25rem;
+}
+
+.row {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+
+.btnSearch {
+  background-color: rgb(202, 196, 196);
+  width: fit-content;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  height: 3.25rem;
+  background-image: " public/images/search.png";
+}
+.btnSearch:hover {
+  background-color: rgb(156, 152, 152);
+}
+
+.scrollPropertiesAge {
+  background-color: white;
+  border-radius: 0.625rem;
+  position: absolute;
+  width: 7.5rem;
+  height: 12.5rem;
+  left: 27.8125rem;
+  top: -1.875rem;
+    overflow: auto;
+
+}
+
+.containAges {
+  width: 7.5rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  color: black;
+}
+
+.containGenders{
+  width: 7.5rem;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  color: black;
+  padding-top: 3.125rem;
+}
+
+.scrollPropertiesGender {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  justify-content: center;
+  align-self: center;
+  color: black;
+  background-color: white;
+  border-radius: 0.625rem;
+  position: absolute;
+  width: 7.5rem;
+  height: 6.25rem;
+  left: 20rem;
+  top: -1.875rem;
+}
+
+.containerOptions {
+}
+
+.oneOption {
+  width: 80%;
+  height: fit-content;
+  margin: 0px;
+  padding: 0.625rem;
+  border: 0.0625rem solid gray;
+}
+
+.notMediaQuery{
+    overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: 0px;
+}
+
+.notMediaQuery::-webkit-scrollbar {
+  display: none;
+}
+
+.mediaQuery{
+    overflow: auto;
+    display: none;
+}
+
+@media (max-width:1000px)  {
+  .notMediaQuery{
+    display: none;
+  }
+
+  .mediaQuery{
+    display: flex;
+    width: 1000px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width:600px) {
+  .mediaQuery{
+    display: none;
+    width: 1000px;
+    flex-direction: column;
+    align-items: center;
+  }
+  .search{
+    display: none;
+  }
+  .containerAll{
+    background-color: black;
+  }
+}

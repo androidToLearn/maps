@@ -1,0 +1,46 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 10.625rem;
+  height: 16.875rem;
+  border: 0.125rem solid white;
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover{
+    border: 0.125rem solid gray;
+}
+
+.circle{
+    width: 6.25rem;
+    height: 6.25rem;
+    border-radius: 100%;
+    border: 2px solid white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.seeAllText{
+    color: white;
+    flex-wrap: wrap;
+    font-family: cursive;
+   
+}
+
+.btnSearch{
+    width: fit-content;
+    height: calc( 100% + 0.125rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-end-end-radius: 1.875rem;
+    border-top-right-radius: 1.875rem;
+}

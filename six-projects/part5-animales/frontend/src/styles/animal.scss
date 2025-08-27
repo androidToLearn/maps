@@ -1,0 +1,68 @@
+.cardContainer{
+    background-color: gray;
+    border: 0.1rem solid white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 10.625rem;
+    height: 16.875rem;
+    margin: 1.875rem;
+    align-items: end;
+    justify-content: start;
+    padding: 1.875rem;
+    position: relative;
+}
+
+.picture{
+    width: 14.375rem;
+    height: 10.625rem;
+    border-radius: 0.625rem;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    z-index: 1;
+}
+
+.name{
+    color: white;
+    position: relative;
+    z-index: 2;
+    font-family: cursive;
+    top: 6.25rem;
+}
+
+.label{
+
+}
+
+.rowPropertyFirst{
+    margin-top: 6.25rem;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+
+}
+
+
+.rowProperty{
+    margin-top: -1.25rem;
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+
+}
+
+.lastProperty{
+    margin-top: -1.875rem;
+
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+}
