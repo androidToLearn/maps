@@ -1,0 +1,245 @@
+.page {
+  background-color: rgba(178, 196, 230, 0.664);
+  width: 100vw;
+  height: calc(100vh - 5rem);
+
+}
+
+
+.upLine {
+  background-color: rgba(73, 90, 134, 0.733);
+  width: 100vw;
+  height: 8.3vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+
+.userContainer {
+  width: fit-content;
+  padding-right: 5rem;
+  height: 100%;
+  background-color: rgba(53, 69, 109, 0.733);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 2;
+  height: fit-content;
+  margin-left: 1vw;
+}
+
+//1@eZz12345
+//yishay@gmail.com
+
+.saveSuccess{
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+}
+
+.textProfile {
+  color: white;
+  margin: 0.5vw;
+}
+
+.textUser {
+  color: white;
+  margin: 0.5vw;
+  font-size: 1.5rem;
+}
+
+.imgContact {
+  width: 4vw;
+  height: auto;
+  margin-left: 1rem;
+  z-index: 1000;
+}
+
+.lastLine {
+  width: 100vw;
+  height: 5rem;
+  background-color: rgba(73, 90, 134, 0.733);
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: end; 
+
+}
+
+.arich {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: 14rem;
+  height: 16rem;
+  background-color: rgb(238, 197, 150);
+  border-radius: 5%;
+}
+
+.contentArich {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  margin-top: 90%;
+}
+
+.tiles {
+  background-color: rgba(53, 69, 109, 0.733);
+  padding: 1rem;
+}
+
+.settings {
+  padding: 1rem;
+}
+.toCenter {
+  display: flex;
+  justify-content: start;
+  width: 100vw;
+  height: fit-content;
+}
+.allArichim {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: fit-content;
+  height: fit-content;
+}
+
+@media only screen and (max-width: 30rem) {
+  .toCenter{
+    justify-content: center;
+  }
+
+  .allArichim {
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+}
+
+.scroller {
+  width: 100vw;
+  height: calc(100vh - 10rem);
+  overflow: auto;
+  display: flex;
+}
+
+.color {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.5rem;
+  border-radius: 10%;
+  cursor: pointer;
+}
+
+
+.myAdd {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 10%;
+  background-color: rgb(105, 122, 165);
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+
+.myBin {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 10%;
+  background-color: rgb(105, 122, 165);
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+
+.arichAdd {
+  background-color: rgba(73, 90, 134, 0.733);
+  width: 14rem;
+  height: 16rem;
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.allColors {
+  flex-wrap: wrap;
+  width: 50%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.btnUndo {
+  width: 10rem;
+  height: 100%;
+  margin: 0px;
+  padding: 1rem;
+  border-radius: 0%;
+  background-color: transparent;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.btnSave {
+  width: 10rem;
+  height: 100%;
+  margin: 0px;
+  padding: 1rem;
+  border-radius: 0%;
+  background-color: rgba(73, 90, 134, 0.733);
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.containerbuttons {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  height: fit-content;
+}
+
+.boxInUpLine{
+  width: 100vw;
+  height: 8.3vh;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.upButtons {
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.notColored {
+  margin-left: calc(100vw - 25rem);
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.colored {
+  cursor: pointer;
+  padding: 1rem;
+  background-color: rgba(73, 90, 134, 0.733);
+}

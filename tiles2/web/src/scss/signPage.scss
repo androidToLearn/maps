@@ -1,0 +1,147 @@
+.main1 {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(178, 196, 230, 0.664);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.startDiv {
+  width: 100vw;
+  height: 100vh;
+}
+
+.card {
+  width: 25rem;
+  height: fit-content;
+  padding-bottom: 10rem;
+  background-color: rgb(92, 117, 150);
+  border-radius: 1rem;
+  display: flex;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.edit {
+  background-color: white;
+  border-radius: 0.5rem;
+  width: 90%;
+  height: 2.5rem;
+  outline: none;
+  border: none;
+  padding-left: 1rem;
+}
+
+.imageP {
+  margin-top: 0.5rem;
+  width: 5rem;
+  height: 5rem;
+}
+
+.labelLogin {
+  color: white;
+  width: 90%;
+  text-align: start;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.labelSign {
+  color: white;
+  width: 90%;
+  text-align: start;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.underContentSign {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 3rem;
+  width: 90%;
+  height: fit-content;
+  position: relative;
+  top: 3rem;
+}
+
+.underContentLogin {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 3rem;
+  width: 90%;
+  height: fit-content;
+  top: 38rem;
+}
+
+.boxMessage {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: fit-content;
+  position: relative;
+  top: -70vh;
+}
+.message {
+  color: white;
+  background-color: rgb(44, 43, 43);
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  border-radius: 0.5vw;
+  font-size: 2vw;
+  z-index: 300000;
+  position: absolute;
+  top: 40vh;
+  animation: identifier 0.2s linear;
+}
+
+@keyframes identifier {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.orange {
+  color: transparent;
+  flex-wrap: 1;
+  background-color: rgb(243, 173, 126);
+  border-radius: 0.5rem;
+  color: white;
+  width: 10rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.transparnt {
+  background-color: transparent;
+  flex-wrap: 1;
+  color: white;
+  border-radius: 0.5rem;
+  width: 10rem;
+
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+.transparnt p {
+  margin: 0px;
+}
+
+.orange p {
+  margin: 0px;
+}
+
+input[type="submit"] {
+  display: none;
+}

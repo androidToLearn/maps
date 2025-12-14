@@ -1,0 +1,30 @@
+.successBox{
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(37, 37, 37);
+    border-radius: 1vw;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 0.2vw;
+    padding-bottom: 0.2vw;
+    color: white;
+    font-size: 2vw;
+    animation: identifier 0.2s linear;
+}
+
+@keyframes identifier {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+.mainDivSuccess{
+    width: 100vw;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
