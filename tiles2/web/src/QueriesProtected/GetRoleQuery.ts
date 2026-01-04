@@ -7,7 +7,7 @@ export class GetRoleQuery {
     const mutation = useMutation<any>({
       mutationFn:async (data: any) => {
         await axios(
-          "/user/userById/" + data['id'],
+          "/users/userById/" + data['id'],
           {
             method: "GET",
             headers: {

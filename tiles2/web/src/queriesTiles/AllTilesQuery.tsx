@@ -28,7 +28,7 @@ export class AllTilesQuery {
 
   async allTilesFetch(dictValues: any) {
     fetchInstance(
-      "/tile/all",
+      "/tiles/all",
       new AllTilesQuery().getAllTiles,
       dictValues,
       {},

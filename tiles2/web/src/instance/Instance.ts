@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:8000";
+const BASE_URL = "http://localhost:3000";
 
 export const fetchInstanceWithoutToken = (
   baseURL1: string,
@@ -10,23 +10,21 @@ export const fetchInstanceWithoutToken = (
   methods: string
 ) => {
   const instance = axios.create();
-
-  // instance.interceptors.request.use((config: any) => {
-  //   return config;
-  // });
-
+   instance.interceptors.request.use((config: any) => {
+    return config;
+  });
   instance.interceptors.response.use(
     (response: any) => {
       methodToDo(response.data, dictValues);
       return response;
     },
     (error: any) => {
+      console.log(error)
       if (error.response && error.response.status === 401) {
         dictValues["navigate"]("/signIn");
       }
     }
   );
-
   instance({
     baseURL: BASE_URL + baseURL1,
     timeout: 60000,
@@ -36,6 +34,8 @@ export const fetchInstanceWithoutToken = (
     data: json,
     method: methods,
   });
+
+
 };
 
 export const fetchInstance = (
@@ -49,26 +49,24 @@ export const fetchInstance = (
   const instance = axios.create({});
 
   instance.interceptors.request.use((config: any) => {
+    console.log(localStorage.getItem("token"))
     if (localStorage.getItem("token") !== null) {
       config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
     } else {
-      dictValues["navigator"]("/signIn");
-
+      dictValues["navigate"]("/signIn");
       console.log("no token");
     }
-
     return config;
   });
 
   instance.interceptors.response.use(
     (response: any) => {
-      console.log(response.data);
       methodToDo(response.data, dictValues);
       return response;
     },
     (error: any) => {
-      console.log("in1");
-      localStorage.removeItem('token');
+      console.log(error)
+      localStorage.removeItem("token");
 
       if (error.response && error.response.status !== 200) {
         dictValues["navigate"]("/signIn");

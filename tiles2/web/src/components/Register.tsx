@@ -23,13 +23,6 @@ export default function Register() {
 
   const [message, setMessage] = useState<string | undefined>("");
 
-  try {
-    const messageSaved = localStorage.getItem("message");
-    if (messageSaved !== undefined && messageSaved !== null) {
-      if (message == "" && messageSaved !== "") setMessage(messageSaved);
-    }
-  } catch (err) {}
-
   const navigate = useNavigate();
 
   const mutationProtected = useMutation({
@@ -42,7 +35,6 @@ export default function Register() {
   });
   const mutation = useMutation({
     mutationFn: (data: any) => {
-
       new RegisterQuery().registerMutate(data, data);
       return data;
     },
@@ -60,8 +52,6 @@ export default function Register() {
       setMessage: setMessage,
     });
   };
-
-  console.log(mutation.data);
 
   return (
     <div className="startDiv">

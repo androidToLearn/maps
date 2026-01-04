@@ -4,7 +4,7 @@ export class SaveAllUsers {
   async saveAllUsers(data: any, dictValues: any) {
     try {
       fetchInstance(
-        "/user/insertAll",
+        "/users/insertAll",
         this.toDo,
         dictValues,
         JSON.stringify({ users: data["toSave"], myId: data["idUser"] }),

@@ -33,7 +33,7 @@ export class AllUsersQuery {
   }
 
   async allUsersFetch(token: string, mutation: any) {
-    const response = await axios("http://localhost:8000/user/allUsers", {
+    const response = await axios("http://localhost:3000/users/allUsers", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

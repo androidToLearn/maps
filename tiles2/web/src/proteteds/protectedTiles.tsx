@@ -6,11 +6,10 @@ export default function ProtectedTiles({ children }: any) {
   console.log("ProtectedTiles render");
   const navigator = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(true);
-
   fetchInstance(
     "/login/protected",
     isUserHasGoodToken,
-    { setIsLoading: setIsLoading, navigator: navigator },
+    { setIsLoading: setIsLoading, navigate: navigator },
     JSON.stringify({}),
     "GET"
   );

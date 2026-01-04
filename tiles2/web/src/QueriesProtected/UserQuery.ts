@@ -28,7 +28,7 @@ export class UserQuery {
       data = data["insertedId"];
     }
     fetchInstance(
-      "/user/userById/",
+      "/users/userById",
       this.setData,
       dictValues,
       JSON.stringify({}),

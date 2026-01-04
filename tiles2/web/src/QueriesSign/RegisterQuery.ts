@@ -11,8 +11,7 @@ export class RegisterQuery {
         JSON.stringify({
           email: data["email"],
           password: data["password"],
-          name: data["name"],
-          role: "viewer",
+          name: data["name"]
         }),
         "post"
       );

@@ -4,7 +4,7 @@ export class saveAllTilesQuery {
   async saveAllTiles(data: any, dictValues: any) {
     try {
       fetchInstance(
-        "/tile/saveAll",
+        "/tiles/saveAll",
         this.doNothing,
         dictValues,
         JSON.stringify(data["toSave"]),
