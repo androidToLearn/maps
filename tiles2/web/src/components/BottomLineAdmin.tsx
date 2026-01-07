@@ -21,7 +21,8 @@ export default function BottomLineAdmin({ dict }: BottomLineAdminType) {
                 dict["idUser"],
                 dict["mutation"],
                 dict["isSuccess"],
-                dict['navigate']
+                dict['navigate'],
+                dict['arrayIdsToUpdate']
               );
             }
             dict["setIsAbleClickUndo"](true);
@@ -47,7 +48,8 @@ export default function BottomLineAdmin({ dict }: BottomLineAdminType) {
                 dict["idUser"],
                 dict["mutation"],
                 dict["isSuccess"],
-                dict['navigate']
+                dict['navigate'],
+                dict['arrayIdsToUpdate']
               );
             }
             dict["setIsAbleClickUndo"](true);

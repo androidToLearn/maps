@@ -12,23 +12,25 @@
 }
 
 .card {
-  width: 25rem;
+  width: 20vw;
   height: fit-content;
-  padding-bottom: 10rem;
+  padding-bottom: 10vw;
   background-color: rgb(92, 117, 150);
   border-radius: 1rem;
   display: flex;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  padding-left: 2vw;
+  padding-right: 2vw;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 10;
 }
 
 .edit {
-  background-color: white;
+  background-color: rgb(228, 233, 247);
   border-radius: 0.5rem;
   width: 90%;
-  height: 2.5rem;
+  height: 2vw;
   outline: none;
   border: none;
   padding-left: 1rem;
@@ -36,26 +38,67 @@
 
 .imageP {
   margin-top: 0.5rem;
-  width: 5rem;
-  height: 5rem;
+  width: 5vw;
+  height: 5vw;
+  position: absolute;
+  z-index: 400;
+  top: 1vh;
+}
+
+.whiteCircle {
+  background-color: white;
+  position: absolute;
+  z-index: 100;
+  width: 5.3vw;
+  height: 5.3vw;
+  top: 1.8vh;
+  border-radius: 100%;
+}
+
+.blueCircle {
+  background-color: rgb(92, 117, 150);
+  position: absolute;
+  z-index: 300;
+  width: 3.5vw;
+  height: 3.2vw;
+  top: 3.2vh;
+  position: relative;
+  z-index: 150;
+  margin-bottom: 5vh;
+}
+
+.titleError {
+  color: white;
+  font-size: 1vw;
+  margin-left:2vw;
+}
+
+.divLabel {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: fit-content;
+  text-align: start;
 }
 
 .labelLogin {
   color: white;
-  width: 90%;
+  width: fit-content;
   text-align: start;
   margin-bottom: 0.5rem;
   margin-top: 1rem;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1vw;
 }
 
 .labelSign {
   color: white;
-  width: 90%;
+  width: fit-content;
   text-align: start;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1vw;
 }
 
 .underContentSign {
@@ -63,23 +106,23 @@
   justify-content: center;
   align-content: center;
   flex-direction: row;
-  gap: 3rem;
+  gap: 2vw;
   width: 90%;
   height: fit-content;
   position: relative;
-  top: 3rem;
+  top: 8vw;
 }
 
 .underContentLogin {
-  position: absolute;
+  position: relative;
   display: flex;
   justify-content: center;
   align-content: center;
   flex-direction: row;
-  gap: 3rem;
+  gap: 2vw;
   width: 90%;
   height: fit-content;
-  top: 38rem;
+  top: 8vw;
 }
 
 .boxMessage {
@@ -87,8 +130,8 @@
   justify-content: center;
   width: 100vw;
   height: fit-content;
-  position: relative;
-  top: -70vh;
+  position: absolute;
+  top: -20vh;
 }
 .message {
   color: white;
@@ -101,7 +144,7 @@
   font-size: 2vw;
   z-index: 300000;
   position: absolute;
-  top: 40vh;
+  top: 50vw;
   animation: identifier 0.2s linear;
 }
 
@@ -120,8 +163,10 @@
   background-color: rgb(243, 173, 126);
   border-radius: 0.5rem;
   color: white;
-  width: 10rem;
+  width: 15vw;
+  height: 3vw;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1vw;
 }
 
 .transparnt {
@@ -129,9 +174,10 @@
   flex-wrap: 1;
   color: white;
   border-radius: 0.5rem;
-  width: 10rem;
-
+  width: 15vw;
+  height: 3vw;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1vw;
 }
 
 .transparnt p {
@@ -144,4 +190,10 @@
 
 input[type="submit"] {
   display: none;
+}
+
+@media screen and (max-width: 60rem) {
+  .card {
+    transform: scale(1.5);
+  }
 }

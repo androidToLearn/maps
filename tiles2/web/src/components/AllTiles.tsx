@@ -80,7 +80,7 @@ export default function AllTiles({ properties }: any) {
                         })}
                       </div>
                     ) : (
-                      <img
+                      <img className="addArich"
                         src="public/addArich.png"
                         onClick={() => {
                           if (profile === "admin" || profile === "moderator") {

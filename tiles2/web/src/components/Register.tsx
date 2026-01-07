@@ -57,10 +57,16 @@ export default function Register() {
     <div className="startDiv">
       <div className="main1">
         <form className="card" onSubmit={handleSubmit(registerAction)}>
+          <div className="whiteCircle"></div>
+          <div className="blueCircle"></div>
           <img src="public/p5.png" alt="myprofileimage" className="imageP" />
-          <label htmlFor="email" className="labelLogin">
-            Name
-          </label>
+
+          <div className="divLabel">
+            <label htmlFor="email" className="labelLogin">
+              Name
+            </label>
+            {errors.name !== undefined ? <p className="titleError">{errors.name.message}</p>:<div></div>}
+          </div>
           <input
             type="text"
             className="edit"
@@ -69,22 +75,26 @@ export default function Register() {
             placeholder="name..."
             {...register("name", { required: true })}
           />
-          <label htmlFor="email" className="labelLogin">
-            Email
-          </label>
+          <div className="divLabel">
+            <label htmlFor="email" className="labelLogin">
+              Email
+            </label>
+            {errors.email !== undefined ? <p className="titleError">{errors.email.message}</p>:<div></div>}
+          </div>
           <input
             type="email"
             className="edit"
             id="email"
             autoComplete="email"
             placeholder="email..."
-            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
-"
             {...register("email", { required: true })}
           />
-          <label htmlFor="password" className="labelLogin">
-            Password
-          </label>
+          <div className="divLabel">
+            <label htmlFor="password" className="labelLogin">
+              Password
+            </label>
+            {errors.password !== undefined ? <p className="titleError">{errors.password.message}</p>:<div></div>}
+          </div>
           <input
             type="password"
             className="edit"
@@ -101,7 +111,7 @@ export default function Register() {
                 navigate("/signIn");
               }}
             >
-              <p>SIGN IN</p>
+              <p>LOGIN</p>
             </button>
             <button
               className="orange"

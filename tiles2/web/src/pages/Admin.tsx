@@ -25,6 +25,7 @@ export default function adminPage() {
   const [isMenuOpened, setIsMenuOpened] = useState<boolean>(true);
   const [profile, setProfile, name, setName, idUser] =
     useOutletContext<[string, () => void, string, () => void, string]>();
+  const [arrayIdsToUpdate , setArrayIds] = useState<string[]>()
   const [allHistory, setAllHistory] = useState<typeHistoryUser>([
     [
       {
@@ -37,7 +38,6 @@ export default function adminPage() {
     ],
   ]);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-  const navigator = useNavigate()
 
   useEffect(() => {
     if (isSuccess) {
@@ -108,6 +108,7 @@ export default function adminPage() {
     navigate: navigate,
     mutation: mutationSave,
     isSuccess: setIsSuccess,
+    arrayIdsToUpdate : arrayIdsToUpdate
   };
 
   const filterDict = {
@@ -124,6 +125,8 @@ export default function adminPage() {
     setIsChanged: setIsChanged,
     setAllHistory: setAllHistory,
     myIdUser: idUser,
+    arrayIdsToUpdate : arrayIdsToUpdate ,
+    setArrayIds : setArrayIds
   };
   console.log("isSuccess", isSuccess);
   return (

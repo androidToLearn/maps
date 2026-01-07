@@ -2,9 +2,7 @@
   background-color: rgba(178, 196, 230, 0.664);
   width: 100vw;
   height: calc(100vh - 5rem);
-
 }
-
 
 .upLine {
   background-color: rgba(73, 90, 134, 0.733);
@@ -16,7 +14,7 @@
 }
 
 .userContainer {
-  width: fit-content;
+  width: 25vw;
   padding-right: 5rem;
   height: 100%;
   background-color: rgba(53, 69, 109, 0.733);
@@ -36,7 +34,7 @@
 //1@eZz12345
 //yishay@gmail.com
 
-.saveSuccess{
+.saveSuccess {
   position: absolute;
   width: fit-content;
   height: fit-content;
@@ -58,17 +56,18 @@
   height: auto;
   margin-left: 1rem;
   z-index: 1000;
+  padding-left: 2vw;
 }
 
 .lastLine {
   width: 100vw;
   height: 5rem;
   background-color: rgba(73, 90, 134, 0.733);
-  position: absolute;
   display: flex;
   flex-direction: row;
-  justify-content: end; 
-
+  justify-content: end;
+  position: absolute;
+  top: 91.55vh;
 }
 
 .arich {
@@ -113,7 +112,7 @@
 }
 
 @media only screen and (max-width: 30rem) {
-  .toCenter{
+  .toCenter {
     justify-content: center;
   }
 
@@ -132,13 +131,12 @@
 }
 
 .color {
-  width: 2rem;
-  height: 2rem;
+  width: 2.6rem;
+  height: 2.6rem;
   margin-left: 0.5rem;
   border-radius: 10%;
   cursor: pointer;
 }
-
 
 .myAdd {
   width: 1rem;
@@ -149,10 +147,9 @@
   padding: 0.5rem;
 }
 
-
 .myBin {
-  width: 1rem;
-  height: 1rem;
+  width: 1.6rem;
+  height: 1.6rem;
   border-radius: 10%;
   background-color: rgb(105, 122, 165);
   cursor: pointer;
@@ -160,6 +157,10 @@
   margin-left: 0.5rem;
 }
 
+.addArich {
+  width: 50%;
+  height: auto;
+}
 
 .arichAdd {
   background-color: rgba(73, 90, 134, 0.733);
@@ -174,7 +175,7 @@
 
 .allColors {
   flex-wrap: wrap;
-  width: 50%;
+  width: 70%;
   height: fit-content;
   justify-content: center;
   align-items: center;
@@ -214,7 +215,7 @@
   height: fit-content;
 }
 
-.boxInUpLine{
+.boxInUpLine {
   width: 100vw;
   height: 8.3vh;
   position: absolute;

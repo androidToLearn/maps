@@ -3,7 +3,7 @@ import { fetchInstance } from "../instance/Instance";
 import { useState } from "react";
 import Loader from "../components/Loader";
 export default function ProtectedTiles({ children }: any) {
-  console.log("ProtectedTiles render");
+  console.log("ProtectedTiles render one");
   const navigator = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(true);
   fetchInstance(

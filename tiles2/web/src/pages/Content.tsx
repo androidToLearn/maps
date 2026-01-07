@@ -29,8 +29,8 @@ export default function Content() {
     },
     retry: 3,
   });
-  if(window.location.href === 'http://localhost:5173/')
-  navigator('/signIn')
+  if(window.location.href === import.meta.env.VITE_BASE_URL_FRONTEND)
+  navigator('/tilePage')
   const token: string | null = localStorage.getItem("token");
   useEffect(() => {
     if (token !== undefined && token !== null) {

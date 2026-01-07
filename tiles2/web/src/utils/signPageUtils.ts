@@ -21,8 +21,12 @@ export const schemaRegister = z.object({
     .string()
     .min(2, "שם צריך להיות 2 תווים לפחות")
     .max(35, "שם צריך להיות לא יותר מ35 תווים"),
-  email: z.string().email("יש להזין אימייל תקין"),
+  email: z
+    .string()
+    .email("יש להזין אימייל תקין")
+    .regex(new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$")),
 });
+
 export type register = z.infer<typeof schemaRegister>;
 
 export const schemaSignIn = z.object({
@@ -41,7 +45,10 @@ export const schemaSignIn = z.object({
     .refine((val) => /[!@#$%^&*()_\-+\[\]{};':"\\|,.<>\/?`~]/.test(val), {
       message: "חייבת להכיל לפחות תו מיוחד אחד (למשל !@#$%)",
     }),
-  email: z.string().email("יש להזין אימייל תקין"),
+  email: z
+    .string()
+    .email("יש להזין אימייל תקין")
+    .regex(new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$")),
 });
 export type SignIn = z.infer<typeof schemaSignIn>;
 

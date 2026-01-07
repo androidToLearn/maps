@@ -1,40 +1,39 @@
 .content {
   width: 80vw;
-  height: 50vh;
+  height: 25vw;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 .main {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
-  height: calc(100vh - 10rem);
+  height: calc(100vh - 5rem);
   flex-direction: column;
 }
 
 .menu {
   display: flex;
   flex-direction: column;
-  width: 40vw;
-  height: 100%;
+  width: 25vw;
+  height: 25vw;
   border-radius: 1rem;
   background-color: rgba(73, 90, 134, 0.733);
-  padding: 2rem;
+  padding: 2vw;
 }
 
 .usersManage {
   display: flex;
   flex-direction: column;
   width: 50vw;
-  height: 53vh;
+  height: 25.555vw;
   border-radius: 0.5vw;
   background-color: white;
   padding: 1.7vw;
-  margin-left: -15vw;
+  margin-left: -3vw;
   z-index: 4;
   display: flex;
   justify-content: center;
@@ -72,12 +71,13 @@
 }
 .upUsersLine {
   width: 100%;
-  height: 5rem;
+  height: 3vw;
   background-color: rgba(73, 90, 134, 0.733);
   border-radius: 1rem;
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-size: 1vw;
 }
 
 .usersContent {
@@ -95,34 +95,58 @@
 
 .scrollUsers {
   width: fit-content;
-  height: 34vh;
+  height: 15vw;
   overflow: auto;
   margin: 0.5vw;
   width: 100%;
-  padding-top: 1vh;
-  padding-bottom: 4vh;
+  padding-top: 0.5vw;
+  padding-bottom: 2vw;
 }
-
 
 .row {
   height: 3vw;
-  width: 40vw;
+  width: 50vw;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
-  gap: 2vw;
+  gap: 1vw;
+  font-size: 1vw;
   border-radius: 0.5vw;
 
   background-color: rgba(73, 90, 134, 0.733);
 }
 
+.divSelector{
+  margin-left: 2.5vw;
+}
+
+.myTitleRole{
+  margin-left: 3vw;
+}
+
+.titleUser {
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+   text-align: center;
+  width: 15vw;
+}
+
+.titleGmail {
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  width: fit-content;
+  width: 20vw;
+  
+}
+
 .title {
   color: white;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
   width: 100%;
   flex-grow: 1;
-  text-align: center;
 }
 
 .divSelector {
@@ -136,15 +160,15 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 1vw;
 }
-
 
 .lineBlack {
   background-color: black;
   width: 100%;
   height: 0.1vw;
 }
-.saveSuccess{
+.saveSuccess {
   position: absolute;
   width: fit-content;
   height: fit-content;
@@ -159,7 +183,7 @@
   cursor: pointer;
 }
 
-.myTitleRole{
+.myTitleRole {
   background-color: white;
   border-radius: 0.1vw;
   padding-top: 0.1vw;
@@ -167,61 +191,4 @@
   padding-left: 0.6vw;
   padding-right: 0.6vw;
   margin-right: 1.6vw;
-}
-
-@media only screen and (max-width: 50rem) {
-  .menu {
-    position: absolute;
-    z-index: 1000;
-    background-color: rgb(73, 90, 134);
-    top: 0px;
-    left: 0px;
-  }
-
-  .usersManage {
-    width: 100vw;
-    margin-left: 10vw;
-  }
-
-  .usersContent{
-    width: 70vw;
-  }
-
-  .row {
-    width: 60vw;
-    margin-left: 0px;
-  }
-
-  
-  .choose {
-    color: white;
-    font-size: 5vw;
-  }
-  .not_choose {
-    color: black;
-    font-size: 5vw;
-  }
-
-  .line {
-    background-color: black;
-  }
-
-  .classCloseOrOpen {
-    display: block;
-  }
-
-  .allUsers {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-
-  .scrollUsers {
-    -ms-overflow-style: none;
-  }
-
-  .scrollUsers::-webkit-scrollbar {
-    scrollbar-width: 0px;
-  }
 }

@@ -7,6 +7,8 @@ export default function RowUser({ properties, index, user }:    TypeRowUser) {
   const setIsChanged = properties["setIsChanged"];
   const setAllHistory = properties["setAllHistory"];
   const myIdUser = properties["myIdUser"];
+  const arrayIdsToUpdate = properties['arrayIdsToUpdate'];
+  const setArrayIds = properties['setArrayIds']
 
   const changeUser = (role: string) => {
     if (role === user["role"]) return;
@@ -14,7 +16,11 @@ export default function RowUser({ properties, index, user }:    TypeRowUser) {
       user["role"] = role;
       allHistory.push(allUsers);
       setIsChanged(true);
-
+      if (arrayIdsToUpdate !== undefined)
+      {
+        arrayIdsToUpdate.push(user.id)
+        setArrayIds([...arrayIdsToUpdate])
+      }
       setAllHistory([...allHistory]);
     } else {
       user["role"] = role;
@@ -32,8 +38,8 @@ export default function RowUser({ properties, index, user }:    TypeRowUser) {
   console.log('mine' , user["id"])
   return (
     <div className="row" key={index}>
-      <p className="title">{user["name"]}</p>
-      <p className="title">{user["email"]}</p>
+      <p className="titleUser">{user["name"]}</p>
+      <p className="titleGmail">{user["email"]}</p>
       <>
         {myIdUser !== user["id"] ? (
           <select

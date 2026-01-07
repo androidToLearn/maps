@@ -1,4 +1,4 @@
-import type { SubmitHandler } from 'react-hook-form';
+import type { SubmitHandler } from "react-hook-form";
 export type user_type = {
   id: string;
 
@@ -70,7 +70,7 @@ export type BottomLineDictTypes = {
   setAllHistory: any;
   mutation: any;
   isSuccess: (value: boolean) => void;
-  navigate : any;
+  navigate: any;
 };
 
 export type UpLineType = {
@@ -110,6 +110,7 @@ export type BottomLineAdminDictTypes = {
   navigate: any;
   mutation: any;
   isSuccess: (value: boolean) => void;
+  arrayIdsToUpdate: string[] | undefined;
 };
 
 export type typeUser = {
@@ -126,6 +127,14 @@ export type TypeOneTile = {
   index: number;
   color: string;
 };
+
+export type TypeUsersToSave = {
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+}[];
 
 export type TypeOneTileDict = {
   hasChanges: boolean;
@@ -175,18 +184,14 @@ export type TypeAllTilesDict = {
 };
 
 export type TypeRowUserDict = {
-  allUsers: {
-    id: string;
-    name: string;
-    email: string;
-    password: string;
-    role: string;
-  }[];
+  allUsers: TypeUsersToSave;
   isChanged: boolean;
   allHistory: typeHistoryUser;
   setIsChanged: (value: boolean) => void;
   setAllHistory: (value: typeHistoryUser) => void;
   myIdUser: string;
+  arrayIdsToUpdate: string[] | undefined;
+  setArrayIds: (value: string[]) => void;
 };
 
 export type TypeRowUser = {

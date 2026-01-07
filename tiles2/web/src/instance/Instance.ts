@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000";
-
 export const fetchInstanceWithoutToken = (
   baseURL1: string,
   methodToDo: any,
@@ -9,8 +7,10 @@ export const fetchInstanceWithoutToken = (
   json: any,
   methods: string
 ) => {
+
+  console.log(baseURL1)
   const instance = axios.create();
-   instance.interceptors.request.use((config: any) => {
+  instance.interceptors.request.use((config: any) => {
     return config;
   });
   instance.interceptors.response.use(
@@ -19,14 +19,15 @@ export const fetchInstanceWithoutToken = (
       return response;
     },
     (error: any) => {
-      console.log(error)
+      console.log(error);
       if (error.response && error.response.status === 401) {
         dictValues["navigate"]("/signIn");
       }
     }
   );
+
   instance({
-    baseURL: BASE_URL + baseURL1,
+    baseURL: import.meta.env.VITE_BASE_URL + baseURL1,
     timeout: 60000,
     headers: {
       "Content-Type": "application/json;charset=utf-8",
@@ -34,8 +35,6 @@ export const fetchInstanceWithoutToken = (
     data: json,
     method: methods,
   });
-
-
 };
 
 export const fetchInstance = (
@@ -49,7 +48,7 @@ export const fetchInstance = (
   const instance = axios.create({});
 
   instance.interceptors.request.use((config: any) => {
-    console.log(localStorage.getItem("token"))
+    console.log(localStorage.getItem("token"));
     if (localStorage.getItem("token") !== null) {
       config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
     } else {
@@ -65,7 +64,7 @@ export const fetchInstance = (
       return response;
     },
     (error: any) => {
-      console.log(error)
+      console.log(error);
       localStorage.removeItem("token");
 
       if (error.response && error.response.status !== 200) {
@@ -75,7 +74,7 @@ export const fetchInstance = (
   );
 
   instance({
-    baseURL: BASE_URL + baseURL1,
+    baseURL: import.meta.env.VITE_BASE_URL + baseURL1,
     timeout: 60000,
     headers: {
       "Content-Type": "application/json;charset=utf-8",

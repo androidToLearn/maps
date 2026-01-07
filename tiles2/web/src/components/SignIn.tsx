@@ -26,14 +26,7 @@ export default function SignIn() {
     errors.password !== undefined ||
     errors.root !== undefined
   ) {
-    if (message == "") {
-      if (errors.email !== null && errors.email !== undefined) {
-        setMessage(errors.email.message);
-      }
-      if (errors.password !== null && errors.password !== undefined)
-        setMessage(errors.password.message);
-    }
-  } 
+  }
 
 
   useEffect(() => {
@@ -44,7 +37,6 @@ export default function SignIn() {
     }
   }, [message]);
 
-  
   const navigate = useNavigate();
   const mutation = useMutation({
     mutationFn: async (data: any) => {
@@ -53,8 +45,6 @@ export default function SignIn() {
     },
     retry: 3,
   });
-
-
 
   const mutationProtected = useMutation({
     mutationFn: (data: any) => {
@@ -77,30 +67,36 @@ export default function SignIn() {
       setMessage: setMessage,
     });
   };
-
+  console.log(errors.email)
   return (
     <div className="startDiv">
       {" "}
       <div className="main1">
         <form className="card" onSubmit={handleSubmit(signAction)}>
+          <div className="whiteCircle"></div>
+          <div className="blueCircle"></div>
           <img src="public/p5.png" alt="myprofileimage" className="imageP" />
 
-          <label htmlFor="email" className="labelSign">
-            Email
-          </label>
+          <div className="divLabel">
+            <label htmlFor="email" className="labelSign">
+              Email
+            </label>
+            {errors.email !== undefined ? <p className="titleError">{errors.email.message}</p>:<div></div>}
+          </div>
           <input
             type="email"
             className="edit"
             id="email"
             autoComplete="email"
             placeholder="email..."
-            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$
-"
             {...register("email", { required: true })}
           />
-          <label htmlFor="password" className="labelSign">
-            Password
-          </label>
+          <div className="divLabel">
+            <label htmlFor="password" className="labelSign">
+              Password
+            </label>
+            {errors.password !== undefined ? <p className="titleError">{errors.password.message}</p>:<div></div>}
+          </div>
           <input
             type="password"
             className="edit"
@@ -117,7 +113,7 @@ export default function SignIn() {
                 if (form !== null) form.valid();
               }}
             >
-              <p>SIGN IN</p>
+              <p>LOGIN</p>
             </button>
             <button
               className="transparnt"

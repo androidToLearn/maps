@@ -85,7 +85,8 @@ export class Admin_Service {
     idUser: string,
     mutation: any,
     setIsSuccess: (value: boolean) => void,
-    navigator : any
+    navigator : any,
+    arrayIdsToUpdate : string[] | undefined
   ) {
     if (isChanged) {
       //fetch(last)
@@ -94,7 +95,8 @@ export class Admin_Service {
         token: token,
         toSave: allHistory[allHistory.length - 1],
         setIsSuccess : setIsSuccess,
-        navigate : navigator
+        navigate : navigator,
+        arrayIdsToUpdate : arrayIdsToUpdate
       });
       setIsAbleClickUndo(true);
     }
@@ -124,7 +126,8 @@ export class Admin_Service {
     idUser: string,
     mutation: any,
     setIsSuccess: (value: boolean) => void ,
-    navigator : any
+    navigator : any,
+    arrayIdsToUpdate : string[] | undefined
   ) {
     if (allHistory.length > 1) {
       if (!isChanged) {
@@ -135,7 +138,8 @@ export class Admin_Service {
           token: token,
           toSave: allHistory[allHistory.length - 1],
           isSuccess: setIsSuccess,
-          navigate : navigator
+          navigate : navigator,
+          arrayIdsToUpdate : arrayIdsToUpdate
         });
       } else {
         allHistory.splice(allHistory.length - 1, 1);

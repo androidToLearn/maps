@@ -1,10 +1,9 @@
 import Loader from "../components/Loader";
-import { getId, getRole } from "../service/protected_service";
+import { getRole } from "../service/protected_service";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 export default function ProtectedAdmin({ children }: any) {
   const [isLoader, setIsLoader] = useState<boolean>(true);
-  const [isTiles, setIsTiles] = useState<boolean>(false);
   console.log("ProtectedAdmin");
   const navigator = useNavigate();
 
