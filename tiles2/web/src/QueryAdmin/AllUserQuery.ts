@@ -41,6 +41,7 @@ export class AllUsersQuery {
       },
     });
     try{
+      
     mutation.mutate(response.data);
     }catch(err)
     {

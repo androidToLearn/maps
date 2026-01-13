@@ -1,19 +1,19 @@
 import { getColorsForChoose } from "../utils/tilePageUtils";
 import { useState } from "react";
 import OneTile from "./OneTile";
+import { colorsEnum } from "../service/Enum";
+import type { TypeOneTile } from "../types/typescript";
 
-export default function AllTiles({ properties }: any) {
+export default function AllTiles({
+  profile,
+  allArichim,
+  hasChanges,
+  allHistory,
+  setAllHistory,
+  setHasChanges,
+}: any) {
   const chooseColor = getColorsForChoose();
   const [isColorsOpened, setIsOpenedColor] = useState<boolean>(false);
-
-  const profile = properties["profile"];
-  const allArichim = properties["allArichim"];
-  const hasChanges = properties["hasChanges"];
-  const allHistory = properties["allHistory"];
-  const setAllHistory = properties["setAllHistory"];
-  const setHasChanges = properties["setHasChanges"];
-
-  
 
   const clickChooseColor = () => {
     setIsOpenedColor(true);
@@ -22,12 +22,16 @@ export default function AllTiles({ properties }: any) {
   const clickColor = (color: string) => {
     const lastIsAdd = allArichim[allArichim.length - 1];
     allArichim.splice(allArichim.length - 1, 1);
-    allArichim.push({
-      color: color,
-      id: "",
-      createdAt: new Date(),
-      updatedAt: new Date(),
-    }); //-1 is new still not have id
+    if (color in colorsEnum) {
+      allArichim.push({
+        color: color,
+        id: "",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }); //-1 is new still not have id
+    } else {
+      return;
+    }
     allArichim.push(lastIsAdd);
     setIsOpenedColor(false);
 
@@ -42,17 +46,9 @@ export default function AllTiles({ properties }: any) {
     }
   };
 
-  const dictTypeOneTile = {
-    hasChanges: hasChanges,
-    allArichim: allArichim,
-    allHistory: allHistory,
-    setAllHistory: setAllHistory,
-    setHasChanges: setHasChanges,
-    profile: profile,
-  };
   return (
     <div className="allArichim">
-      {allArichim.map((tile: any, i: number) => {
+      {allArichim.map((tile: TypeOneTile, i: number) => {
         return (
           <div key={i}>
             {i === allArichim.length - 1 ? (
@@ -80,7 +76,8 @@ export default function AllTiles({ properties }: any) {
                         })}
                       </div>
                     ) : (
-                      <img className="addArich"
+                      <img
+                        className="addArich"
                         src="public/addArich.png"
                         onClick={() => {
                           if (profile === "admin" || profile === "moderator") {
@@ -96,7 +93,12 @@ export default function AllTiles({ properties }: any) {
               </>
             ) : (
               <OneTile
-                properties={dictTypeOneTile}
+                hasChanges={hasChanges}
+                allArichim={allArichim}
+                allHistory={allHistory}
+                setAllHistory={setAllHistory}
+                setHasChanges={setHasChanges}
+                profile={profile}
                 index={i}
                 color={tile["color"]}
               />

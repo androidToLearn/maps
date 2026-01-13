@@ -1,13 +1,13 @@
 .page {
   background-color: rgba(178, 196, 230, 0.664);
   width: 100vw;
-  height: calc(100vh - 5rem);
+  height: calc(100vh - 8.3vh);
 }
 
 .upLine {
   background-color: rgba(73, 90, 134, 0.733);
   width: 100vw;
-  height: 8.3vh;
+  height: 8.2vh;
   display: flex;
   flex-direction: row;
   justify-content: start;
@@ -33,6 +33,48 @@
 
 //1@eZz12345
 //yishay@gmail.com
+
+.colorborn {
+  background-color: rgba(236, 205, 136, 1);
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 10%;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.colororange {
+  background-color: rgba(236, 176, 136, 1);
+  position: relative;
+  z-index: 10000;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 10%;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.colorgray {
+  background-color: rgba(231, 227, 207, 1);
+  position: relative;
+  z-index: 10000;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 10%;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.colorred {
+  background-color: rgba(197, 104, 27, 1);
+  position: relative;
+  z-index: 10000;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 10%;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
 
 .saveSuccess {
   position: absolute;
@@ -61,7 +103,7 @@
 
 .lastLine {
   width: 100vw;
-  height: 5rem;
+  height: 8.2vh;
   background-color: rgba(73, 90, 134, 0.733);
   display: flex;
   flex-direction: row;
@@ -70,14 +112,47 @@
   top: 91.55vh;
 }
 
-.arich {
+.tileborn {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 1rem;
   width: 14rem;
   height: 16rem;
-  background-color: rgb(238, 197, 150);
+  background-color: rgba(236, 205, 136, 1);
+  border-radius: 5%;
+}
+
+.tileorange {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: 14rem;
+  height: 16rem;
+  background-color: rgba(236, 176, 136, 1);
+  border-radius: 5%;
+}
+
+.tilegray {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: 14rem;
+  height: 16rem;
+  background-color: rgba(231, 227, 207, 1);
+  border-radius: 5%;
+}
+
+.tilered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: 14rem;
+  height: 16rem;
+  background-color: rgba(197, 104, 27, 1);
   border-radius: 5%;
 }
 
@@ -91,11 +166,15 @@
 
 .tiles {
   background-color: rgba(53, 69, 109, 0.733);
-  padding: 1rem;
+  padding: 0.6vh;
+  width: 6vh;
+  height: 7vh;
 }
 
 .settings {
-  padding: 1rem;
+  padding: 0.6vh;
+  width: 6vh;
+  height: 7vh;
 }
 .toCenter {
   display: flex;
@@ -228,7 +307,6 @@
 
 .upButtons {
   width: fit-content;
-  height: 100%;
   display: flex;
   flex-direction: row;
 }

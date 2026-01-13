@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import type { typeUser } from "../types/typescript";
+import type { TypeUpLineDict } from "../types/typescript";
 
-export default function UpLine({ user }: typeUser) {
+export default function UpLine({ name, profile }: TypeUpLineDict) {
   const [isAdminPage, setIsAdminPage] = useState<boolean>(false);
+  if (localStorage.getItem("isInAdmin") == "true" && !isAdminPage) {
+    setIsAdminPage(true)
+  } 
   const navigator = useNavigate();
   return (
     <div className="upLine">
@@ -17,8 +20,8 @@ export default function UpLine({ user }: typeUser) {
           }}
         />
         <div className="contact">
-          <p className="textUser">{user["name"]}</p>
-          <p className="textProfile">{user["profile"]}</p>
+          <p className="textUser">{name}</p>
+          <p className="textProfile">{profile}</p>
         </div>
       </div>
       <div>
@@ -32,6 +35,7 @@ export default function UpLine({ user }: typeUser) {
                 onClick={() => {
                   setIsAdminPage(false);
                   navigator("/tilePage");
+                  localStorage.setItem("isInAdmin", "false");
                 }}
               ></img>
             </div>
@@ -39,14 +43,15 @@ export default function UpLine({ user }: typeUser) {
         ) : (
           <div className="boxInUpLine">
             <div className="upButtons">
-              {user["profile"] === "admin" ? (
+              {profile === "admin" ? (
                 <img
                   src="public/users.png"
                   className="settings"
                   onClick={() => {
-                    if (user["profile"] === "admin") {
+                    if (profile === "admin") {
                       setIsAdminPage(true);
                       navigator("/adminPage");
+                      localStorage.setItem("isInAdmin", "true");
                     }
                   }}
                 />

@@ -1,31 +1,54 @@
-import type { BottomLineAdminType } from "../types/typescript";
 import { Admin_Service } from "../service/admin_service";
-export default function BottomLineAdmin({ dict }: BottomLineAdminType) {
+import type { BottomLineAdminDictTypes } from "../types/typescript";
+import { useMutation } from "@tanstack/react-query";
+import { SaveAllUsers } from "../QueryAdmin/SaveAllQuery";
+import { useNavigate } from "react-router-dom";
+export default function BottomLineAdmin({
+  isAbleClickUndo,
+  setIsAbleClickUndo,
+  token,
+  idUser,
+  allHistory,
+  isChanged,
+  setAllHistory,
+  setIsChanged,
+  isSuccess,
+  arrayIdsToUpdate,
+}: BottomLineAdminDictTypes) {
   const admin_service = new Admin_Service();
+  const mutationSave = useMutation({
+    mutationFn: (data: any) => {
+      new SaveAllUsers().saveAllUsers(data, data);
+      return data;
+    },
+    retry: 3,
+  });
+  const navigator = useNavigate();
+
   return (
     <div className="lastLine">
       <button
         className="btnUndo"
         onClick={async () => {
-          if (dict["isAbleClickUndo"]) {
-            dict["setIsAbleClickUndo"](false);
-            if (dict["token"] === null) return;
-            if (dict["idUser"] !== null) {
+          if (isAbleClickUndo) {
+            setIsAbleClickUndo(false);
+            if (token === null) return;
+            if (idUser !== null) {
               new Admin_Service().clickUndo(
-                dict["allHistory"],
-                dict["isChanged"],
-                dict["setAllHistory"],
-                dict["setIsChanged"],
-                dict["token"],
-                dict["setIsAbleClickUndo"],
-                dict["idUser"],
-                dict["mutation"],
-                dict["isSuccess"],
-                dict['navigate'],
-                dict['arrayIdsToUpdate']
+                allHistory,
+                isChanged,
+                setAllHistory,
+                setIsChanged,
+                token,
+                setIsAbleClickUndo,
+                idUser,
+                isSuccess,
+                arrayIdsToUpdate,
+                mutationSave,
+                navigator
               );
             }
-            dict["setIsAbleClickUndo"](true);
+            setIsAbleClickUndo(true);
           }
         }}
       >
@@ -34,25 +57,25 @@ export default function BottomLineAdmin({ dict }: BottomLineAdminType) {
       <button
         className="btnSave"
         onClick={async () => {
-          if (dict["isAbleClickUndo"]) {
-            dict["setIsAbleClickUndo"](false);
-            if (dict["token"] === null) return;
-            if (dict["idUser"] !== null) {
+          if (isAbleClickUndo) {
+            setIsAbleClickUndo(false);
+            if (token === null) return;
+            if (idUser !== null) {
               await admin_service.clickSave(
-                dict["token"],
-                dict["isChanged"],
-                dict["setIsChanged"],
-                dict["allHistory"],
-                dict["setAllHistory"],
-                dict["setIsAbleClickUndo"],
-                dict["idUser"],
-                dict["mutation"],
-                dict["isSuccess"],
-                dict['navigate'],
-                dict['arrayIdsToUpdate']
+                token,
+                isChanged,
+                setIsChanged,
+                allHistory,
+                setAllHistory,
+                setIsAbleClickUndo,
+                idUser,
+                isSuccess,
+                arrayIdsToUpdate,
+                mutationSave,
+                navigator
               );
             }
-            dict["setIsAbleClickUndo"](true);
+            setIsAbleClickUndo(true);
           }
         }}
       >

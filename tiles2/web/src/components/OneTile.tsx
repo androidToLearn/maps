@@ -1,15 +1,18 @@
 import { getColors } from "../utils/tilePageUtils";
-import type {TypeOneTile} from '../types/typescript'
-
-export default function OneTile({ properties , index , color}: TypeOneTile) {
+import { getTypeColors } from "../utils/ColorsServoce";
+import type { TypeOneTileDict } from "../types/typescript";
+export default function OneTile({
+  hasChanges,
+  allArichim,
+  allHistory,
+  setAllHistory,
+  setHasChanges,
+  profile,
+  index,
+  color,
+}: TypeOneTileDict) {
   const allColors = getColors();
-  const hasChanges = properties["hasChanges"];
-  const allArichim = properties["allArichim"];
-  const allHistory = properties["allHistory"];
-  const setAllHistory = properties["setAllHistory"];
-  const setHasChanges = properties["setHasChanges"];
-  const profile = properties["profile"]
-  const tileColor = color
+  const tileColor = color;
   const clickBin = (i: number) => {
     if (!hasChanges) {
       allArichim.splice(i, 1);
@@ -37,62 +40,58 @@ export default function OneTile({ properties , index , color}: TypeOneTile) {
       setAllHistory(newAllHistory);
     }
   };
-
+  
   return (
-    <div
-      key={index}
-      className="arich"
-      style={{ backgroundColor: tileColor }}
-    >
+    <div key={index} className={`tile${getTypeColors(color)}`}>
       <>
         {profile !== "viewer" ? (
           <div className="contentArich">
             {allColors.map((color: string, indexColor: number) => {
               return (
                 <div className="allColors" key={indexColor}>
-                  {" "}
-                  {color !== tileColor ? 
+                  {color !== tileColor ? (
                     <div key={indexColor}>
-                      {indexColor === allColors.length - 1 ? 
+                      {indexColor === allColors.length - 1 ? (
                         <div>
-                            {  (
-                                profile === "admin" ||
-                                profile === "moderator"
-                              ) ? <div key={indexColor}>
-                          <img
-                            src="public/bin.png"
-                            className="myBin"
-                            onClick={() => {
-                             
-                                clickBin(index);
-                              }
-                            }/>
-                            </div> : <div></div>
-                        }
+                          {profile === "admin" || profile === "moderator" ? (
+                            <div key={indexColor}>
+                              <img
+                                src="public/bin.png"
+                                className="myBin"
+                                onClick={() => {
+                                  clickBin(index);
+                                }}
+                              />
+                            </div>
+                          ) : (
+                            <div></div>
+                          )}
                         </div>
-                     : <div>
-                        {profile !== 'viewer' ? (
-                        <div
-                          key={indexColor}
-                          style={{
-                            backgroundColor: color,
-                          }}
-                          className="color"
-                          onClick={() => {
-                            if (
-                              profile === "admin" ||
-                              profile === "moderator" ||
-                              profile === "editor"
-                            ) {
-                              changeColorIndex(color, index);
-                            }
-                          }}
-                        ></div>
-                      ):<></>}
-                        </div>} 
+                      ) : (
+                        <div>
+                          {profile !== "viewer" ? (
+                            <div
+                              key={indexColor}
+                              className={`color${getTypeColors(color)}`}
+                              onClick={() => {
+                                if (
+                                  profile === "admin" ||
+                                  profile === "moderator" ||
+                                  profile === "editor"
+                                ) {
+                                  changeColorIndex(color, index);
+                                }
+                              }}
+                            ></div>
+                          ) : (
+                            <></>
+                          )}
                         </div>
-                     : <></>
-                  }
+                      )}
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               );
             })}

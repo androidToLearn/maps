@@ -1,41 +1,69 @@
-import type { BottomLineType } from "../types/typescript";
+import type { BottomLineDictTypes } from "../types/typescript";
+import { useMutation } from "@tanstack/react-query";
+import { saveAllTilesQuery } from "../queriesTiles/SaveAllTilesQuery";
+import { useQuery } from "@tanstack/react-query";
+import { AllTilesQuery } from "../queriesTiles/AllTilesQuery";
+import { useNavigate } from "react-router-dom";
 
-export default function BottomLine({ dict }: BottomLineType) {
+export const BottomLine =  ({
+  setIsToDoLoader,
+  profile,
+  setHasChanges,
+  allHistory,
+  hasChanges,
+  token,
+  setAllHistory,
+  isSuccess,
+}: BottomLineDictTypes) =>{
+  const navigate = useNavigate()
+  const mutationSave = useMutation({
+    mutationFn: (data: any) => {
+
+      setIsToDoLoader(false);
+      new saveAllTilesQuery().saveAllTiles(data, data);
+      return data;
+    },
+  });
   const deleteAndSave = async (
-    toSave: { color: string; id: string; createdAt: Date; updatedAt: Date }[] , 
+    toSave: { color: string; id: string; createdAt: Date; updatedAt: Date }[]
   ) => {
-      console.log(dict)
-
     for (const index in toSave) {
       toSave[index]["updatedAt"] = new Date();
     }
-    if (dict["token"] === null) return;
-    dict['setIsToDoLoader'](true);
-    console.log(dict)
-   dict['mutation'].mutate({token : dict['token'] , toSave : toSave , isSuccess : dict['isSuccess'] , 'navigate' : dict['navigate']})
+    if (token === null) return;
+    try {
+      mutationSave.mutate({
+        token: token,
+        toSave: toSave,
+        isSuccess: isSuccess,
+        navigate: navigate,
+      });
+    } catch (err) {
+      console.log(err);
+    }
   };
-  const clickSave = async () => {
-    console.log('save')
-    if (dict["hasChanges"]) {
-      console.log(dict["allHistory"]);
 
-      const toSave = dict["allHistory"][dict["allHistory"].length - 1];
+  
+
+  const clickSave = async () => {
+    if (hasChanges) {
+      const toSave = allHistory[allHistory.length - 1];
       await deleteAndSave(toSave);
-      dict['setHasChanges'](false);
+      setHasChanges(false);
     }
   };
 
   const clickUndo = async () => {
-    if (dict["allHistory"].length > 1) {
-      if (dict["hasChanges"]) {
-        dict["allHistory"].splice(dict["allHistory"].length - 1, 1);
-        dict["setAllHistory"]([...dict["allHistory"]]);
-        dict["setHasChanges"](false);
+    if (allHistory.length > 1) {
+      if (hasChanges) {
+        allHistory.splice(allHistory.length - 1, 1);
+        setAllHistory([...allHistory]);
+        setHasChanges(false);
       } else {
-        const toSave = dict["allHistory"][dict["allHistory"].length - 2];
-        dict["allHistory"].splice(dict["allHistory"].length - 1, 1);
-        dict["setAllHistory"]([...dict["allHistory"]]);
-        
+        const toSave = allHistory[allHistory.length - 2];
+        allHistory.splice(allHistory.length - 1, 1);
+        setAllHistory([...allHistory]);
+
         await deleteAndSave(toSave);
       }
     }
@@ -43,17 +71,15 @@ export default function BottomLine({ dict }: BottomLineType) {
 
   return (
     <div>
-      {dict["profile"] !== "viewer" ? (
+      {profile !== "viewer" ? (
         <div className="lastLine">
           <button
             className="btnUndo"
             onClick={async () => {
-              if (dict["profile"] !== "viewer") {
-                dict["setIsToDoLoader"](true);
+              if (profile !== "viewer") {
+                setIsToDoLoader(true);
                 await clickUndo();
-                dict["setIsToDoLoader"](false);
-              } else {
-                console.log("not able");
+                setIsToDoLoader(false);
               }
             }}
           >
@@ -62,12 +88,10 @@ export default function BottomLine({ dict }: BottomLineType) {
           <button
             className="btnSave"
             onClick={async () => {
-              if (dict["profile"] !== "viewer") {
-                dict["setIsToDoLoader"](true);
+              if (profile !== "viewer") {
+                setIsToDoLoader(true);
                 await clickSave();
-                dict["setIsToDoLoader"](false);
-              } else {
-                console.log("not able");
+                setIsToDoLoader(false);
               }
             }}
           >

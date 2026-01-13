@@ -6,7 +6,7 @@ import {
   BrowserRouter as Router,
   Navigate,
 } from "react-router-dom";
-import TilePage from "../../web/src/pages/Tile.tsx";
+import TilePage from "./pages/TilePage.tsx";
 import AdminPage from "../../web/src/pages/Admin.tsx";
 import Register from "./components/Register.tsx";
 import SignIn from "./components/SignIn.tsx";

@@ -1,4 +1,6 @@
+import { useNavigate } from 'react-router-dom';
 import type { SubmitHandler } from "react-hook-form";
+import { Mutation } from "@tanstack/react-query";
 export type user_type = {
   id: string;
 
@@ -21,13 +23,15 @@ export type tile_type = {
   updatedAt: Date;
 };
 
-export type typeHistoryUser = {
+export type typeHistoryUser = typeDictUser[][];
+
+export type typeDictUser = {
   id: string;
   name: string;
   email: string;
   password: string;
   role: string;
-}[][];
+};
 
 export type typeActions = {
   action: string;
@@ -55,22 +59,15 @@ export type InputsSignIn = {
   email: string;
 };
 
-export type BottomLineType = {
-  dict: BottomLineDictTypes;
-};
-
 export type BottomLineDictTypes = {
-  name: string;
-  setIsToDoLoader: any;
+  setIsToDoLoader: (value : boolean) => void;
   profile: string;
-  setHasChanges: any;
-  allHistory: any;
+  setHasChanges: (value : boolean) => void;
+  allHistory: { color: string; id: string; createdAt: Date; updatedAt: Date }[][];
   hasChanges: boolean;
   token: string;
-  setAllHistory: any;
-  mutation: any;
+  setAllHistory: (value : { color: string; id: string; createdAt: Date; updatedAt: Date }[][]) => void;
   isSuccess: (value: boolean) => void;
-  navigate: any;
 };
 
 export type UpLineType = {
@@ -80,7 +77,7 @@ export type UpLineType = {
 export type UpLineDictTypes = {
   name: string;
   profile: string;
-  navigate: any;
+  navigate: Navigator;
   isAdminPage: boolean;
 };
 
@@ -93,7 +90,13 @@ export type BottomLineAdminDictTypes = {
   setIsAbleClickUndo: (value: boolean) => void;
   token: string | null;
   idUser: string | null;
-  allHistory: any;
+  allHistory: {
+      id: string;
+      name: string;
+      email: string;
+      password: string;
+      role: string;
+    }[][];
   isChanged: boolean;
   setAllHistory: (
     value: {
@@ -105,10 +108,6 @@ export type BottomLineAdminDictTypes = {
     }[][]
   ) => void;
   setIsChanged: (value: boolean) => void;
-  setName: (value: string) => void;
-  setProfile: (value: string) => void;
-  navigate: any;
-  mutation: any;
   isSuccess: (value: boolean) => void;
   arrayIdsToUpdate: string[] | undefined;
 };
@@ -136,6 +135,13 @@ export type TypeUsersToSave = {
   role: string;
 }[];
 
+export type typeOneTile = {
+  color: string;
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+};
+
 export type TypeOneTileDict = {
   hasChanges: boolean;
   allArichim: { color: string; id: string; createdAt: Date; updatedAt: Date }[];
@@ -150,6 +156,8 @@ export type TypeOneTileDict = {
   ) => void;
   setHasChanges: (value: boolean) => void;
   profile: string;
+  index: number;
+  color: string;
 };
 
 export type filterType = {
@@ -183,7 +191,7 @@ export type TypeAllTilesDict = {
   setHasChanges: (value: boolean) => void;
 };
 
-export type TypeRowUserDict = {
+export type TypeRowUser = {
   allUsers: TypeUsersToSave;
   isChanged: boolean;
   allHistory: typeHistoryUser;
@@ -192,16 +200,11 @@ export type TypeRowUserDict = {
   myIdUser: string;
   arrayIdsToUpdate: string[] | undefined;
   setArrayIds: (value: string[]) => void;
+  index: number;
+  user: typeDictUser;
 };
 
-export type TypeRowUser = {
-  properties: TypeRowUserDict;
-  index: number;
-  user: {
-    id: string;
-    name: string;
-    email: string;
-    password: string;
-    role: string;
-  };
+export type TypeUpLineDict = {
+  name: string;
+  profile: string;
 };

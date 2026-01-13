@@ -11,7 +11,6 @@ export default function Content() {
   const [profile, setProfile] = useState("");
   const [name, setName] = useState("");
   const [idUser, setIdUser] = useState("");
-  const dictUser = { name: name, profile: profile };
   const navigator = useNavigate();
   const mutationProtected = useMutation({
     mutationFn: (myData: any) => {
@@ -45,7 +44,7 @@ export default function Content() {
   }, []);
   return (
     <div>
-      <UpLine user={dictUser} />
+      <UpLine name={name} profile={profile} />
 
       <Outlet context={[profile, setProfile, name, setName, idUser]} />
     </div>

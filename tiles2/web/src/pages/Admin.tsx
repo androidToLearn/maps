@@ -10,8 +10,6 @@ import RowUser from "../components/RowUser";
 import { useOutletContext } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { AllUsersQuery } from "../QueryAdmin/AllUserQuery";
-import { useMutation } from "@tanstack/react-query";
-import { SaveAllUsers } from "../QueryAdmin/SaveAllQuery";
 import Success from "../components/Success";
 
 export default function adminPage() {
@@ -25,7 +23,7 @@ export default function adminPage() {
   const [isMenuOpened, setIsMenuOpened] = useState<boolean>(true);
   const [profile, setProfile, name, setName, idUser] =
     useOutletContext<[string, () => void, string, () => void, string]>();
-  const [arrayIdsToUpdate , setArrayIds] = useState<string[]>()
+  const [arrayIdsToUpdate, setArrayIds] = useState<string[]>();
   const [allHistory, setAllHistory] = useState<typeHistoryUser>([
     [
       {
@@ -47,6 +45,12 @@ export default function adminPage() {
     }
   }, [isSuccess]);
 
+  const admin_Service = new Admin_Service();
+
+  if (token === null) {
+    navigate("/");
+  }
+
   const mutation = new AllUsersQuery().getAllUsers({
     allHistory: allHistory,
     setAllHistory: setAllHistory,
@@ -57,35 +61,10 @@ export default function adminPage() {
     queryKey: ["allTiles"],
     queryFn: async () => {
       if (token !== null) {
-        return new AllUsersQuery().allUsersFetch(token, mutation);
+        return new AllUsersQuery().allUsersFetch(token , mutation);
       }
     },
   });
-
-  const admin_Service = new Admin_Service();
-
-  const mutationSave = useMutation<any>({
-    mutationFn: (data: any) => {
-      console.log(data);
-      new SaveAllUsers().saveAllUsers(data, data);
-      return data;
-    },
-
-    retry: 3,
-  });
-
-  if (token === null) {
-    navigate("/");
-  }
-
-  useEffect(() => {
-    if (parseFloat(window.innerWidth + "") <= 797) {
-      setIsScreenSmall(true);
-    } else {
-      setIsScreenSmall(false);
-    }
-    if (isScreenSmall) setIsMenuOpened(false);
-  }, []);
 
   const allUsers = !isChanged
     ? admin_Service.filterAllUsers(
@@ -93,65 +72,19 @@ export default function adminPage() {
         admin_Service.copyLastHistory(allHistory)
       )
     : admin_Service.filterAllUsers(filter, allHistory[allHistory.length - 1]);
-
-  const dictBottomLine = {
-    isAbleClickUndo: isAbleClickUndo,
-    setIsAbleClickUndo: setIsAbleClickUndo,
-    token: token,
-    idUser: idUser,
-    allHistory: allHistory,
-    isChanged: isChanged,
-    setAllHistory: setAllHistory,
-    setIsChanged: setIsChanged,
-    setName: setName,
-    setProfile: setProfile,
-    navigate: navigate,
-    mutation: mutationSave,
-    isSuccess: setIsSuccess,
-    arrayIdsToUpdate : arrayIdsToUpdate
-  };
-
-  const filterDict = {
-    filter: filter,
-    isScreenSmall: isScreenSmall,
-    setIsMenuOpened: setIsMenuOpened,
-    setFilter: setFilter,
-  };
-
-  const propertiesRowUser = {
-    allUsers: allUsers,
-    isChanged: isChanged,
-    allHistory: allHistory,
-    setIsChanged: setIsChanged,
-    setAllHistory: setAllHistory,
-    myIdUser: idUser,
-    arrayIdsToUpdate : arrayIdsToUpdate ,
-    setArrayIds : setArrayIds
-  };
-  console.log("isSuccess", isSuccess);
   return (
     <div className="page">
-      {isMenuOpened ? (
-        <img
-          className="classCloseOrOpen"
-          src="public/close.png"
-          onClick={() => {
-            if (isScreenSmall) setIsMenuOpened(false);
-          }}
-        ></img>
-      ) : (
-        <img
-          className="classCloseOrOpen"
-          src="public/open.png"
-          onClick={() => {
-            if (isScreenSmall) setIsMenuOpened(true);
-          }}
-        ></img>
-      )}
 
       <div className="main">
         <div className="content">
-          {isMenuOpened ? <Filter dict={filterDict} /> : <div></div>}
+          
+            <Filter
+              filter={filter}
+              isScreenSmall={isScreenSmall}
+              setIsMenuOpened={setIsMenuOpened}
+              setFilter={setFilter}
+            />
+          
           <div className="usersManage">
             <div className="allUsers">
               <div className="upUsersLine">
@@ -164,7 +97,14 @@ export default function adminPage() {
                   {allUsers.map((user, i) => {
                     return (
                       <RowUser
-                        properties={propertiesRowUser}
+                        allUsers={allUsers}
+                        isChanged={isChanged}
+                        allHistory={allHistory}
+                        setIsChanged={setIsChanged}
+                        setAllHistory={setAllHistory}
+                        myIdUser={idUser}
+                        arrayIdsToUpdate={arrayIdsToUpdate}
+                        setArrayIds={setArrayIds}
                         index={i}
                         user={user}
                       />
@@ -179,7 +119,18 @@ export default function adminPage() {
       <div className="saveSuccess">
         {isSuccess ? <Success></Success> : <div></div>}
       </div>
-      <BottomLineAdmin dict={dictBottomLine} />
+      <BottomLineAdmin
+        isAbleClickUndo={isAbleClickUndo}
+        setIsAbleClickUndo={setIsAbleClickUndo}
+        token={token}
+        idUser={idUser}
+        allHistory={allHistory}
+        isChanged={isChanged}
+        setAllHistory={setAllHistory}
+        setIsChanged={setIsChanged}
+        isSuccess={setIsSuccess}
+        arrayIdsToUpdate={arrayIdsToUpdate}
+      />
     </div>
   );
 }

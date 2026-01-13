@@ -20,7 +20,7 @@ export default function SignIn() {
   } = useForm<SignIn>({
     resolver: zodResolver(schemaSignIn),
   });
-
+  localStorage.setItem('isInAdmin' , 'false')
   if (
     errors.email !== undefined ||
     errors.password !== undefined ||
@@ -67,7 +67,6 @@ export default function SignIn() {
       setMessage: setMessage,
     });
   };
-  console.log(errors.email)
   return (
     <div className="startDiv">
       {" "}

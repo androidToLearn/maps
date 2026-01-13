@@ -8,7 +8,6 @@ export const fetchInstanceWithoutToken = (
   methods: string
 ) => {
 
-  console.log(baseURL1)
   const instance = axios.create();
   instance.interceptors.request.use((config: any) => {
     return config;
@@ -19,7 +18,6 @@ export const fetchInstanceWithoutToken = (
       return response;
     },
     (error: any) => {
-      console.log(error);
       if (error.response && error.response.status === 401) {
         dictValues["navigate"]("/signIn");
       }
@@ -44,16 +42,13 @@ export const fetchInstance = (
   json: any,
   methods: string
 ) => {
-  console.log(baseURL1);
   const instance = axios.create({});
 
   instance.interceptors.request.use((config: any) => {
-    console.log(localStorage.getItem("token"));
     if (localStorage.getItem("token") !== null) {
       config.headers.Authorization = `Bearer ${localStorage.getItem("token")}`;
     } else {
       dictValues["navigate"]("/signIn");
-      console.log("no token");
     }
     return config;
   });
@@ -64,9 +59,7 @@ export const fetchInstance = (
       return response;
     },
     (error: any) => {
-      console.log(error);
       localStorage.removeItem("token");
-
       if (error.response && error.response.status !== 200) {
         dictValues["navigate"]("/signIn");
       }

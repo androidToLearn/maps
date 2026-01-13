@@ -1,25 +1,25 @@
-
-import type {TypeRowUser} from '../types/typescript'
-export default function RowUser({ properties, index, user }:    TypeRowUser) {
-  const allUsers = properties["allUsers"];
-  const isChanged = properties["isChanged"];
-  const allHistory = properties["allHistory"];
-  const setIsChanged = properties["setIsChanged"];
-  const setAllHistory = properties["setAllHistory"];
-  const myIdUser = properties["myIdUser"];
-  const arrayIdsToUpdate = properties['arrayIdsToUpdate'];
-  const setArrayIds = properties['setArrayIds']
-
+import type { TypeRowUser } from "../types/typescript";
+export default function RowUser({
+  allUsers,
+  isChanged,
+  allHistory,
+  setIsChanged,
+  setAllHistory,
+  myIdUser,
+  arrayIdsToUpdate,
+  setArrayIds,
+  index,
+  user,
+}: TypeRowUser) {
   const changeUser = (role: string) => {
     if (role === user["role"]) return;
     if (!isChanged) {
       user["role"] = role;
       allHistory.push(allUsers);
       setIsChanged(true);
-      if (arrayIdsToUpdate !== undefined)
-      {
-        arrayIdsToUpdate.push(user.id)
-        setArrayIds([...arrayIdsToUpdate])
+      if (arrayIdsToUpdate !== undefined) {
+        arrayIdsToUpdate.push(user.id);
+        setArrayIds([...arrayIdsToUpdate]);
       }
       setAllHistory([...allHistory]);
     } else {
@@ -34,8 +34,6 @@ export default function RowUser({ properties, index, user }:    TypeRowUser) {
       changeUser(value);
     }
   };
-  console.log('idUser' , myIdUser)
-  console.log('mine' , user["id"])
   return (
     <div className="row" key={index}>
       <p className="titleUser">{user["name"]}</p>

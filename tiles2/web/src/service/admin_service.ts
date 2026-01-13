@@ -1,4 +1,7 @@
-
+import { useMutation } from "@tanstack/react-query";
+import { SaveAllUsers } from "../QueryAdmin/SaveAllQuery";
+import { useNavigate } from "react-router-dom";
+import { ca } from "zod/locales";
 export class Admin_Service {
   copyLastHistory(
     allHistory: {
@@ -83,21 +86,23 @@ export class Admin_Service {
     ) => void,
     setIsAbleClickUndo: (value: boolean) => void,
     idUser: string,
-    mutation: any,
     setIsSuccess: (value: boolean) => void,
-    navigator : any,
-    arrayIdsToUpdate : string[] | undefined
+    arrayIdsToUpdate: string[] | undefined,
+    mutationSave: any,
+    navigator : any
   ) {
     if (isChanged) {
-      //fetch(last)
       setIsChanged(false);
-      mutation.mutate({
+
+
+      mutationSave.mutate({
         token: token,
         toSave: allHistory[allHistory.length - 1],
-        setIsSuccess : setIsSuccess,
-        navigate : navigator,
-        arrayIdsToUpdate : arrayIdsToUpdate
+        setIsSuccess: setIsSuccess,
+        navigate: navigator,
+        arrayIdsToUpdate: arrayIdsToUpdate,
       });
+
       setIsAbleClickUndo(true);
     }
   }
@@ -124,23 +129,28 @@ export class Admin_Service {
     token: string,
     setIsAbleClickUndo: (value: boolean) => void,
     idUser: string,
-    mutation: any,
-    setIsSuccess: (value: boolean) => void ,
-    navigator : any,
-    arrayIdsToUpdate : string[] | undefined
+    setIsSuccess: (value: boolean) => void,
+    arrayIdsToUpdate: string[] | undefined,
+    mutationSave: any,
+    navigator : any
   ) {
     if (allHistory.length > 1) {
       if (!isChanged) {
         const toSave = allHistory[allHistory.length - 2];
         allHistory.splice(allHistory.length - 1, 1);
         setAllHistory([...allHistory]);
-        mutation.mutate({
-          token: token,
-          toSave: allHistory[allHistory.length - 1],
-          isSuccess: setIsSuccess,
-          navigate : navigator,
-          arrayIdsToUpdate : arrayIdsToUpdate
-        });
+
+        try {
+          mutationSave.mutate({
+            token: token,
+            toSave: allHistory[allHistory.length - 1],
+            isSuccess: setIsSuccess,
+            navigate: navigator,
+            arrayIdsToUpdate: arrayIdsToUpdate,
+          });
+        } catch (err) {
+          console.log(err);
+        }
       } else {
         allHistory.splice(allHistory.length - 1, 1);
         setIsChanged(false);

@@ -19,8 +19,6 @@ export default function Register() {
     resolver: zodResolver(schemaRegister),
   });
 
-  console.log({ errors });
-
   const [message, setMessage] = useState<string | undefined>("");
 
   const navigate = useNavigate();
@@ -116,8 +114,6 @@ export default function Register() {
             <button
               className="orange"
               onClick={async () => {
-                console.log("clicked");
-                console.log(errors);
                 const form = document.querySelector("form");
                 if (form !== null) form.valid();
               }}

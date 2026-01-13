@@ -4,7 +4,10 @@ import type { TypeUsersToSave } from "../types/typescript";
 export class SaveAllUsers {
   async saveAllUsers(data: any, dictValues: any) {
 
-    const theUsersToSave = this.getUsersToSave(data["toSave"] , data['arrayIdsToUpdate'])
+    const theUsersToSave = this.getUsersToSave(
+      data["toSave"],
+      data["arrayIdsToUpdate"]
+    );
     try {
       fetchInstance(
         "/users/insertAll",
@@ -21,15 +24,20 @@ export class SaveAllUsers {
     dictValues["setIsSuccess"](true);
   }
 
-  getUsersToSave(toSave : TypeUsersToSave, arrayIdsToUpdate : string[] | undefined){
-    const toSaveUsers = []
-    for(const i in toSave){
-      const oneUserToSave = toSave[i]
-      if (arrayIdsToUpdate !== undefined && oneUserToSave['id'] in arrayIdsToUpdate)
-      {
-        toSaveUsers.push(oneUserToSave)
+  getUsersToSave(
+    toSave: TypeUsersToSave,
+    arrayIdsToUpdate: string[] | undefined
+  ) {
+    const toSaveUsers = [];
+    for (const i in toSave) {
+      const oneUserToSave = toSave[i];
+      if (
+        arrayIdsToUpdate !== undefined &&
+        oneUserToSave["id"] in arrayIdsToUpdate
+      ) {
+        toSaveUsers.push(oneUserToSave);
       }
     }
-    return toSaveUsers
+    return toSaveUsers;
   }
 }
