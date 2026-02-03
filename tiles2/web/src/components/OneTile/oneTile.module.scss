@@ -1,0 +1,114 @@
+.contentArich {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+  margin-top: 90%;
+}
+
+.allColors {
+  flex-wrap: wrap;
+  width: 70%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.tileborn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: 14rem;
+  height: 16rem;
+  background-color: rgba(236, 205, 136, 1);
+  border-radius: 5%;
+}
+
+.tileorange {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: 14rem;
+  height: 16rem;
+  background-color: rgba(236, 176, 136, 1);
+  border-radius: 5%;
+}
+
+.tilegray {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: 14rem;
+  height: 16rem;
+  background-color: rgba(231, 227, 207, 1);
+  border-radius: 5%;
+}
+
+.tilered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+  width: 14rem;
+  height: 16rem;
+  background-color: rgba(197, 104, 27, 1);
+  border-radius: 5%;
+}
+
+.colorborn {
+  background-color: rgba(236, 205, 136, 1);
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 10%;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.colororange {
+  background-color: rgba(236, 176, 136, 1);
+  position: relative;
+  z-index: 10000;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 10%;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.colorgray {
+  background-color: rgba(231, 227, 207, 1);
+  position: relative;
+  z-index: 10000;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 10%;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.colorred {
+  background-color: rgba(197, 104, 27, 1);
+  position: relative;
+  z-index: 10000;
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 10%;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}
+
+.myBin {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 10%;
+  background-color: rgb(105, 122, 165);
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-left: 0.5rem;
+}

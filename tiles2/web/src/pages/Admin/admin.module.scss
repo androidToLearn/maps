@@ -1,0 +1,102 @@
+.content {
+  width: 80vw;
+  height: 25vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: calc(100vh - 8.2vh);
+  flex-direction: column;
+}
+
+.page {
+  background-color: rgba(178, 196, 230, 0.664);
+  width: 100vw;
+  height: calc(100vh - 8.3vh);
+}
+
+
+.usersManage {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  height: 25.555vw;
+  border-radius: 0.5vw;
+  background-color: white;
+  padding: 1.7vw;
+  margin-left: -3vw;
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.allUsers {
+  width: 98%;
+  height: 98%;
+  background-color: rgba(178, 196, 230, 0.664);
+  border-radius: 0.5vw;
+}
+
+
+.upUsersLine {
+  width: 100%;
+  height: 3vw;
+  background-color: rgba(73, 90, 134, 0.733);
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 1vw;
+}
+
+
+.title {
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  width: 100%;
+  flex-grow: 1;
+  font-size: 2vw;
+}
+
+
+.scrollUsers {
+  width: fit-content;
+  height: 15vw;
+  overflow: auto;
+  margin: 0.5vw;
+  width: 100%;
+  padding-top: 0.5vw;
+  padding-bottom: 2vw;
+}
+
+
+.usersContent {
+  width: 46vw;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1vw;
+  align-items: center;
+  justify-content: center;
+  padding-left: 0.1vw;
+  padding-right: 1vw;
+}
+
+
+.saveSuccess {
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  z-index: 1000;
+}
+

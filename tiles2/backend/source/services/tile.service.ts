@@ -9,7 +9,6 @@ class TileService {
     const db = client.db("rachdata");
     const collection = db.collection("tiles");
     const tiles = await collection.find().toArray();
-    console.log(tiles);
     return tiles;
   }
 
@@ -21,7 +20,6 @@ class TileService {
 
     const query = { id: new ObjectId(id) };
     const myTile = await collection.find(query).toArray();
-    console.log(myTile);
     return myTile;
   }
 
@@ -30,7 +28,6 @@ class TileService {
 
     const db = client.db("rachdata");
     const collection = db.collection("tiles");
-    console.log("insert tile...");
     const id = await collection.insertOne({
       id: new ObjectId(),
       color: color,
@@ -45,7 +42,6 @@ class TileService {
 
     const db = client.db("rachdata");
     const collection = db.collection("tiles");
-    console.log("delete tile...");
     // await collection.deleteOne({ id: new ObjectId(id) });
     await collection.deleteMany({});
   }
@@ -53,7 +49,6 @@ class TileService {
   async updateTile(id: string, myJson: tile) {
     const myTiles = await this.getTileById(id);
     if (myTiles === null) {
-      console.log("tile not found");
       return null;
     }
 
@@ -61,7 +56,6 @@ class TileService {
 
     const db = client.db("rachdata");
     const collection = db.collection("tiles");
-    console.log("update tile...");
     await collection.updateOne(
       { id: new ObjectId(id) },
       {

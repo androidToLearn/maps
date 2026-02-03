@@ -9,7 +9,6 @@ export const router = express.Router();
 router.get("/all",middleWare('viewer' , 'moderator' , 'editor' , 'admin'), async (req: Request, res: Response) => {
   try {
     const myTiles = await tileService.getAllTiles();
-    console.log(myTiles);
     res.status(200).json(myTiles);
     return;
   } catch (err) {

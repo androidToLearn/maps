@@ -12,7 +12,6 @@ class UserService {
 
     const db = client.db("rachdata");
     const collection = db.collection("users");
-    console.log("insert user...");
     const id = await collection.insertOne({
       id: ObjectId,
       name: name,
@@ -43,7 +42,6 @@ class UserService {
   ) {
     const myUser = await this.getUserById(id);
     if (myUser === null) {
-      console.log("user not found");
       return null;
     }
 
@@ -51,7 +49,6 @@ class UserService {
 
     const db = client.db("rachdata");
     const collection = db.collection("users");
-    console.log("update user...");
     await collection.updateOne(
       { _id: new ObjectId(id) },
       { $set: { name: name, email: email, password: password, role: role } }
@@ -63,7 +60,6 @@ class UserService {
 
     const db = client.db("rachdata");
     const collection = db.collection("users");
-    console.log("delete user... " + id);
     await collection.deleteOne({ _id: new ObjectId(id) });
   }
 
@@ -95,7 +91,6 @@ class UserService {
 
     const db = client.db("rachdata");
     const collection = db.collection("users");
-    console.log("insert user...");
     const id = await collection.insertOne({
       _id: new ObjectId(myIdToInsert),
       name: name,

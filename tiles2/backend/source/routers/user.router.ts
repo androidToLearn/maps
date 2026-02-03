@@ -75,7 +75,6 @@ router.post(
         res.status(404).json({ message: "bad" });
         return;
       }
-      console.log(req.body["password"]);
 
       const id = await userService.insertUser(
         req.body["name"],
@@ -121,7 +120,6 @@ router.post(
   "/insertAll",
   middleWare("admin"),
   async (req: Request, res: Response) => {
-    console.log(req.body["users"]);
 
     try {
       if (!baseJson.baseUserSchemaSaveAll(req.body['users'])) {
@@ -133,7 +131,6 @@ router.post(
         const oneUser = req.body["users"][i];
 
         if (oneUser["id"] === req.idUser) {
-          console.log('insdie')
           await userService.insertUserWithId(
             oneUser["id"],
             oneUser["name"],

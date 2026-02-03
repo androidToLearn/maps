@@ -1,0 +1,115 @@
+import { useState } from "react";
+import OneTile from "../OneTile/OneTile";
+import { arrayColorsEnum } from "../../services/Enum";
+import type { TypeAllTilesProperties } from "../../types/typescript";
+import type { typeTile } from "../../types/typescript";
+import {  getTypeColorsWithStartColorWithOutAdd } from "../../utils/ColorsServoce";
+import classes from './allTiles.module.scss'
+import { colorsEnumWithoutAdd } from "../../services/Enum";
+
+export default function AllTiles({
+  profile,
+  allArichim,
+  hasChanges,
+  allHistory,
+  setAllHistory,
+  setHasChanges,
+}: TypeAllTilesProperties) {
+  const [isColorsOpened, setIsOpenedColor] = useState<boolean>(false);
+
+  const clickChooseColor = () => {
+    setIsOpenedColor(true);
+  };
+
+  const clickColor = (color: colorsEnumWithoutAdd) => {
+    const lastIsAdd = allArichim[allArichim.length - 1];
+    allArichim.splice(allArichim.length - 1, 1);
+    if (arrayColorsEnum.includes(color)) {
+      allArichim.push({
+        color: color,
+        id: "",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      }); //-1 is new still not have id
+    } else {
+      return;
+    }
+    allArichim.push(lastIsAdd);
+    setIsOpenedColor(false);
+
+    if (!hasChanges) {
+      allHistory.push(allArichim);
+      const newAllHistory = [...allHistory];
+      setAllHistory(newAllHistory);
+      setHasChanges(true);
+    } else {
+      const newAllHistory = [...allHistory];
+      setAllHistory(newAllHistory);
+    }
+  };
+
+  return (
+    <div className={classes.allArichim}>
+      {allArichim.map((tile: typeTile, i: number) => {
+        return (
+          <div key={i}>
+            {i === allArichim.length - 1 ? (
+              <>
+                {profile === "moderator" || profile === "admin" ? (
+                  <div key={i} className={classes.arichAdd}>
+                    {isColorsOpened ? (
+                      <div className={classes.allColors}>
+                        {Object.values(colorsEnumWithoutAdd).map(
+                          (color: colorsEnumWithoutAdd, indexColor: number) => {
+                            return (
+                              <div
+                                key={indexColor}
+                                className={getTypeColorsWithStartColorWithOutAdd(color)}
+                                onClick={() => {
+                                  if (
+                                    profile === "admin" ||
+                                    profile === "moderator"
+                                  ) {
+                                    console.log('inside')
+                                    clickColor(color);
+                                  }
+                                }}
+                              ></div>
+                            );
+                          },
+                        )}
+                      </div>
+                    ) : (
+                      <img
+                        className={classes.addArich}
+                        src="public/addArich.png"
+                        onClick={() => {
+                          if (profile === "admin" || profile === "moderator") {
+                            clickChooseColor();
+                          }
+                        }}
+                      />
+                    )}
+                  </div>
+                ) : (
+                  <></>
+                )}
+              </>
+            ) : (
+              <OneTile
+                hasChanges={hasChanges}
+                allArichim={allArichim}
+                allHistory={allHistory}
+                setAllHistory={setAllHistory}
+                setHasChanges={setHasChanges}
+                profile={profile}
+                index={i}
+                color={tile["color"]}
+              />
+            )}
+          </div>
+        );
+      })}
+    </div>
+  );
+}

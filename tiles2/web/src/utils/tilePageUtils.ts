@@ -1,18 +1,20 @@
+import { colorsEnum } from "../services/Enum";
+
 export function getColors() {
   return [
-    "rgba(197, 104, 27, 1)",
-    "rgba(236, 205, 136, 1)",
-    "rgba(236, 176, 136, 1)",
-    "rgba(231, 227, 207, 1)",
+    colorsEnum.color1 ,
+    colorsEnum.color2,
+    colorsEnum.color3,
+    colorsEnum.color4,
     "add",
   ];
 }
 
 export function getColorsForChoose() {
   return [
-    "rgba(197, 104, 27, 1)",
-    "rgba(236, 205, 136, 1)",
-    "rgba(236, 176, 136, 1)",
-    "rgba(231, 227, 207, 1)",
+    colorsEnum.color1 ,
+    colorsEnum.color2,
+    colorsEnum.color3,
+    colorsEnum.color4,
   ];
 }

@@ -1,0 +1,67 @@
+.allArichim {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: fit-content;
+  height: fit-content;
+}
+
+.arichAdd {
+  background-color: rgba(73, 90, 134, 0.733);
+  width: 14rem;
+  height: 16rem;
+  border-radius: 5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.allColors {
+  flex-wrap: wrap;
+  width: 70%;
+  height: fit-content;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.tileMenuborn {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(236, 205, 136, 1);
+  border-radius: 5%;
+}
+
+.tileMenuorange {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(236, 176, 136, 1);
+  border-radius: 5%;
+}
+
+.tileMenugray {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(231, 227, 207, 1);
+  border-radius: 5%;
+}
+
+.tileMenured {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(197, 104, 27, 1);
+  border-radius: 5%;
+}
+
+@media only screen and (max-width: 30rem) {
+  .allArichim {
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+  }
+}
+//y@gmail.com
+//mm@#135R

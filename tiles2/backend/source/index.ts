@@ -35,14 +35,12 @@ export async function authenticate(
   res: Response,
   next: NextFunction
 ) {
-  console.log("in verify");
   const authHeader = req.headers["authorization"];
   if (authHeader === undefined) {
     res.sendStatus(403).json({ message: "bad token" });
     return;
   }
 
-  console.log(authHeader.split(" ")[1]);
 
   const token = authHeader && authHeader.split(" ")[1];
   if (!token) {
@@ -52,7 +50,6 @@ export async function authenticate(
 
   let id = await jwt.verify(token, SECRET, (err: Error, id: any) => {
     if (err) {
-      console.log(err);
       res.sendStatus(403).json({ message: "bad", error: err });
       return null;
     }
@@ -79,9 +76,7 @@ app.get("/", (req: Request, res: Response) => {
 app.listen(port, () => {
   try {
     getClient();
-    console.log("server run on port http://localhost:" + port);
     //tileService.createTile('red' , new Date() , new Date())
   } catch (err) {
-    console.log("error: " + err);
   }
 });

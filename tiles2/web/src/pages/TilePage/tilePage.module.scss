@@ -1,0 +1,34 @@
+
+.page {
+  background-color: rgba(178, 196, 230, 0.664);
+  width: 100vw;
+  height: calc(100vh - 8.3vh);
+}
+
+.scroller {
+  width: 100vw;
+  height: calc(100vh - 10rem);
+  overflow: auto;
+  display: flex;
+}
+
+.toCenter {
+  display: flex;
+  justify-content: start;
+  width: 100vw;
+  height: fit-content;
+}
+
+.saveSuccess {
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+}
+
+@media only screen and (max-width: 30rem) {
+  .toCenter {
+    justify-content: center;
+  }
+}
+
+

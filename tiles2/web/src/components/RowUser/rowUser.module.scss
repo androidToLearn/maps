@@ -1,0 +1,59 @@
+.row {
+  height: 3vw;
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 1vw;
+  font-size: 1vw;
+  border-radius: 0.5vw;
+  background-color: rgba(73, 90, 134, 0.733);
+}
+
+.titleUser {
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  width: 15vw;
+  font-size: 2vw;
+}
+
+.titleGmail {
+  color: white;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+  width: fit-content;
+  width: 20vw;
+  font-size: 2vw;
+}
+
+.divSelector {
+  margin-left: 2.5vw;
+  transform: scale(0.6);
+}
+
+.divSelector {
+  width: fit-content;
+  height: calc(6vw - (0.3 * 100vw));
+  border-radius: 0.3vw;
+  margin-right: 0.5vw;
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 2vw;
+}
+
+.myTitleRole {
+  background-color: white;
+  border-radius: 0.1vw;
+  padding-top: 0.1vw;
+  padding-bottom: 0.1vw;
+  padding-left: 0.6vw;
+  padding-right: 0.6vw;
+  margin-right: 1.6vw;
+  margin-left: 4.5vw;
+}

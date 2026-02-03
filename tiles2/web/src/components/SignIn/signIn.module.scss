@@ -1,0 +1,175 @@
+.startDiv {
+  width: 100vw;
+  height: 100vh;
+}
+
+.card {
+  width: 20vw;
+  height: fit-content;
+  padding-bottom: 10vw;
+  background-color: rgb(92, 117, 150);
+  border-radius: 1rem;
+  display: flex;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 10;
+}
+
+.boxMessage {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: fit-content;
+  position: absolute;
+  top: -20vh;
+}
+
+.message {
+  color: white;
+  background-color: rgb(44, 43, 43);
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  border-radius: 0.5vw;
+  font-size: 2vw;
+  z-index: 300000;
+  position: absolute;
+  top: 50vw;
+  animation: identifier 0.2s linear;
+}
+
+.underContentSign {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: row;
+  gap: 2vw;
+  width: 90%;
+  height: fit-content;
+  position: relative;
+  top: 8vw;
+}
+
+.labelSign {
+  color: white;
+  width: fit-content;
+  text-align: start;
+  margin-top: 1vw;
+  margin-bottom: 1vw;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1vw;
+}
+
+.orange {
+  color: transparent;
+  flex-wrap: 1;
+  background-color: rgb(243, 173, 126);
+  border-radius: 0.5rem;
+  color: white;
+  width: 15vw;
+  height: 3vw;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1vw;
+}
+
+.transparnt {
+  background-color: transparent;
+  flex-wrap: 1;
+  color: white;
+  border-radius: 0.5rem;
+  width: 15vw;
+  height: 3vw;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1vw;
+}
+
+.transparnt p {
+  margin: 0px;
+}
+
+.orange p {
+  margin: 0px;
+}
+
+.main1 {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(178, 196, 230, 0.664);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.whiteCircle {
+  background-color: white;
+  position: absolute;
+  z-index: 100;
+  width: 5.3vw;
+  height: 5.3vw;
+  top: 1.8vh;
+  border-radius: 100%;
+}
+
+.blueCircle {
+  background-color: rgb(92, 117, 150);
+  position: relative;
+  z-index: 300;
+  width: 3.5vw;
+  height: 3.5vw;
+  position: relative;
+  top: calc((0.3vw + 1vh) * 2);
+  z-index: 150;
+  margin-bottom: 5vh;
+}
+
+.imageP {
+  margin-top: 0.5rem;
+  width: 5vw;
+  height: 5vw;
+  position: absolute;
+  z-index: 400;
+  top: 1vh;
+}
+
+.divLabel {
+  display: flex;
+  flex-direction: row;
+  width: 90%;
+  height: fit-content;
+  text-align: start;
+}
+.titleError {
+  color: white;
+  font-size: 1vw;
+  margin-left: 2vw;
+}
+
+.edit {
+  background-color: rgb(228, 233, 247);
+  border-radius: 0.5rem;
+  width: 90%;
+  height: 2vw;
+  outline: none;
+  border: none;
+  padding-left: 1rem;
+}
+
+.labelLogin {
+  color: white;
+  width: fit-content;
+  text-align: start;
+  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: 1vw;
+}
+
+@media screen and (max-width: 60rem) {
+  .card {
+    transform: scale(1.5);
+  }
+}

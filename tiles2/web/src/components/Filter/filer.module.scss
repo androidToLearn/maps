@@ -1,0 +1,32 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  height: 25vw;
+  border-radius: 1rem;
+  background-color: rgba(73, 90, 134, 0.733);
+  padding: 2vw;
+}
+
+.choose {
+  font-size: 2.5vw;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: rgba(73, 90, 134, 0.733);
+  cursor: pointer;
+  margin: 0px;
+}
+
+.not_choose {
+  font-size: 2.5vw;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  color: white;
+  margin: 0px;
+  cursor: pointer;
+}
+
+.line {
+  width: 55%;
+  height: 0.1vw;
+  background-color: white;
+  border-radius: 0.1vw;
+}
