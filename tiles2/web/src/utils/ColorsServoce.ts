@@ -1,7 +1,7 @@
 import classes from "../components/OneTile/oneTile.module.scss";
 import { colorsEnum, colorsEnumWithoutAdd } from "../services/Enum";
 
-export const getTypeColors = (color: colorsEnumWithoutAdd | colorsEnum) => {
+export const getTypeColors = (color: colorsEnumWithoutAdd | colorsEnum | string) => {
   if (color === colorsEnumWithoutAdd.color1) {
     return classes.tileborn;
   }
@@ -15,10 +15,6 @@ export const getTypeColors = (color: colorsEnumWithoutAdd | colorsEnum) => {
     return classes.tilered;
   }
 };
-
-
-
-
 
 export const getTypeColorsWithStartColor = (color: colorsEnum) => {
   if (color === colorsEnum.color1) {

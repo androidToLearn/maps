@@ -1,5 +1,5 @@
 import type { TypeRowUser } from "../../types/typescript";
-import classes from './rowUser.module.scss'
+import classes from "./rowUser.module.scss";
 export default function RowUser({
   allUsers,
   isChanged,
@@ -49,7 +49,11 @@ export default function RowUser({
               changeProfile(e);
             }}
           >
-            <option value="admin">admin</option>
+            <option
+              value="admin"
+            >
+              admin
+            </option>
             <option value="moderator">moderator</option>
             <option value="editor">editor</option>
             <option value="viewer">viewer</option>

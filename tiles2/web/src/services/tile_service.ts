@@ -1,9 +1,9 @@
-import type { typeTile } from "../types/typescript";
+import type { typeTile, typeTileWithString } from "../types/typescript";
 export class Tile_service {
  
 
   getCopyLastAllHistory(
-    allHistory: typeTile[][]
+    allHistory: typeTileWithString[][]
   ) {
     const lastAllHistory = allHistory[allHistory.length - 1];
     const newAllArichim = [];

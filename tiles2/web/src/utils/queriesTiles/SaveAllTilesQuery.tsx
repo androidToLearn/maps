@@ -1,8 +1,7 @@
 import { fetchInstanceWithToken } from "../../instance/Instance";
-import type { typeISuccessDict } from "../../types/typescript";
 import type { typePostAllTiles } from "../../types/typescript";
 export class saveAllTilesQuery {
-  async saveAllTiles(data: typePostAllTiles, dictValues: typeISuccessDict) {
+  async saveAllTiles(data: typePostAllTiles, dictValues: typePostAllTiles) {
     await fetchInstanceWithToken()
       .post("/tiles/saveAll", data["toSave"])
       .catch((error) => {

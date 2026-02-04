@@ -75,7 +75,8 @@ router.post("/register", async (req: Request, res: Response) => {
 
 router.get("/protected", authenticate, async (req, res) => {
   try {
-    res.status(200).json({ message: "good", id: req.idUser });
+    if (req.idUser === undefined)return
+    res.status(200).json({ message: "good", id: req.idUser['insertedId'] });
   } catch (err) {
     res.status(404).json({ message: "bad" });
   }

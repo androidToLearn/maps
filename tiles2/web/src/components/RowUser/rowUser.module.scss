@@ -33,6 +33,10 @@
   transform: scale(0.6);
 }
 
+select option {
+  font-size: 1vw;
+}
+
 .divSelector {
   width: fit-content;
   height: calc(6vw - (0.3 * 100vw));

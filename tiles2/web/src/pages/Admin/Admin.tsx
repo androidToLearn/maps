@@ -11,7 +11,7 @@ import { useQuery } from "@tanstack/react-query";
 import { AllUsersQuery } from "../../utils/QueryAdmin/AllUserQuery";
 import Success from "../../components/Success/Success";
 import type { typeDictContext } from "../../types/typescript";
-
+import { SaveAllUsers } from "../../utils/QueryAdmin/SaveAllQuery";
 export default function adminPage() {
   const token = localStorage.getItem("token");
   const [filter, setFilter] = useState<number>(0);
@@ -71,6 +71,9 @@ export default function adminPage() {
         admin_Service.copyLastHistory(allHistory),
       )
     : admin_Service.filterAllUsers(filter, allHistory[allHistory.length - 1]);
+
+    const orderedAllUsers = new SaveAllUsers().getMyUserAndMoveToStart(allUsers , idUser)
+
   return (
     <div className={classes.page}>
       <div className={classes.main}>
@@ -86,7 +89,7 @@ export default function adminPage() {
               </div>
               <div className={classes.scrollUsers}>
                 <div className={classes.usersContent}>
-                  {allUsers.map((user, i) => {
+                  {orderedAllUsers.map((user, i) => {
                     return (
                       <RowUser
                         allUsers={allUsers}

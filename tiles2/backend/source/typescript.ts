@@ -33,6 +33,9 @@ export type UserSchemaTypeRegister = {
   role: string
 };
 
+export type typeIdUserDict = 
+  {insertedId : string}
+ | undefined
 export type TileSchemaType = {};
 
 export type TileSchemaTypeOneTile = {};

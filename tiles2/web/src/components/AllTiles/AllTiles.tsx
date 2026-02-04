@@ -1,7 +1,7 @@
 import { useState } from "react";
 import OneTile from "../OneTile/OneTile";
 import { arrayColorsEnum } from "../../services/Enum";
-import type { TypeAllTilesProperties } from "../../types/typescript";
+import type { TypeAllTilesProperties, typeTileWithString } from "../../types/typescript";
 import type { typeTile } from "../../types/typescript";
 import {  getTypeColorsWithStartColorWithOutAdd } from "../../utils/ColorsServoce";
 import classes from './allTiles.module.scss'
@@ -50,7 +50,7 @@ export default function AllTiles({
 
   return (
     <div className={classes.allArichim}>
-      {allArichim.map((tile: typeTile, i: number) => {
+      {allArichim.map((tile: typeTileWithString, i: number) => {
         return (
           <div key={i}>
             {i === allArichim.length - 1 ? (

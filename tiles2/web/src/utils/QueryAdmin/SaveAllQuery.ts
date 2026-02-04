@@ -1,4 +1,7 @@
-import type { TypeInsideMutationSave } from "../../types/typescript";
+import type {
+  typeDictUser,
+  TypeInsideMutationSave,
+} from "../../types/typescript";
 import type { TypeUsersToSave } from "../../types/typescript";
 import { fetchInstanceWithToken } from "../../instance/Instance";
 import type { isSuccessType } from "../../types/typescript";
@@ -30,5 +33,24 @@ export class SaveAllUsers {
       }
     }
     return toSaveUsers;
+  }
+
+  getMyUserAndMoveToStart(allUsers: typeDictUser[], idUser: string) {
+    const theUsers = []
+    for (const oneUserIndex in allUsers) {
+      if (allUsers[oneUserIndex]["id"] === idUser) {
+        const myUser = allUsers[oneUserIndex];
+        theUsers.push(myUser)
+        break
+      }
+    }
+    for (const oneUserIndex in allUsers) {
+
+      if (allUsers[oneUserIndex]["id"] !== idUser) {
+        const otherUser = allUsers[oneUserIndex];
+        theUsers.push(otherUser)
+      }
+    }
+    return theUsers
   }
 }

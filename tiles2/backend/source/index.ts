@@ -12,14 +12,14 @@ import { router as tileRouter } from "./routers/tile.router";
 
 import { getClient } from "../source/services/db_utils";
 import { SECRET } from "../source/services/db_utils";
-import { userService } from "./services/user.service";
-import { tileService } from "./services/tile.service";
+import { typeIdUserDict } from "./typescript";
+
 
 dotenv.config();
 
 declare module "express-serve-static-core" {
   interface Request {
-    idUser?: any;
+    idUser?: typeIdUserDict;
   }
 }
 
@@ -48,7 +48,7 @@ export async function authenticate(
     return;
   }
 
-  let id = await jwt.verify(token, SECRET, (err: Error, id: any) => {
+  let id = await jwt.verify(token, SECRET, (err: Error, id: string) => {
     if (err) {
       res.sendStatus(403).json({ message: "bad", error: err });
       return null;
@@ -57,9 +57,9 @@ export async function authenticate(
   });
 
   req.idUser = id['userId'];
-  if (req.idUser['insertedId'] !== undefined)
+  if (req.idUser !== undefined && req.idUser['insertedId'] !== undefined)
   {
-    req.idUser = req.idUser['insertedId']
+    req.idUser['insertedId'] = req.idUser['insertedId']
   }
   next();
 }

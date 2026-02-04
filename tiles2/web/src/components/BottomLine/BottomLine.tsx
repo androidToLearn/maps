@@ -1,8 +1,6 @@
-import type { BottomLineDictTypes } from "../../types/typescript";
+import type { BottomLineDictTypes, typePostAllTiles, typeTileWithString } from "../../types/typescript";
 import { useMutation } from "@tanstack/react-query";
 import { saveAllTilesQuery } from "../../utils/queriesTiles/SaveAllTilesQuery";
-import type { typeTile } from "../../types/typescript";
-import type { typeMutationSaveTiles } from "../../types/typescript";
 import classes from './BottomLine.module.scss'
 
 export const BottomLine = ({
@@ -16,13 +14,13 @@ export const BottomLine = ({
   isSuccess,
 }: BottomLineDictTypes) => {
   const mutationSave = useMutation({
-    mutationFn: async (data: typeMutationSaveTiles) => {
+    mutationFn: async (data: typePostAllTiles) => {
       setIsToDoLoader(false);
       new saveAllTilesQuery().saveAllTiles(data, data);
       return data;
     },
   });
-  const deleteAndSave = async (toSave: typeTile[]) => {
+  const deleteAndSave = async (toSave: typeTileWithString[]) => {
     for (const index in toSave) {
       toSave[index]["updatedAt"] = new Date();
     }

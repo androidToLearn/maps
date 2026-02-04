@@ -1,9 +1,9 @@
 import { fetchInstanceWithToken } from "../../instance/Instance";
-import type { typeTile } from "../../types/typescript";
+import type {  typeTileWithString } from "../../types/typescript";
 import type { typeDictForChangesAllTiles } from "../../types/typescript";
 
 export class AllTilesQuery {
-  getAllTiles(data: typeTile[], dictValues: typeDictForChangesAllTiles) {
+  getAllTiles(data: typeTileWithString[], dictValues: typeDictForChangesAllTiles) {
     dictValues["allHistory"].splice(dictValues["allHistory"].length - 1, 1);
     const arrayAllTiles = [];
     for (const oneTile in data) {

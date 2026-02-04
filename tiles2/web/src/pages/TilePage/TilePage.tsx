@@ -14,7 +14,7 @@ import { colorsEnum, type colorsEnumWithoutAdd } from "../../services/Enum";
 export default function TilePage() {
   const token: string | null = localStorage.getItem("token");
   const [allHistory, setAllHistory] = useState<
-    { color: colorsEnum | colorsEnumWithoutAdd; id: string; createdAt: Date; updatedAt: Date }[][]
+    { color: colorsEnum | colorsEnumWithoutAdd | string; id: string; createdAt: Date; updatedAt: Date }[][]
   >([[{ color: colorsEnum.color1, id: "-2", createdAt: new Date(), updatedAt: new Date() }]]);
   const [hasChanges, setHasChanges] = useState<boolean>(false);
   const [isToDoLoader, setIsToDoLoader] = useState<boolean>(false);

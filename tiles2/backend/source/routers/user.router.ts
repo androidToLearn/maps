@@ -6,17 +6,19 @@ import { NextFunction } from "express";
 
 export function middleWare(...roles: string[]) {
   return async (req: Request, res: Response, next: NextFunction) => {
-    const user = await userService.getUserById(req.idUser);
-    if (user === null) {
-      res.status(404).json({ message: "bad token" });
-      return;
-    }
+    if (req.idUser !== undefined) {
+      const user = await userService.getUserById(req.idUser["insertedId"]);
+      if (user === null) {
+        res.status(404).json({ message: "bad token" });
+        return;
+      }
 
-    if (user && roles.includes(user["role"])) {
-      next();
-    } else {
-      res.status(404).json({ message: "bad role" });
-      return;
+      if (user && roles.includes(user["role"])) {
+        next();
+      } else {
+        res.status(404).json({ message: "bad role" });
+        return;
+      }
     }
   };
 }
@@ -34,7 +36,7 @@ router.get(
           name: user["name"],
           email: user["email"],
           role: user["role"],
-          password : user['password']
+          password: user["password"],
         });
       }
       res.status(200).json(userWithoutPassword);
@@ -43,7 +45,7 @@ router.get(
       res.status(404).json({ error: err });
       return;
     }
-  }
+  },
 );
 
 router.get(
@@ -51,19 +53,21 @@ router.get(
   middleWare("admin", "moderator", "viewer", "editor"),
   async (req: Request, res: Response) => {
     try {
-      if (!baseJson.baseUserSchemaGetOne(req.idUser)) {
-        res.status(404).json({ message: "bad" });
+      if (req.idUser !== undefined) {
+        if (!baseJson.baseUserSchemaGetOne(req.idUser["insertedId"])) {
+          res.status(404).json({ message: "bad" });
+          return;
+        }
+        const user = await userService.getUserById(req.idUser["insertedId"]);
+
+        res.status(200).json(user);
         return;
       }
-      const user = await userService.getUserById(req.idUser);
-
-      res.status(200).json(user);
-      return;
     } catch (err) {
       res.status(404).json({ message: "bad" });
       return;
     }
-  }
+  },
 );
 
 router.post(
@@ -80,7 +84,7 @@ router.post(
         req.body["name"],
         req.body["email"],
         req.body["password"],
-        req.body["role"]
+        req.body["role"],
       );
       if (id == null) {
         res.status(404).json({ error: "not such id" });
@@ -92,7 +96,7 @@ router.post(
       res.status(404).json({ error: err });
       return;
     }
-  }
+  },
 );
 
 router.delete(
@@ -100,29 +104,29 @@ router.delete(
   middleWare("admin"),
   async (req: Request, res: Response) => {
     try {
-      if (!baseJson.baseUserSchemaDelete(req.idUser)) {
-        res.status(404).json({ message: "bad" });
+      if (req.idUser !== undefined) {
+        if (!baseJson.baseUserSchemaDelete(req.idUser["insertedId"])) {
+          res.status(404).json({ message: "bad" });
+          return;
+        }
+        const id = req.idUser["insertedId"];
+        await userService.deleteUserById(id);
+        res.status(200).json({ id: id });
         return;
       }
-
-      const id = req.idUser;
-      await userService.deleteUserById(id);
-      res.status(200).json({ id: id });
-      return;
     } catch (err) {
       res.status(404).json({ error: err });
       return;
     }
-  }
+  },
 );
 
 router.post(
   "/insertAll",
   middleWare("admin"),
   async (req: Request, res: Response) => {
-
     try {
-      if (!baseJson.baseUserSchemaSaveAll(req.body['users'])) {
+      if (!baseJson.baseUserSchemaSaveAll(req.body["users"])) {
         res.status(404).json({ message: "bad" });
         return;
       }
@@ -136,14 +140,14 @@ router.post(
             oneUser["name"],
             oneUser["email"],
             oneUser["password"],
-            oneUser["role"]
+            oneUser["role"],
           );
         } else {
           await userService.insertUser(
             oneUser["name"],
             oneUser["email"],
             oneUser["password"],
-            oneUser["role"]
+            oneUser["role"],
           );
         }
       }
@@ -152,5 +156,5 @@ router.post(
     } catch (err) {
       res.status(403).json({ message: err });
     }
-  }
+  },
 );
