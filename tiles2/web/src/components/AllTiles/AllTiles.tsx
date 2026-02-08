@@ -2,7 +2,6 @@ import { useState } from "react";
 import OneTile from "../OneTile/OneTile";
 import { arrayColorsEnum } from "../../services/Enum";
 import type { TypeAllTilesProperties, typeTileWithString } from "../../types/typescript";
-import type { typeTile } from "../../types/typescript";
 import {  getTypeColorsWithStartColorWithOutAdd } from "../../utils/ColorsServoce";
 import classes from './allTiles.module.scss'
 import { colorsEnumWithoutAdd } from "../../services/Enum";

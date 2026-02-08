@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Loader from "../components/Loader/Loader";
 import { fetchInstanceWithToken } from "../instance/Instance";
+import type { messageType } from "../types/typescript";
+import type { setIsLoadingType } from "../types/typescript";
 export default function ProtectedTiles({ children }: any) {
   const navigator = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -22,7 +24,7 @@ export default function ProtectedTiles({ children }: any) {
   return children;
 }
 
-function isUserHasGoodToken(data: any, dictValues: any) {
+function isUserHasGoodToken(data: messageType, dictValues: setIsLoadingType) {
   if (data["message"] === "good") {
     dictValues["setIsLoading"](false);
     return "good";

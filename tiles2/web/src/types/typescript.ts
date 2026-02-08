@@ -1,4 +1,4 @@
-import { colorsEnumWithoutAdd } from './../services/Enum';
+import { colorsEnumWithoutAdd } from "./../services/Enum";
 import type { SubmitHandler } from "react-hook-form";
 import type { colorsEnum } from "../services/Enum";
 export type user_type = {
@@ -72,7 +72,12 @@ export type BottomLineDictTypes = {
   hasChanges: boolean;
   token: string;
   setAllHistory: (
-    value: { color: colorsEnum | colorsEnumWithoutAdd | string; id: string; createdAt: Date; updatedAt: Date }[][],
+    value: {
+      color: colorsEnum | colorsEnumWithoutAdd | string;
+      id: string;
+      createdAt: Date;
+      updatedAt: Date;
+    }[][],
   ) => void;
   isSuccess: (value: boolean) => void;
 };
@@ -102,7 +107,12 @@ export type TypePostSomething =
             password: string;
             role: string;
           }[]
-        | { color: string |colorsEnum | colorsEnumWithoutAdd; id: string; createdAt: Date; updatedAt: Date }[];
+        | {
+            color: string | colorsEnum | colorsEnumWithoutAdd;
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+          }[];
     }
   | {
       users: {
@@ -114,7 +124,8 @@ export type TypePostSomething =
       }[];
       myId: string;
     }
-  | typeTile[]  | typeTileWithString[];
+  | typeTile[]
+  | typeTileWithString[];
 
 export type TypeContentAdminToSave = {
   toSave: TypeUsersToSave;
@@ -190,7 +201,12 @@ export type typeOneTile = {
 
 export type TypeOneTileDict = {
   hasChanges: boolean;
-  allArichim: { color: colorsEnum | colorsEnumWithoutAdd | string; id: string; createdAt: Date; updatedAt: Date }[];
+  allArichim: {
+    color: colorsEnum | colorsEnumWithoutAdd | string;
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }[];
   allHistory: {
     color: colorsEnum | colorsEnumWithoutAdd | string;
     id: string;
@@ -198,7 +214,12 @@ export type TypeOneTileDict = {
     updatedAt: Date;
   }[][];
   setAllHistory: (
-    value: { color: colorsEnum | colorsEnumWithoutAdd | string; id: string; createdAt: Date; updatedAt: Date }[][],
+    value: {
+      color: colorsEnum | colorsEnumWithoutAdd | string;
+      id: string;
+      createdAt: Date;
+      updatedAt: Date;
+    }[][],
   ) => void;
   setHasChanges: (value: boolean) => void;
   profile: string;
@@ -221,7 +242,12 @@ export type TypeAllTilesComponent = {
 
 export type TypeAllTilesDict = {
   profile: string;
-  allArichim: { color: colorsEnum | colorsEnumWithoutAdd; id: string; createdAt: Date; updatedAt: Date }[];
+  allArichim: {
+    color: colorsEnum | colorsEnumWithoutAdd;
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }[];
   hasChanges: boolean;
   allHistory: {
     color: string;
@@ -265,7 +291,12 @@ export type TypeAllTilesProperties = {
     updatedAt: Date;
   }[][];
   setAllHistory: (
-    value: { color: colorsEnum | colorsEnumWithoutAdd | string; id: string; createdAt: Date; updatedAt: Date }[][],
+    value: {
+      color: colorsEnum | colorsEnumWithoutAdd | string;
+      id: string;
+      createdAt: Date;
+      updatedAt: Date;
+    }[][],
   ) => void;
   setHasChanges: (value: boolean) => void;
   allArichim: {
@@ -284,11 +315,11 @@ export type typeTile = {
 };
 
 export type typeTileWithString = {
-   color: colorsEnumWithoutAdd | colorsEnum | string;
+  color: colorsEnumWithoutAdd | colorsEnum | string;
   id: string;
   createdAt: Date;
   updatedAt: Date;
-}
+};
 
 export type isSuccessType = {
   setIsSuccess: (value: boolean) => void;
@@ -353,10 +384,10 @@ export type typeDataUser = {
 };
 
 export type typeDictForChangesAllTilesWithString = {
-   allHistory: typeTile[][];
+  allHistory: typeTile[][];
   setAllHistory: (value: typeTile[][]) => void;
   setIsToDoLoader: (value: boolean) => void;
-}
+};
 
 export type typeDictForChangesAllTiles = {
   allHistory: typeTileWithString[][];
@@ -396,7 +427,11 @@ export type typeISuccessDict = {
   isSuccess: (value: boolean) => void;
 };
 
-export type typePostAllTiles = { toSave: TypePostSomething | typeTileWithString[] , isSuccess : (value : boolean) => void , token : string };
+export type typePostAllTiles = {
+  toSave: TypePostSomething | typeTileWithString[];
+  isSuccess: (value: boolean) => void;
+  token: string;
+};
 
 export type typeDictContext = {
   profile: string;
@@ -426,3 +461,7 @@ export type typeEnum =
   | colorsEnum.color3
   | colorsEnum.color4
   | "add";
+
+export type setIsLoadingType = { setIsLoading: (value: boolean) => void };
+
+export type messageType = {'message' : string}
