@@ -8,6 +8,7 @@ import { RegisterQuery } from "../../utils/QueriesSign/RegisterQuery";
 import { useMutation } from "@tanstack/react-query";
 import type { typeRegisterMutate } from "../../types/typescript";
 import classes from "./register.module.scss";
+import { useUserContext } from "../../provider/AuthContext";
 
 export default function Register() {
   const {
@@ -21,14 +22,14 @@ export default function Register() {
   const [message, setMessage] = useState<string | undefined>("");
 
   const navigate = useNavigate();
-
+  
+  const {user , setUser} = useUserContext()
+  
   const mutationRegister = useMutation({
     mutationFn: async (data: typeRegisterMutate) => {
       const response = await new RegisterQuery().registerMutate(data);
-      if (response !== undefined && response === "moveBack") {
-        navigate("/signIn");
-      } else {
-        navigate("/");
+      if(response !== undefined && response !== null && response === 'good') {
+        navigate('/')
       }
       return data;
     },
@@ -42,6 +43,8 @@ export default function Register() {
       name: dataFieldsForm["name"],
       password: dataFieldsForm["password"],
       setMessage: setMessage,
+      user : user ,
+      setUser : setUser
     });
   };
 
@@ -51,7 +54,11 @@ export default function Register() {
         <form className={classes.card} onSubmit={handleSubmit(registerAction)}>
           <div className={classes.whiteCircle}></div>
           <div className={classes.blueCircle}></div>
-          <img src="public/p5.png" alt="myprofileimage" className={classes.imageP} />
+          <img
+            src="public/p5.png"
+            alt="myprofileimage"
+            className={classes.imageP}
+          />
 
           <div className={classes.divLabel}>
             <label htmlFor="email" className={classes.labelLogin}>

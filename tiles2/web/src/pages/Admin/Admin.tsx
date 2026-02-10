@@ -1,25 +1,23 @@
 import { useEffect, useState } from "react";
-import classes from './admin.module.scss'
-import { useNavigate } from "react-router-dom";
-import type { typeHistoryUser } from "../../types/typescript";
+import classes from "./admin.module.scss";
+import type {
+  typeHistoryUser,
+  typePRopertiesOneUserFromServer,
+} from "../../types/typescript";
 import { Admin_Service } from "../../services/admin_service";
 import BottomLineAdmin from "../../components/BottomLineAdmin/BottomLineAdmin";
 import Filter from "../../components/Filter/Filter";
 import RowUser from "../../components/RowUser/RowUser";
-import { useOutletContext } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import { AllUsersQuery } from "../../utils/QueryAdmin/AllUserQuery";
 import Success from "../../components/Success/Success";
-import type { typeDictContext } from "../../types/typescript";
 import { SaveAllUsers } from "../../utils/QueryAdmin/SaveAllQuery";
+import { useUserContext } from "../../provider/AuthContext";
 export default function adminPage() {
-  const token = localStorage.getItem("token");
   const [filter, setFilter] = useState<number>(0);
   const [isChanged, setIsChanged] = useState<boolean>(false);
-  const navigate = useNavigate();
   const [isAbleClickUndo, setIsAbleClickUndo] = useState<boolean>(false);
   const [arrayIdsToUpdate, setArrayIds] = useState<string[]>([]);
-  const { idUser } = useOutletContext<typeDictContext>();
   const [allHistory, setAllHistory] = useState<typeHistoryUser>([
     [
       {
@@ -31,7 +29,35 @@ export default function adminPage() {
       },
     ],
   ]);
+
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+
+  const { isLoading, data } = useQuery({
+    queryKey: ["allUsers"],
+    queryFn: async () => {
+      const allUsers = await new AllUsersQuery().allUsersFetch();
+      return allUsers;
+    },
+  });
+
+  const mutationSetUsers = useMutation({
+    mutationFn: async (data: typePRopertiesOneUserFromServer) => {
+      new AllUsersQuery().getAllUsers(
+        {
+          allHistory: allHistory,
+          setAllHistory: setAllHistory,
+          setIsAbleClickUndo: setIsAbleClickUndo,
+        },
+        data,
+      );
+      return data;
+    },
+  });
+
+  const { user } = useUserContext();
+  if (user === null) {
+    return <></>;
+  }
 
   useEffect(() => {
     if (isSuccess) {
@@ -39,32 +65,14 @@ export default function adminPage() {
         setIsSuccess(false);
       }, 2000);
     }
-  }, [isSuccess]);
+    if (data !== undefined && !isLoading) {
+      if (allHistory.length === 1) {
+        mutationSetUsers.mutate(data);
+      }
+    }
+  }, [isSuccess, data, isLoading]);
 
   const admin_Service = new Admin_Service();
-
-  if (token === null) {
-    navigate("/");
-  }
-
-  const mutationShowAllUsers = new AllUsersQuery().getAllUsers({
-    allHistory: allHistory,
-    setAllHistory: setAllHistory,
-    setIsAbleClickUndo: setIsAbleClickUndo,
-  });
-
-  useQuery({
-    queryKey: ["allTiles"],
-    queryFn: async () => {
-      if (token !== null) {
-        const allUsers = await new AllUsersQuery().allUsersFetch();
-        if (allUsers !== null) {
-          mutationShowAllUsers.mutate(allUsers);
-        }
-      }
-    },
-  });
-
   const allUsers = !isChanged
     ? admin_Service.filterAllUsers(
         filter,
@@ -72,8 +80,11 @@ export default function adminPage() {
       )
     : admin_Service.filterAllUsers(filter, allHistory[allHistory.length - 1]);
 
-    const orderedAllUsers = new SaveAllUsers().getMyUserAndMoveToStart(allUsers , idUser)
-
+  const orderedAllUsers = new SaveAllUsers().getMyUserAndMoveToStart(
+    allUsers,
+    user.idUser,
+  );
+  const idUser = user.idUser;
   return (
     <div className={classes.page}>
       <div className={classes.main}>
@@ -92,6 +103,7 @@ export default function adminPage() {
                   {orderedAllUsers.map((user, i) => {
                     return (
                       <RowUser
+                        key={i}
                         allUsers={allUsers}
                         isChanged={isChanged}
                         allHistory={allHistory}
@@ -117,7 +129,6 @@ export default function adminPage() {
       <BottomLineAdmin
         isAbleClickUndo={isAbleClickUndo}
         setIsAbleClickUndo={setIsAbleClickUndo}
-        token={token}
         idUser={idUser}
         allHistory={allHistory}
         isChanged={isChanged}
@@ -125,6 +136,7 @@ export default function adminPage() {
         setIsChanged={setIsChanged}
         setIsSuccess={setIsSuccess}
         arraysIdsToUpdate={arrayIdsToUpdate}
+        setArrayIdsToUpdate={setArrayIds}
       />
     </div>
   );

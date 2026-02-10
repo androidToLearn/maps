@@ -1,12 +1,10 @@
-import type { typePRopertiesOneUserFromServer } from './../../types/typescript';
+import type { typePRopertiesOneUserFromServer } from "./../../types/typescript";
 import type { typeAllPropertiesToShowUsers } from "../../types/typescript";
-import { useMutation } from "@tanstack/react-query";
 import { fetchInstanceWithToken } from "../../instance/Instance";
 export class AllUsersQuery {
-  getAllUsers(dictValues: typeAllPropertiesToShowUsers) {
-    return useMutation({
-      mutationFn:async (data: typePRopertiesOneUserFromServer) => {
-        const allHistory = dictValues["allHistory"];
+  getAllUsers(dictValues: typeAllPropertiesToShowUsers , data :typePRopertiesOneUserFromServer ) {
+
+    const allHistory = dictValues["allHistory"];
         const setAllHistory = dictValues["setAllHistory"];
         const setIsAbleClickUndo = dictValues["setIsAbleClickUndo"];
         allHistory.splice(allHistory.length - 1, 1);
@@ -25,19 +23,12 @@ export class AllUsersQuery {
         allHistory.push(arrayAllUsers);
         setAllHistory([...allHistory]);
         setIsAbleClickUndo(true);
-
-        return data;
-      },
-    });
   }
 
   async allUsersFetch() {
     try {
-      const response = fetchInstanceWithToken().get("/users/allUsers");
+      const response = await fetchInstanceWithToken().get("/users/allUsers");
       return response;
-    } catch (err) {
-    }
-
-    return null;
+    } catch (err) {}
   }
 }

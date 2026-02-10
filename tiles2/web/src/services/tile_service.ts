@@ -1,22 +1,17 @@
-import type { typeTile, typeTileWithString } from "../types/typescript";
+import type { typeTileWithString } from "../types/typescript";
 export class Tile_service {
- 
-
-  getCopyLastAllHistory(
-    allHistory: typeTileWithString[][]
-  ) {
+  getCopyLastAllHistory(allHistory: typeTileWithString[][]) {
     const lastAllHistory = allHistory[allHistory.length - 1];
     const newAllArichim = [];
     for (const index in lastAllHistory) {
-      newAllArichim.push({
-        color: lastAllHistory[index]["color"],
-        id: lastAllHistory[index]["id"],
-        createdAt: lastAllHistory[index]["createdAt"],
-        updatedAt: lastAllHistory[index]["updatedAt"],
-      });
+        newAllArichim.push({
+          color: lastAllHistory[index]["color"],
+          id: lastAllHistory[index]["id"],
+          createdAt: lastAllHistory[index]["createdAt"],
+          updatedAt: lastAllHistory[index]["updatedAt"],
+        });
     }
+
     return newAllArichim;
   }
-
-  
 }

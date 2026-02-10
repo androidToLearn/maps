@@ -1,29 +1,25 @@
-import Loader from "../components/Loader/Loader";
-import { getRole } from "../services/protected_service";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../provider/AuthContext";
+import { getRole } from "../services/protected_service";
+import Loader from "../components/Loader/Loader";
+import { useState } from "react";
+
 export default function ProtectedAdmin({ children }: any) {
-  const [isLoader, setIsLoader] = useState<boolean>(true);
   const navigator = useNavigate();
-
-  try {
-    getRole().then((data) => {
-
-      if (data === "moderator" || data === "viewer" || data === "editor") {
-        navigator("/tilePage");
-        return;
-      } else if (data === "admin") {
-        setIsLoader(false);
-        return;
-      } else {
-        navigator("/signIn");
-        return;
-      }
-    });
-  } catch (err) {
+  const [isLoad , setIsLoad] = useState(true)
+  const { user } = useUserContext();
+  if (user === null) {
     navigator("/signIn");
-    return;
+    return <></>;
   }
 
-  return <div>{isLoader ? <Loader /> : children}</div>;
+  getRole().then((data) => {
+    if (data === "admin") {
+      setIsLoad(false)
+    }
+  }).catch((err) => {
+    navigator('/signIn')
+  });
+
+  return isLoad ? <Loader/> : children;
 }

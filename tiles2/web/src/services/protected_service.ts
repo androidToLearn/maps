@@ -14,8 +14,5 @@ export async function getRole() {
     const response = await fetchInstanceWithToken().get("/users/userById/");
     return response["role"];
   } catch (err) {
-    localStorage.removeItem("token");
-
-    return { message: "bad" };
   }
 }

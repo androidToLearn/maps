@@ -6,9 +6,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { SubmitHandler } from "react-hook-form";
 import { SignInQuery } from "../../utils/QueriesSign/SginInQuery";
 import { useMutation } from "@tanstack/react-query";
-import { ProtectedQuery } from "../../utils/QueriesSign/ProtectedQuery";
 import { useEffect, useState } from "react";
-import type { typeDataRegister } from "../../types/typescript";
+import { useUserContext } from "../../provider/AuthContext";
 import type { typeSignIn } from "../../types/typescript";
 
 export default function SignIn() {
@@ -20,13 +19,9 @@ export default function SignIn() {
   } = useForm<SignIn>({
     resolver: zodResolver(schemaSignIn),
   });
+  const { user, setUser } = useUserContext();
 
-  if (
-    errors.email !== undefined ||
-    errors.password !== undefined ||
-    errors.root !== undefined
-  ) {
-  }
+
 
   useEffect(() => {
     if (message !== "") {
@@ -38,35 +33,13 @@ export default function SignIn() {
 
   const navigate = useNavigate();
 
-  const mutationProtected = useMutation({
-    mutationFn: async (data: typeDataRegister) => {
-      const result = await new ProtectedQuery().protectedMutate({
-        accessToken: data["accessToken"],
-        message: data["message"], //הציג כבר את ההודעה המתאימה אם יש
-      });
-      if (result === "moveBack") {
-        navigate("/signIn");
-      } else {
-        navigate("/");
-      }
-      return data;
-    },
-
-    retry: 3,
-  });
-
   const mutationSignIn = useMutation({
     mutationFn: async (data: typeSignIn) => {
       const result = await new SignInQuery().signMutate(data);
       if (result === "home") {
         navigate("/signIn");
       } else {
-        if (result !== undefined) {
-          mutationProtected.mutate({
-            accessToken: result["accessToken"],
-            message: result["message"],
-          });
-        }
+        navigate("/");
       }
       return data;
     },
@@ -78,8 +51,11 @@ export default function SignIn() {
       email: dataFieldsForm["email"],
       password: dataFieldsForm["password"],
       setMessage: setMessage,
+      user: user,
+      setUser: setUser,
     });
   };
+
   return (
     <div className={classes.startDiv}>
       {" "}
@@ -87,7 +63,11 @@ export default function SignIn() {
         <form className={classes.card} onSubmit={handleSubmit(signAction)}>
           <div className={classes.whiteCircle}></div>
           <div className={classes.blueCircle}></div>
-          <img src="public/p5.png" alt="myprofileimage" className={classes.imageP} />
+          <img
+            src="public/p5.png"
+            alt="myprofileimage"
+            className={classes.imageP}
+          />
 
           <div className={classes.divLabel}>
             <label htmlFor="email" className={classes.labelSign}>
@@ -130,7 +110,9 @@ export default function SignIn() {
               className={classes.orange}
               onClick={() => {
                 const form = document.querySelector("form");
-                if (form !== null) form.valid();
+                if (form !== null) {
+                  form.valid();
+                }
               }}
             >
               <p>LOGIN</p>

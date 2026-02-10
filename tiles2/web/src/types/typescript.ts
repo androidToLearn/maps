@@ -60,7 +60,6 @@ export type InputsSignIn = {
 };
 
 export type BottomLineDictTypes = {
-  setIsToDoLoader: (value: boolean) => void;
   profile: string;
   setHasChanges: (value: boolean) => void;
   allHistory: {
@@ -70,7 +69,6 @@ export type BottomLineDictTypes = {
     updatedAt: Date;
   }[][];
   hasChanges: boolean;
-  token: string;
   setAllHistory: (
     value: {
       color: colorsEnum | colorsEnumWithoutAdd | string;
@@ -137,7 +135,6 @@ export type TypeContentAdminToSave = {
 export type BottomLineAdminDictTypes = {
   isAbleClickUndo: boolean;
   setIsAbleClickUndo: (value: boolean) => void;
-  token: string | null;
   idUser: string | null;
   allHistory: {
     id: string;
@@ -159,6 +156,7 @@ export type BottomLineAdminDictTypes = {
   setIsChanged: (value: boolean) => void;
   setIsSuccess: (value: boolean) => void;
   arraysIdsToUpdate: string[] | undefined;
+  setArrayIdsToUpdate: (value: string[]) => void;
 };
 
 export type typeUser = {
@@ -183,6 +181,16 @@ export type TypeUsersToSave = {
   password: string;
   role: string;
 }[];
+
+export type TypeUsersToSaveMutationSave =
+  | {
+      id: string;
+      name: string;
+      email: string;
+      password: string;
+      role: string;
+    }[]
+  | undefined;
 
 export type typeUserToSave = {
   id: string;
@@ -330,6 +338,14 @@ export type TypeInsideMutationSave = {
   toSave: TypeUsersToSave;
   arrayIdsToUpdate: string[] | undefined;
   idUser: string;
+  setArrayIdsToUpdate: (value: string[]) => void;
+};
+
+export type TypeInsideMutationSaveSaveClick = {
+  setIsSuccess: (value: boolean) => void;
+  toSave: TypeUsersToSaveMutationSave;
+  arrayIdsToUpdate: string[] | undefined;
+  idUser: string;
 };
 
 export type typeMutationSaveTiles = {
@@ -343,17 +359,30 @@ export type typeRegisterMutate = {
   name: string;
   password: string;
   setMessage: (value: string) => void;
+  setUser: (value: User | null) => void;
+  user: User | null;
 };
 export type typeDataRegister = {
   accessToken: string;
   message: string;
+  id: string;
+  name: string;
 };
 
 export type typeSignIn = {
   email: string;
   password: string;
   setMessage: (value: string) => void;
+  user: User | null;
+  setUser: (value: User | null) => void;
 };
+
+export type UserInServer = {
+  name : string;
+  role : string;
+  _id : string;
+  
+}
 
 export type typeUserMutation = {
   data: typedata;
@@ -363,6 +392,21 @@ export type typeUserMutation = {
 export type typeWithMode = {
   mode: string;
 };
+
+export type User = {
+  name: string;
+  role: string;
+  idUser: string;
+  token: string;
+  isInAdmin: boolean;
+};
+
+export type typeSignOrRegister =
+  | {
+      email: string;
+      password: string;
+    }
+  | { email: string; password: string; name: string };
 
 export type typedata = {
   id: string;
@@ -392,7 +436,6 @@ export type typeDictForChangesAllTilesWithString = {
 export type typeDictForChangesAllTiles = {
   allHistory: typeTileWithString[][];
   setAllHistory: (value: typeTileWithString[][]) => void;
-  setIsToDoLoader: (value: boolean) => void;
 };
 
 export type typeAllPropertiesToShowUsers = {
@@ -430,7 +473,6 @@ export type typeISuccessDict = {
 export type typePostAllTiles = {
   toSave: TypePostSomething | typeTileWithString[];
   isSuccess: (value: boolean) => void;
-  token: string;
 };
 
 export type typeDictContext = {
@@ -447,12 +489,17 @@ export type typeSignInDict = {
   email: string;
   password: string;
   setMessage: (value: string) => void;
+  setUser: (value: User | null) => void;
+  user: User | null;
 };
 
 export type dictMessageAndAccessToken = {
   accessToken: string;
   message: string;
   setMessage: (value: string) => void;
+  role: string;
+  idUser: string;
+  name: string;
 };
 
 export type typeEnum =
@@ -464,4 +511,4 @@ export type typeEnum =
 
 export type setIsLoadingType = { setIsLoading: (value: boolean) => void };
 
-export type messageType = {'message' : string}
+export type messageType = { message: string };

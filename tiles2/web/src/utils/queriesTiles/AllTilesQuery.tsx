@@ -23,14 +23,18 @@ export class AllTilesQuery {
     });
     dictValues["allHistory"].push(arrayAllTiles);
     dictValues["setAllHistory"]([...dictValues["allHistory"]]);
-    dictValues["setIsToDoLoader"](false);
   }
 
-  async allTilesFetch(dictValues: typeDictForChangesAllTiles) {
+  async allTilesFetch() {
+    try{
     const response = await fetchInstanceWithToken().get("/tiles/all");
-    if (response !== undefined) {
-      this.getAllTiles(response, dictValues);
+    return response
     }
+    catch(err)
+    {
+
+    }
+   
   }
 }
 

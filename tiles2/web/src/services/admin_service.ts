@@ -1,4 +1,3 @@
-
 export class Admin_Service {
   copyLastHistory(
     allHistory: {
@@ -69,9 +68,9 @@ export class Admin_Service {
     if (isChanged) {
       setIsChanged(false);
       setIsAbleClickUndo(true);
-      return 'changed'
+      return "changed";
     }
-    return 'not changed'
+    return "not changed";
   }
 
   async clickUndo(
@@ -100,9 +99,12 @@ export class Admin_Service {
         const toSave = allHistory[allHistory.length - 2];
         allHistory.splice(allHistory.length - 1, 1);
         setAllHistory([...allHistory]);
-        return toSave
+        return toSave;
       }
     } else {
+      if (allHistory === undefined || allHistory[allHistory.length - 2] === undefined || allHistory[allHistory.length - 2].length === 0) {
+        return "bad";
+      }
       allHistory.splice(allHistory.length - 1, 1);
       setIsChanged(false);
 
@@ -110,6 +112,9 @@ export class Admin_Service {
     }
 
     setIsAbleClickUndo(true);
-    return "bad";
+    allHistory.splice(allHistory.length - 1, 1);
+    setIsChanged(false);
+
+    setAllHistory([...allHistory]);
   }
 }

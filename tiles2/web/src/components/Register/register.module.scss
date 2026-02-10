@@ -27,6 +27,31 @@
   z-index: 10;
 }
 
+
+.boxMessage {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: fit-content;
+  position: absolute;
+  top: -20vh;
+}
+
+.message {
+  color: white;
+  background-color: rgb(44, 43, 43);
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  border-radius: 0.5vw;
+  font-size: 2vw;
+  z-index: 300000;
+  position: absolute;
+  top: 50vw;
+  animation: identifier 0.2s linear;
+}
+
 .whiteCircle {
   background-color: white;
   position: absolute;

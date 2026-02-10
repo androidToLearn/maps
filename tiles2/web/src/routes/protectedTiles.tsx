@@ -7,6 +7,8 @@ import type { setIsLoadingType } from "../types/typescript";
 export default function ProtectedTiles({ children }: any) {
   const navigator = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  console.log("ProtectedTiles...");
+
   fetchInstanceWithToken()
     .get("/login/protected")
     .then((data) => {
@@ -21,6 +23,8 @@ export default function ProtectedTiles({ children }: any) {
   if (isLoading) {
     return <Loader />;
   }
+
+  console.log('return children')
   return children;
 }
 

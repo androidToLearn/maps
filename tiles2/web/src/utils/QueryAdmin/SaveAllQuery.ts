@@ -11,6 +11,7 @@ export class SaveAllUsers {
     const theUsersToSave = this.getUsersToSave(
       data["toSave"],
       data["arrayIdsToUpdate"],
+      data['setArrayIdsToUpdate']
     );
 
     const contentUsersToSave = { users: theUsersToSave, myId: data["idUser"] };
@@ -21,6 +22,7 @@ export class SaveAllUsers {
   getUsersToSave(
     toSave: TypeUsersToSave,
     arrayIdsToUpdate: string[] | undefined,
+    setArrayIdsToUpdate : (value : string[]) => void
   ) {
     const toSaveUsers = [];
     for (const i in toSave) {
@@ -32,6 +34,7 @@ export class SaveAllUsers {
         toSaveUsers.push(oneUserToSave);
       }
     }
+    setArrayIdsToUpdate([])
     return toSaveUsers;
   }
 

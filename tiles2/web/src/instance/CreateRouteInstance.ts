@@ -6,14 +6,22 @@ export const authenticatedInstance = axios.create({
   baseURL: baseUrl,
 });
 
-authenticatedInstance.interceptors.request.use((config : any) => {
-  const Authorization = `Bearer ${localStorage.getItem("token")}`;
-  return {
-    ...config,
-    headers: {
-      ...config.headers,
-      Authorization: Authorization,
-      "Content-Type": "application/json",
-    },
-  };
+export const authenticatedInstanceWithoutToken = axios.create({
+  baseURL: baseUrl,
 });
+
+authenticatedInstance.interceptors.request.use((config: any) => {
+  const user = localStorage.getItem("user");
+  if (user !== null) {
+      const Authorization = `Bearer ${user}`;
+      return {
+        ...config,
+        headers: {
+          ...config.headers,
+          Authorization: Authorization,
+          "Content-Type": "application/json",
+        },
+      };
+    }
+  } 
+);

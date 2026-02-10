@@ -1,38 +1,47 @@
-import type { BottomLineDictTypes, typePostAllTiles, typeTileWithString } from "../../types/typescript";
+import type {
+  BottomLineDictTypes,
+  typePostAllTiles,
+  typeTileWithString,
+} from "../../types/typescript";
 import { useMutation } from "@tanstack/react-query";
 import { saveAllTilesQuery } from "../../utils/queriesTiles/SaveAllTilesQuery";
-import classes from './BottomLine.module.scss'
+import classes from "./BottomLine.module.scss";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const BottomLine = ({
-  setIsToDoLoader,
   profile,
   setHasChanges,
   allHistory,
   hasChanges,
-  token,
   setAllHistory,
   isSuccess,
 }: BottomLineDictTypes) => {
+  const queryClient = useQueryClient();
+
   const mutationSave = useMutation({
     mutationFn: async (data: typePostAllTiles) => {
-      setIsToDoLoader(false);
       new saveAllTilesQuery().saveAllTiles(data, data);
+
       return data;
     },
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["allTiles"], // 👈 use the SAME key as your useQuery
+      });
+    },
+    
   });
   const deleteAndSave = async (toSave: typeTileWithString[]) => {
     for (const index in toSave) {
       toSave[index]["updatedAt"] = new Date();
     }
-    if (token === null) return;
+
     try {
       mutationSave.mutate({
-        token: token,
         toSave: toSave,
         isSuccess: isSuccess,
       });
-    } catch (err) {
-    }
+    } catch (err) {}
   };
 
   const clickSave = async () => {
@@ -67,9 +76,7 @@ export const BottomLine = ({
             className={classes.btnUndo}
             onClick={async () => {
               if (profile !== "viewer") {
-                setIsToDoLoader(true);
                 await clickUndo();
-                setIsToDoLoader(false);
               }
             }}
           >
@@ -79,9 +86,7 @@ export const BottomLine = ({
             className={classes.btnSave}
             onClick={async () => {
               if (profile !== "viewer") {
-                setIsToDoLoader(true);
                 await clickSave();
-                setIsToDoLoader(false);
               }
             }}
           >

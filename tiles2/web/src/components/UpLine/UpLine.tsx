@@ -1,10 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import type { TypeUpLineDict } from "../../types/typescript";
 import classes from "./upline.module.scss";
+import { useUserContext } from "../../provider/AuthContext";
+import { useAuth } from "../../provider/useAuth";
 
-export default function UpLine({ name, profile , setIsInAdmin , isInAdmin }: TypeUpLineDict) {
- 
+export default function UpLine() {
   const navigator = useNavigate();
+
+  const { user, setUser } = useUserContext();
+  const { addUser, logout } = useAuth();
+  if (user === null) {
+    navigator("/signIn");
+    return <>error2</>;
+  }
+  const name = user.name;
+  const profile = user.role;
+
   return (
     <div className={classes.upLine}>
       <div className={classes.userContainer}>
@@ -12,7 +22,7 @@ export default function UpLine({ name, profile , setIsInAdmin , isInAdmin }: Typ
           src="public/p2.png"
           className={classes.imgContent}
           onClick={() => {
-            localStorage.removeItem("token");
+            logout(setUser);
             navigator("/signIn");
           }}
         />
@@ -22,7 +32,7 @@ export default function UpLine({ name, profile , setIsInAdmin , isInAdmin }: Typ
         </div>
       </div>
       <div>
-        {isInAdmin ? (
+        {user.isInAdmin ? (
           <div className={classes.boxInUpLine}>
             <div className={classes.upButtons}>
               <img src="public/users.png" className={classes.tiles} />
@@ -30,7 +40,8 @@ export default function UpLine({ name, profile , setIsInAdmin , isInAdmin }: Typ
                 src="public/l.png"
                 className={classes.settings}
                 onClick={() => {
-                  setIsInAdmin(false);
+                  user.isInAdmin = false;
+                  addUser(user, setUser);
                   navigator("/tilePage");
                 }}
               ></img>
@@ -45,7 +56,8 @@ export default function UpLine({ name, profile , setIsInAdmin , isInAdmin }: Typ
                   className={classes.settings}
                   onClick={() => {
                     if (profile === "admin") {
-                      setIsInAdmin(true);
+                      user.isInAdmin = true;
+                      addUser(user, setUser);
                       navigator("/adminPage");
                     }
                   }}
