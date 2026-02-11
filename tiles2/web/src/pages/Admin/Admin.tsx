@@ -4,8 +4,6 @@ import type {
   typeHistoryUser,
   typePRopertiesOneUserFromServer,
 } from "../../types/typescript";
-import { Admin_Service } from "../../services/admin_service";
-import BottomLineAdmin from "../../components/BottomLineAdmin/BottomLineAdmin";
 import Filter from "../../components/Filter/Filter";
 import RowUser from "../../components/RowUser/RowUser";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -13,10 +11,11 @@ import { AllUsersQuery } from "../../utils/QueryAdmin/AllUserQuery";
 import Success from "../../components/Success/Success";
 import { SaveAllUsers } from "../../utils/QueryAdmin/SaveAllQuery";
 import { useUserContext } from "../../provider/AuthContext";
+import { admin_service } from "../../services/admin_service";
+import BottomLineAdmin from "../../components/BottomLineAdmin/BottomLineAdmin";
 export default function adminPage() {
   const [filter, setFilter] = useState<number>(0);
   const [isChanged, setIsChanged] = useState<boolean>(false);
-  const [isAbleClickUndo, setIsAbleClickUndo] = useState<boolean>(false);
   const [arrayIdsToUpdate, setArrayIds] = useState<string[]>([]);
   const [allHistory, setAllHistory] = useState<typeHistoryUser>([
     [
@@ -31,7 +30,6 @@ export default function adminPage() {
   ]);
 
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
-
   const { isLoading, data } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
@@ -46,7 +44,6 @@ export default function adminPage() {
         {
           allHistory: allHistory,
           setAllHistory: setAllHistory,
-          setIsAbleClickUndo: setIsAbleClickUndo,
         },
         data,
       );
@@ -72,19 +69,44 @@ export default function adminPage() {
     }
   }, [isSuccess, data, isLoading]);
 
-  const admin_Service = new Admin_Service();
   const allUsers = !isChanged
-    ? admin_Service.filterAllUsers(
+    ? admin_service.filterAllUsers(
         filter,
-        admin_Service.copyLastHistory(allHistory),
+        admin_service.copyLastHistory(allHistory),
       )
-    : admin_Service.filterAllUsers(filter, allHistory[allHistory.length - 1]);
+    : admin_service.filterAllUsers(filter, allHistory[allHistory.length - 1]);
 
   const orderedAllUsers = new SaveAllUsers().getMyUserAndMoveToStart(
     allUsers,
     user.idUser,
   );
   const idUser = user.idUser;
+
+  const doSave = async () => {
+    if (idUser !== null) {
+      const result = await admin_service.clickSave(isChanged, setIsChanged);
+      if (result === 'changed')
+      {
+        return [allHistory[allHistory.length - 1] , allHistory.length === 1]
+      }
+      return ['bad' , allHistory.length === 1]
+    }
+    return [undefined , allHistory.length === 1]
+  };
+
+  const doUndo = async () => {
+    if (idUser !== null) {
+      return await admin_service.clickUndo(
+        allHistory,
+        isChanged,
+        setAllHistory,
+        setIsChanged,
+        
+      );
+    }
+    return false
+  };
+
   return (
     <div className={classes.page}>
       <div className={classes.main}>
@@ -126,18 +148,15 @@ export default function adminPage() {
       <div className={classes.saveSuccess}>
         {isSuccess ? <Success></Success> : <div></div>}
       </div>
-      <BottomLineAdmin
-        isAbleClickUndo={isAbleClickUndo}
-        setIsAbleClickUndo={setIsAbleClickUndo}
-        idUser={idUser}
-        allHistory={allHistory}
-        isChanged={isChanged}
-        setAllHistory={setAllHistory}
-        setIsChanged={setIsChanged}
-        setIsSuccess={setIsSuccess}
-        arraysIdsToUpdate={arrayIdsToUpdate}
-        setArrayIdsToUpdate={setArrayIds}
-      />
+      <div className={classes.lastLine}>
+        <BottomLineAdmin
+          saveFunction={doSave}
+          undoFunction={doUndo}
+          arrayIdsToUpdate={arrayIdsToUpdate}
+          setArrayIds={setArrayIds}
+          setIsSuccess={setIsSuccess}
+        />
+      </div>
     </div>
   );
 }

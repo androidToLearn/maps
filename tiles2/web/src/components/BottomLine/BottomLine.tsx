@@ -1,101 +1,71 @@
 import type {
-  BottomLineDictTypes,
-  typePostAllTiles,
-  typeTileWithString,
+  typeFunctionToBeWithMutate,
+  typePropertiesTiles,
 } from "../../types/typescript";
 import { useMutation } from "@tanstack/react-query";
-import { saveAllTilesQuery } from "../../utils/queriesTiles/SaveAllTilesQuery";
 import classes from "./BottomLine.module.scss";
 import { useQueryClient } from "@tanstack/react-query";
-
-export const BottomLine = ({
-  profile,
-  setHasChanges,
-  allHistory,
-  hasChanges,
-  setAllHistory,
-  isSuccess,
-}: BottomLineDictTypes) => {
+import { useUserContext } from "../../provider/AuthContext";
+import { saveAllTilesQuery } from "../../utils/queriesTiles/SaveAllTilesQuery";
+import type { typePostAllTiles } from "../../types/typescript";
+import ButtonDoSomething from "../buttonDoSomething/ButtonDoSomething";
+export default function BottomLine({
+  saveFunction,
+  undoFunction,
+  setIsSuccess,
+}: typePropertiesTiles) {
   const queryClient = useQueryClient();
 
   const mutationSave = useMutation({
     mutationFn: async (data: typePostAllTiles) => {
       new saveAllTilesQuery().saveAllTiles(data, data);
-
       return data;
     },
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["allTiles"], // 👈 use the SAME key as your useQuery
+        queryKey: ["allTiles"],
       });
     },
-    
   });
-  const deleteAndSave = async (toSave: typeTileWithString[]) => {
-    for (const index in toSave) {
-      toSave[index]["updatedAt"] = new Date();
-    }
 
-    try {
-      mutationSave.mutate({
-        toSave: toSave,
-        isSuccess: isSuccess,
-      });
-    } catch (err) {}
-  };
+  const context = useUserContext();
+  const user = context.user;
+  if (user === null) {
+    return <></>;
+  }
 
-  const clickSave = async () => {
-    if (hasChanges) {
-      const toSave = allHistory[allHistory.length - 1];
-      await deleteAndSave(toSave);
-      setHasChanges(false);
-    }
-  };
-
-  const clickUndo = async () => {
-    if (allHistory.length > 1) {
-      if (hasChanges) {
-        allHistory.splice(allHistory.length - 1, 1);
-        setAllHistory([...allHistory]);
-        setHasChanges(false);
-      } else {
-        const toSave = allHistory[allHistory.length - 2];
-        allHistory.splice(allHistory.length - 1, 1);
-        setAllHistory([...allHistory]);
-
-        await deleteAndSave(toSave);
+  const functionWithMutate = (
+    parameterFunction: typeFunctionToBeWithMutate,
+  ) => {
+    parameterFunction().then((response) => {
+      if (typeof response === "string") {
+        return response;
       }
-    }
+      
+
+
+      if (response !== undefined) {
+        mutationSave.mutate({
+          toSave: response,
+          isSuccess: setIsSuccess,
+        });
+      }
+    });
   };
 
   return (
-    <div>
-      {profile !== "viewer" ? (
-        <div className={classes.lastLine}>
-          <button
-            className={classes.btnUndo}
-            onClick={async () => {
-              if (profile !== "viewer") {
-                await clickUndo();
-              }
-            }}
-          >
-            Undo
-          </button>{" "}
-          <button
-            className={classes.btnSave}
-            onClick={async () => {
-              if (profile !== "viewer") {
-                await clickSave();
-              }
-            }}
-          >
-            Save
-          </button>
-        </div>
-      ) : (
-        <div></div>
-      )}
+    <div className={classes.lastLine}>
+      <ButtonDoSomething
+        functionToDo={() =>
+          functionWithMutate(undoFunction)
+        }
+        textToShow={"undo"}
+      />
+
+      <ButtonDoSomething
+        functionToDo={() => functionWithMutate(saveFunction)}
+        textToShow={"save"}
+      />
     </div>
   );
-};
+}

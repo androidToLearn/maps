@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import classes from "./tilePage.module.scss";
 import { Tile_service } from "../../services/tile_service";
 import Loader from "../../components/Loader/Loader";
-import { BottomLine } from "../../components/BottomLine/BottomLine";
+import BottomLine from "../../components/BottomLine/BottomLine";
 import AllTiles from "../../components/AllTiles/AllTiles";
 import Success from "../../components/Success/Success";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -61,8 +61,7 @@ export default function TilePage() {
     }
 
     if (data !== undefined && !isLoading) {
-      if(allArichim.length === 1)
-      {
+      if (allArichim.length === 1) {
         mutationShowTiles.mutate(data);
       }
     }
@@ -80,48 +79,79 @@ export default function TilePage() {
     return <div className={classes.page}>loading...</div>;
   }
 
-  const profile = user.role;
-  return (
-    <div className={classes.page}>
-      <div>
-        {isLoading ? (
-          <Loader />
-        ) : (
-          <div>
-            <div className={classes.scroller}>
-              <div className={classes.toCenter}>
-                <AllTiles
-                  profile={user.role}
-                  hasChanges={hasChanges}
-                  allHistory={allHistory}
-                  setAllHistory={setAllHistory}
-                  setHasChanges={setHasChanges}
-                  allArichim={allArichim}
-                />
+  
+  const deleteAndSave = async (toSave: typeTileWithString[]) => {
+    for (const index in toSave) {
+      toSave[index]["updatedAt"] = new Date();
+    }
+  }
+
+
+    const clickSave = async () => {
+      if (hasChanges) {
+        const toSave = allHistory[allHistory.length - 1];
+        await deleteAndSave(toSave);
+        setHasChanges(false);
+        return toSave;
+      }
+    };
+
+    const clickUndo = async () => {
+      if (allHistory.length > 1) {
+        if (hasChanges) {
+          allHistory.splice(allHistory.length - 1, 1);
+          setAllHistory([...allHistory]);
+          setHasChanges(false);
+        } else {
+          const toSave = allHistory[allHistory.length - 2];
+          allHistory.splice(allHistory.length - 1, 1);
+          setAllHistory([...allHistory]);
+          await deleteAndSave(toSave);
+          return toSave;
+        }
+      }
+    };
+
+    const profile = user.role;
+    return (
+      <div className={classes.page}>
+        <div>
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <div>
+              <div className={classes.scroller}>
+                <div className={classes.toCenter}>
+                  <AllTiles
+                    profile={user.role}
+                    hasChanges={hasChanges}
+                    allHistory={allHistory}
+                    setAllHistory={setAllHistory}
+                    setHasChanges={setHasChanges}
+                    allArichim={allArichim}
+                  />
+                </div>
+              </div>
+              <div>
+                {profile === "admin" ||
+                profile === "moderator" ||
+                profile == "editor" ? (
+                  <BottomLine
+                    saveFunction={clickSave}
+                    undoFunction={clickUndo}
+                    setIsSuccess={setIsSuccess}
+                  />
+                ) : (
+                  <div></div>
+                )}
+              </div>
+              <div className={classes.saveSuccess}>
+                {isSuccess ? <Success></Success> : <div></div>}
               </div>
             </div>
-            <div>
-              {profile === "admin" ||
-              profile === "moderator" ||
-              profile == "editor" ? (
-                <BottomLine
-                  profile={profile}
-                  setHasChanges={setHasChanges}
-                  allHistory={allHistory}
-                  hasChanges={hasChanges}
-                  setAllHistory={setAllHistory}
-                  isSuccess={setIsSuccess}
-                />
-              ) : (
-                <div></div>
-              )}
-            </div>
-            <div className={classes.saveSuccess}>
-              {isSuccess ? <Success></Success> : <div></div>}
-            </div>
-          </div>
-        )}
+          )}
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  };
+

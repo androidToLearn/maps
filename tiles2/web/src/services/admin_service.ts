@@ -1,4 +1,4 @@
-export class Admin_Service {
+class Admin_Service {
   copyLastHistory(
     allHistory: {
       id: string;
@@ -62,12 +62,10 @@ export class Admin_Service {
 
   async clickSave(
     isChanged: boolean,
-    setIsChanged: (value: boolean) => void,
-    setIsAbleClickUndo: (value: boolean) => void,
+    setIsChanged: (value: boolean) => void
   ) {
     if (isChanged) {
       setIsChanged(false);
-      setIsAbleClickUndo(true);
       return "changed";
     }
     return "not changed";
@@ -92,29 +90,24 @@ export class Admin_Service {
       }[][],
     ) => void,
     setIsChanged: (value: boolean) => void,
-    setIsAbleClickUndo: (value: boolean) => void,
   ) {
     if (allHistory.length > 1) {
       if (!isChanged) {
         const toSave = allHistory[allHistory.length - 2];
         allHistory.splice(allHistory.length - 1, 1);
         setAllHistory([...allHistory]);
-        return toSave;
+        return [toSave , allHistory.length === 1];
       }
     } else {
       if (allHistory === undefined || allHistory[allHistory.length - 2] === undefined || allHistory[allHistory.length - 2].length === 0) {
-        return "bad";
+        return ["bad" , allHistory.length === 1];
       }
-      allHistory.splice(allHistory.length - 1, 1);
-      setIsChanged(false);
-
-      setAllHistory([...allHistory]);
     }
-
-    setIsAbleClickUndo(true);
     allHistory.splice(allHistory.length - 1, 1);
     setIsChanged(false);
-
     setAllHistory([...allHistory]);
+    return [undefined , allHistory.length === 1]
   }
 }
+
+export const admin_service = new Admin_Service()

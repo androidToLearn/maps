@@ -62,21 +62,7 @@ export type InputsSignIn = {
 export type BottomLineDictTypes = {
   profile: string;
   setHasChanges: (value: boolean) => void;
-  allHistory: {
-    color: colorsEnum | colorsEnumWithoutAdd | string;
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-  }[][];
   hasChanges: boolean;
-  setAllHistory: (
-    value: {
-      color: colorsEnum | colorsEnumWithoutAdd | string;
-      id: string;
-      createdAt: Date;
-      updatedAt: Date;
-    }[][],
-  ) => void;
   isSuccess: (value: boolean) => void;
 };
 
@@ -123,7 +109,7 @@ export type TypePostSomething =
       myId: string;
     }
   | typeTile[]
-  | typeTileWithString[];
+  | typeTileWithString[] |typeDictUser[];
 
 export type TypeContentAdminToSave = {
   toSave: TypeUsersToSave;
@@ -316,7 +302,7 @@ export type TypeAllTilesProperties = {
 };
 
 export type typeTile = {
-  color: colorsEnumWithoutAdd | colorsEnum;
+  color: colorsEnumWithoutAdd | colorsEnum | string;
   id: string;
   createdAt: Date;
   updatedAt: Date;
@@ -333,9 +319,21 @@ export type isSuccessType = {
   setIsSuccess: (value: boolean) => void;
 };
 
+export type typeFunctionToBeWithMutate = () =>  Promise<'bad' |typeDictUser[] | undefined > | Promise<typeTileWithString[]| undefined>
+  
+
+
+export type typePropertiesBottomLineAdmin = {
+  saveFunction: () => Promise<['bad' | typeDictUser[] | undefined , boolean]> | any;
+  undoFunction: () => Promise<['bad' | typeDictUser[] | undefined ,boolean]> | any;
+  arrayIdsToUpdate: string[];
+  setArrayIds: (value: string[]) => void;
+  setIsSuccess: (value: boolean) => void;
+};
+
 export type TypeInsideMutationSave = {
   setIsSuccess: (value: boolean) => void;
-  toSave: TypeUsersToSave;
+  toSave: TypeUsersToSave |typeTileWithString[];
   arrayIdsToUpdate: string[] | undefined;
   idUser: string;
   setArrayIdsToUpdate: (value: string[]) => void;
@@ -378,11 +376,10 @@ export type typeSignIn = {
 };
 
 export type UserInServer = {
-  name : string;
-  role : string;
-  _id : string;
-  
-}
+  name: string;
+  role: string;
+  _id: string;
+};
 
 export type typeUserMutation = {
   data: typedata;
@@ -455,7 +452,6 @@ export type typeAllPropertiesToShowUsers = {
       role: string;
     }[][],
   ) => void;
-  setIsAbleClickUndo: (value: boolean) => void;
 };
 
 export type typePRopertiesOneUserFromServer = {
@@ -470,8 +466,14 @@ export type typeISuccessDict = {
   isSuccess: (value: boolean) => void;
 };
 
+export type typePropertiesTiles = {
+  saveFunction : ()=> Promise<typeTileWithString[] | typeTile[] | undefined>
+  undoFunction: ()=> Promise<typeTileWithString[] | typeTile[] | undefined>
+  setIsSuccess: (value : boolean)=> void
+}
+
 export type typePostAllTiles = {
-  toSave: TypePostSomething | typeTileWithString[];
+  toSave: TypePostSomething | typeTileWithString[] | typeDictUser[];
   isSuccess: (value: boolean) => void;
 };
 

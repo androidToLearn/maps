@@ -6,7 +6,6 @@ export class AllUsersQuery {
 
     const allHistory = dictValues["allHistory"];
         const setAllHistory = dictValues["setAllHistory"];
-        const setIsAbleClickUndo = dictValues["setIsAbleClickUndo"];
         allHistory.splice(allHistory.length - 1, 1);
         const arrayAllUsers = [];
         for (const oneUser in data) {
@@ -22,7 +21,6 @@ export class AllUsersQuery {
 
         allHistory.push(arrayAllUsers);
         setAllHistory([...allHistory]);
-        setIsAbleClickUndo(true);
   }
 
   async allUsersFetch() {
