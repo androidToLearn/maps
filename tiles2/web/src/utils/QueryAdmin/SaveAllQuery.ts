@@ -1,6 +1,7 @@
 import type {
   typeDictUser,
   TypeInsideMutationSave,
+  typeTileWithString,
 } from "../../types/typescript";
 import type { TypeUsersToSave } from "../../types/typescript";
 import { fetchInstanceWithToken } from "../../instance/Instance";
@@ -20,7 +21,7 @@ export class SaveAllUsers {
   }
 
   getUsersToSave(
-    toSave: TypeUsersToSave,
+    toSave: TypeUsersToSave | typeTileWithString[],
     arrayIdsToUpdate: string[] | undefined,
     setArrayIdsToUpdate : (value : string[]) => void
   ) {

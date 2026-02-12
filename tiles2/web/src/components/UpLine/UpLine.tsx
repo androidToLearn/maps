@@ -6,11 +6,16 @@ import { useAuth } from "../../provider/useAuth";
 export default function UpLine() {
   const navigator = useNavigate();
 
-  const { user, setUser } = useUserContext();
-  const { addUser, logout } = useAuth();
+  const { addUser, logout , getUser } = useAuth();
+  const {setUser} = useUserContext()
+  const user = getUser()
   if (user === null) {
     navigator("/signIn");
     return <>error2</>;
+  }
+  if(user === undefined)
+  {
+    return <>error</>
   }
   const name = user.name;
   const profile = user.role;

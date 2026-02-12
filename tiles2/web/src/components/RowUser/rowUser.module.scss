@@ -5,10 +5,10 @@
   flex-direction: row;
   justify-content: start;
   align-items: center;
-  gap: 1vw;
   font-size: 1vw;
   border-radius: 0.5vw;
   background-color: rgba(73, 90, 134, 0.733);
+  position: relative;
 }
 
 .titleUser {
@@ -17,6 +17,9 @@
   text-align: center;
   width: 15vw;
   font-size: 2vw;
+  margin-left: 10rem;
+  position: absolute;
+  left: -7rem;
 }
 
 .titleGmail {
@@ -26,6 +29,8 @@
   width: fit-content;
   width: 20vw;
   font-size: 2vw;
+  position: absolute;
+  left: 35%;
 }
 
 .divSelector {
@@ -49,6 +54,8 @@ select option {
   justify-content: center;
   cursor: pointer;
   font-size: 2vw;
+  position: absolute;
+  left: 75%;
 }
 
 .myTitleRole {
@@ -60,4 +67,6 @@ select option {
   padding-right: 0.6vw;
   margin-right: 1.6vw;
   margin-left: 4.5vw;
+  left: 75%;
+  position: absolute;
 }

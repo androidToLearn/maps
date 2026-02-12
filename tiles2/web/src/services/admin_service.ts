@@ -96,17 +96,16 @@ class Admin_Service {
         const toSave = allHistory[allHistory.length - 2];
         allHistory.splice(allHistory.length - 1, 1);
         setAllHistory([...allHistory]);
-        return [toSave , allHistory.length === 1];
+        return toSave ;
       }
     } else {
       if (allHistory === undefined || allHistory[allHistory.length - 2] === undefined || allHistory[allHistory.length - 2].length === 0) {
-        return ["bad" , allHistory.length === 1];
+        return "bad";
       }
     }
     allHistory.splice(allHistory.length - 1, 1);
     setIsChanged(false);
     setAllHistory([...allHistory]);
-    return [undefined , allHistory.length === 1]
   }
 }
 

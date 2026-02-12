@@ -24,7 +24,6 @@ export default function ProtectedTiles({ children }: any) {
     return <Loader />;
   }
 
-  console.log('return children')
   return children;
 }
 

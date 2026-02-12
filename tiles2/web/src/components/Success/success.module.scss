@@ -12,6 +12,7 @@
     position: absolute;
     top: -10vh;
     animation: identifier 0.2s linear;
+    z-index: 30000;
 }
 
 @keyframes identifier {

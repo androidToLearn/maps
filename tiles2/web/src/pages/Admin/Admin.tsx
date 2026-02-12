@@ -87,12 +87,10 @@ export default function adminPage() {
       const result = await admin_service.clickSave(isChanged, setIsChanged);
       if (result === 'changed')
       {
-        return [allHistory[allHistory.length - 1] , allHistory.length === 1]
+        return allHistory[allHistory.length - 1]
       }
-      return ['bad' , allHistory.length === 1]
-    }
-    return [undefined , allHistory.length === 1]
   };
+}
 
   const doUndo = async () => {
     if (idUser !== null) {
@@ -160,3 +158,4 @@ export default function adminPage() {
     </div>
   );
 }
+
