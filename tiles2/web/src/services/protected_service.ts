@@ -4,7 +4,7 @@ export async function getId() {
     const response = await fetchInstanceWithToken().get("/login/protected");
     return response["id"];
   } catch (err) {
-    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     return { message: "bad" };
   }
 }

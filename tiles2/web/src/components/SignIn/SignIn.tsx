@@ -21,8 +21,6 @@ export default function SignIn() {
   });
   const { user, setUser } = useUserContext();
 
-
-
   useEffect(() => {
     if (message !== "") {
       setTimeout(() => {
@@ -32,6 +30,7 @@ export default function SignIn() {
   }, [message]);
 
   const navigate = useNavigate();
+
 
   const mutationSignIn = useMutation({
     mutationFn: async (data: typeSignIn) => {

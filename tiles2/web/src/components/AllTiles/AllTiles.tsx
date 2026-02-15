@@ -8,11 +8,11 @@ import type {
 import { getTypeColorsWithStartColorWithOutAdd } from "../../utils/ColorsServoce";
 import classes from "./allTiles.module.scss";
 import { colorsEnumWithoutAdd } from "../../services/Enum";
-import { objectTiles } from "../../pages/TilePage/TilePage";
+import { Tile_service } from "../../services/tile_service"; 
+import { useUserContext } from "../../provider/AuthContext";
 
 export default function AllTiles({
   profile,
-  allArichim,
   hasChanges,
   setHasChanges,
 }: TypeAllTilesProperties) {
@@ -22,6 +22,18 @@ export default function AllTiles({
     setIsOpenedColor(true);
   };
 
+  const {allHistory , setAllHistory} = useUserContext()
+  if(allHistory === null)
+  {
+    return <>error allHistory</>
+  }
+  const allArichim = !hasChanges
+      ? new Tile_service().getCopyLastAllHistory(allHistory)
+      : allHistory[allHistory.length - 1];
+  if(allArichim === undefined)
+  {
+    return <>error all tiles</>
+  }
   const clickColor = (color: colorsEnumWithoutAdd) => {
     const lastIsAdd = allArichim[allArichim.length - 1];
     allArichim.splice(allArichim.length - 1, 1);
@@ -39,29 +51,13 @@ export default function AllTiles({
     setIsOpenedColor(false);
 
     if (!hasChanges) {
-      if (
-        objectTiles === null ||
-        objectTiles["allHistory"] === null ||
-        objectTiles["setHistory"] === null
-      ) {
-        return
-      }
-      const allHistory =  objectTiles["allHistory"]
-      const setAllHistory = objectTiles['setHistory']
+      
       allHistory.push(allArichim);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
       setHasChanges(true);
     } else {
-      if (
-        objectTiles === null ||
-        objectTiles["allHistory"] === null ||
-        objectTiles["setHistory"] === null
-      ) {
-        return
-      }
-      const allHistory =  objectTiles["allHistory"]
-      const setAllHistory = objectTiles['setHistory']
+      
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
     }

@@ -2,7 +2,7 @@ import { getTypeColors, getTypeColorsWithStartColor } from "../../utils/ColorsSe
 import type { TypeOneTileDict } from "../../types/typescript";
 import classes from './oneTile.module.scss'
 import { colorsEnum } from "../../services/Enum";
-import { objectTiles } from "../../pages/TilePage/TilePage";
+import { useUserContext } from "../../provider/AuthContext";
 export default function OneTile({
   hasChanges,
   allArichim,
@@ -11,33 +11,21 @@ export default function OneTile({
   index,
   color,
 }: TypeOneTileDict) {
+
+  const {allHistory , setAllHistory} = useUserContext()
+  if(allHistory === null)
+  {
+    return <>error all history</>
+  }
   const tileColor = color;
   const clickBin = (i: number) => {
     if (!hasChanges) {
-      if (
-        objectTiles === null ||
-        objectTiles["allHistory"] === null ||
-        objectTiles["setHistory"] === null
-      ) {
-        return
-      }
-      const allHistory =  objectTiles["allHistory"]
-      const setAllHistory = objectTiles['setHistory']
       allArichim.splice(i, 1);
       allHistory.push(allArichim);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
       setHasChanges(true);
     } else {
-      if (
-        objectTiles === null ||
-        objectTiles["allHistory"] === null ||
-        objectTiles["setHistory"] === null
-      ) {
-        return
-      }
-      const allHistory =  objectTiles["allHistory"]
-      const setAllHistory = objectTiles['setHistory']
       allArichim.splice(i, 1);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
@@ -48,29 +36,13 @@ export default function OneTile({
     allArichim[i]["color"] = color;
 
     if (!hasChanges) {
-      if (
-        objectTiles === null ||
-        objectTiles["allHistory"] === null ||
-        objectTiles["setHistory"] === null
-      ) {
-        return
-      }
-      const allHistory =  objectTiles["allHistory"]
-      const setAllHistory = objectTiles['setHistory']
+      
       allHistory.push(allArichim);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
       setHasChanges(true);
     } else {
-      if (
-        objectTiles === null ||
-        objectTiles["allHistory"] === null ||
-        objectTiles["setHistory"] === null
-      ) {
-        return
-      }
-      const allHistory =  objectTiles["allHistory"]
-      const setAllHistory = objectTiles['setHistory']
+      
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
     }

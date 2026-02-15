@@ -1,6 +1,7 @@
-import type { typeTileWithString } from "../types/typescript";
+import type { allHistoryType } from "../types/typescript";
 export class Tile_service {
-  getCopyLastAllHistory(allHistory: typeTileWithString[][]) {
+  getCopyLastAllHistory(allHistory: allHistoryType | null) {
+    if(allHistory === null)return 
     const lastAllHistory = allHistory[allHistory.length - 1];
     const newAllArichim = [];
     for (const index in lastAllHistory) {

@@ -207,6 +207,8 @@ export type TypeOneTileDict = {
   color: colorsEnum | colorsEnumWithoutAdd | string;
 };
 
+export type typeDataToken = { message: string, id: string , role : string , name : string}
+
 export type filterType = {
   dict: filterDictType;
 };
@@ -223,23 +225,25 @@ export type TypeAllTilesComponent = {
 export type TypeAllTilesDict = {
   profile: string;
   allArichim: {
-    color: colorsEnum | colorsEnumWithoutAdd;
+    color: colorsEnum | colorsEnumWithoutAdd | string;
     id: string;
     createdAt: Date;
     updatedAt: Date;
   }[];
   hasChanges: boolean;
-  allHistory: {
-    color: string;
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-  }[][];
+  allHistory: allHistoryType;
   setAllHistory: (
-    value: { color: string; id: string; createdAt: Date; updatedAt: Date }[][],
+    value: allHistoryType,
   ) => void;
   setHasChanges: (value: boolean) => void;
 };
+
+export type allHistoryType = {
+    color: string | colorsEnum | colorsEnumWithoutAdd;
+    id: string;
+    createdAt: Date;
+    updatedAt: Date;
+  }[][]
 
 export type TypeRowUser = {
   allUsers: TypeUsersToSave;
@@ -279,12 +283,6 @@ export type TypeAllTilesProperties = {
   profile: string;
   hasChanges: boolean;
   setHasChanges: (value: boolean) => void;
-  allArichim: {
-    color: colorsEnumWithoutAdd | colorsEnum | string;
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-  }[];
 };
 
 export type typeTile = {
@@ -299,7 +297,7 @@ export type typeTileWithString = {
   id: string;
   createdAt: Date;
   updatedAt: Date;
-};
+ } ;
 
 export type isSuccessType = {
   setIsSuccess: (value: boolean) => void;
@@ -417,8 +415,8 @@ export type typeDictForChangesAllTilesWithString = {
 };
 
 export type typeDictForChangesAllTiles = {
-  allHistory: typeTileWithString[][];
-  setAllHistory: (value: typeTileWithString[][]) => void;
+  allHistory: allHistoryType | null;
+  setAllHistory: (value: allHistoryType | null) => void;
 };
 
 export type typeAllPropertiesToShowUsers = {
