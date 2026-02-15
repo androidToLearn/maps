@@ -1,17 +1,19 @@
 import { useState } from "react";
 import OneTile from "../OneTile/OneTile";
 import { arrayColorsEnum } from "../../services/Enum";
-import type { TypeAllTilesProperties, typeTileWithString } from "../../types/typescript";
-import {  getTypeColorsWithStartColorWithOutAdd } from "../../utils/ColorsServoce";
-import classes from './allTiles.module.scss'
+import type {
+  TypeAllTilesProperties,
+  typeTileWithString,
+} from "../../types/typescript";
+import { getTypeColorsWithStartColorWithOutAdd } from "../../utils/ColorsServoce";
+import classes from "./allTiles.module.scss";
 import { colorsEnumWithoutAdd } from "../../services/Enum";
+import { objectTiles } from "../../pages/TilePage/TilePage";
 
 export default function AllTiles({
   profile,
   allArichim,
   hasChanges,
-  allHistory,
-  setAllHistory,
   setHasChanges,
 }: TypeAllTilesProperties) {
   const [isColorsOpened, setIsOpenedColor] = useState<boolean>(false);
@@ -37,11 +39,29 @@ export default function AllTiles({
     setIsOpenedColor(false);
 
     if (!hasChanges) {
+      if (
+        objectTiles === null ||
+        objectTiles["allHistory"] === null ||
+        objectTiles["setHistory"] === null
+      ) {
+        return
+      }
+      const allHistory =  objectTiles["allHistory"]
+      const setAllHistory = objectTiles['setHistory']
       allHistory.push(allArichim);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
       setHasChanges(true);
     } else {
+      if (
+        objectTiles === null ||
+        objectTiles["allHistory"] === null ||
+        objectTiles["setHistory"] === null
+      ) {
+        return
+      }
+      const allHistory =  objectTiles["allHistory"]
+      const setAllHistory = objectTiles['setHistory']
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
     }
@@ -63,13 +83,15 @@ export default function AllTiles({
                             return (
                               <div
                                 key={indexColor}
-                                className={getTypeColorsWithStartColorWithOutAdd(color)}
+                                className={getTypeColorsWithStartColorWithOutAdd(
+                                  color,
+                                )}
                                 onClick={() => {
                                   if (
                                     profile === "admin" ||
                                     profile === "moderator"
                                   ) {
-                                    console.log('inside')
+                                    console.log("inside");
                                     clickColor(color);
                                   }
                                 }}
@@ -98,8 +120,6 @@ export default function AllTiles({
               <OneTile
                 hasChanges={hasChanges}
                 allArichim={allArichim}
-                allHistory={allHistory}
-                setAllHistory={setAllHistory}
                 setHasChanges={setHasChanges}
                 profile={profile}
                 index={i}

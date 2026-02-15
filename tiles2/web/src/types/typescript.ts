@@ -201,20 +201,6 @@ export type TypeOneTileDict = {
     createdAt: Date;
     updatedAt: Date;
   }[];
-  allHistory: {
-    color: colorsEnum | colorsEnumWithoutAdd | string;
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-  }[][];
-  setAllHistory: (
-    value: {
-      color: colorsEnum | colorsEnumWithoutAdd | string;
-      id: string;
-      createdAt: Date;
-      updatedAt: Date;
-    }[][],
-  ) => void;
   setHasChanges: (value: boolean) => void;
   profile: string;
   index: number;
@@ -275,23 +261,23 @@ export type TypeUpLineDict = {
   isInAdmin: boolean;
 };
 
-export type TypeAllTilesProperties = {
-  profile: string;
-  hasChanges: boolean;
-  allHistory: {
-    color: colorsEnumWithoutAdd | colorsEnum | string;
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-  }[][];
-  setAllHistory: (
-    value: {
+export type typeKeeperHistory = {
+  setHistory : ((value: {
       color: colorsEnum | colorsEnumWithoutAdd | string;
       id: string;
       createdAt: Date;
       updatedAt: Date;
-    }[][],
-  ) => void;
+    }[][] ) => void) | null , 
+     allHistory : {
+      color: colorsEnum | colorsEnumWithoutAdd | string;
+      id: string;
+      createdAt: Date;
+      updatedAt: Date;
+    }[][] | null
+}
+export type TypeAllTilesProperties = {
+  profile: string;
+  hasChanges: boolean;
   setHasChanges: (value: boolean) => void;
   allArichim: {
     color: colorsEnumWithoutAdd | colorsEnum | string;

@@ -11,6 +11,10 @@ import { colorsEnum, type colorsEnumWithoutAdd } from "../../services/Enum";
 import { useUserContext } from "../../provider/AuthContext";
 import type { typeTileWithString } from "../../types/typescript";
 import { useNavigate } from "react-router-dom";
+import type { typeKeeperHistory } from "../../types/typescript";
+
+
+export const objectTiles : typeKeeperHistory = {'setHistory' : null , 'allHistory' : null}
 
 export default function TilePage() {
   const [allHistory, setAllHistory] = useState<
@@ -114,6 +118,10 @@ export default function TilePage() {
     }
   };
 
+  objectTiles['setHistory'] = setAllHistory
+  objectTiles['allHistory'] = allHistory
+
+
   const profile = user.role;
   return (
     <div className={classes.page}>
@@ -127,8 +135,6 @@ export default function TilePage() {
                 <AllTiles
                   profile={user.role}
                   hasChanges={hasChanges}
-                  allHistory={allHistory}
-                  setAllHistory={setAllHistory}
                   setHasChanges={setHasChanges}
                   allArichim={allArichim}
                 />

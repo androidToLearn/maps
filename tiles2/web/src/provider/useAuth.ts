@@ -1,5 +1,5 @@
-import { useUserContext } from "./AuthContext";
 import type { User } from "../types/typescript";
+import { useUserContext } from "./AuthContext";
 
 export const useAuth = () => {
   const addUser = (
@@ -10,33 +10,20 @@ export const useAuth = () => {
 
     if (user !== null) {
       localStorage.setItem("user", user.token);
-      localStorage.setItem("isInAdmin", JSON.stringify(user.isInAdmin));
     }
   };
 
   const logout = (setUser: (value: User | null) => void) => {
     setUser(null);
     localStorage.removeItem("user");
-    localStorage.removeItem("isInAdmin");
   };
 
   const getUser = () => {
-    const userInLocal = localStorage.getItem("user");
-    const isInAdmin = localStorage.getItem("isInAdmin");
-    const constext = useUserContext();
-    const { user, setUser } = constext;
-    if (user !== null) {
-      if (userInLocal !== null ) {
-        user.token = userInLocal
-      }
-      if(isInAdmin !== null && JSON.parse(isInAdmin) !== null)
-      {
-        user.isInAdmin = JSON.parse(isInAdmin)
-      }
-      setUser(user)
+     const {user} = useUserContext()
+     if (user !== null)
+     {
       return user
-    }
-    return undefined
+     }
   };
 
   return { addUser, logout, getUser };

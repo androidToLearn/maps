@@ -4,11 +4,14 @@ import { useUserContext } from "../../provider/AuthContext";
 import { useAuth } from "../../provider/useAuth";
 
 export default function UpLine() {
+  
+  const isInAdminPage = window.location.href === (import.meta.env.VITE_BASE_URL_FRONTEND + 'adminPage' )
   const navigator = useNavigate();
 
   const { addUser, logout , getUser } = useAuth();
   const {setUser} = useUserContext()
   const user = getUser()
+
   if (user === null) {
     navigator("/signIn");
     return <>error2</>;
@@ -37,7 +40,7 @@ export default function UpLine() {
         </div>
       </div>
       <div>
-        {user.isInAdmin ? (
+        {isInAdminPage? (
           <div className={classes.boxInUpLine}>
             <div className={classes.upButtons}>
               <img src="public/users.png" className={classes.tiles} />

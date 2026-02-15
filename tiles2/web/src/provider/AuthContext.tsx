@@ -2,7 +2,6 @@ import { createContext, useContext } from "react";
 import type { User } from "../types/typescript";
 import { useState } from "react";
 import { fetchInstanceWithToken } from "../instance/Instance";
-import type { UserInServer } from "../types/typescript";
 
 export type AuthContextType = {
   user: User | null;
@@ -26,17 +25,22 @@ export const UserProvider = ({ children }: any) => {
       token: userInLocalStorage,
       isInAdmin: false,
     });
+    try{
     fetchInstanceWithToken()
-      .get("/users/userById")
-      .then((data: UserInServer) => {
+      .get("/login/protected")
+      .then((data) => {
         setUser({
           name: data["name"],
           role: data["role"],
-          idUser: data["_id"],
+          idUser: data["id"],
           token: userInLocalStorage,
           isInAdmin: false,
         });
       });
+    }
+    catch(err)
+    {
+    }
   }
   return (
     <AuthContext.Provider value={{ user, setUser }}>

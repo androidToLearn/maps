@@ -2,11 +2,10 @@ import { getTypeColors, getTypeColorsWithStartColor } from "../../utils/ColorsSe
 import type { TypeOneTileDict } from "../../types/typescript";
 import classes from './oneTile.module.scss'
 import { colorsEnum } from "../../services/Enum";
+import { objectTiles } from "../../pages/TilePage/TilePage";
 export default function OneTile({
   hasChanges,
   allArichim,
-  allHistory,
-  setAllHistory,
   setHasChanges,
   profile,
   index,
@@ -15,12 +14,30 @@ export default function OneTile({
   const tileColor = color;
   const clickBin = (i: number) => {
     if (!hasChanges) {
+      if (
+        objectTiles === null ||
+        objectTiles["allHistory"] === null ||
+        objectTiles["setHistory"] === null
+      ) {
+        return
+      }
+      const allHistory =  objectTiles["allHistory"]
+      const setAllHistory = objectTiles['setHistory']
       allArichim.splice(i, 1);
       allHistory.push(allArichim);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
       setHasChanges(true);
     } else {
+      if (
+        objectTiles === null ||
+        objectTiles["allHistory"] === null ||
+        objectTiles["setHistory"] === null
+      ) {
+        return
+      }
+      const allHistory =  objectTiles["allHistory"]
+      const setAllHistory = objectTiles['setHistory']
       allArichim.splice(i, 1);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
@@ -31,11 +48,29 @@ export default function OneTile({
     allArichim[i]["color"] = color;
 
     if (!hasChanges) {
+      if (
+        objectTiles === null ||
+        objectTiles["allHistory"] === null ||
+        objectTiles["setHistory"] === null
+      ) {
+        return
+      }
+      const allHistory =  objectTiles["allHistory"]
+      const setAllHistory = objectTiles['setHistory']
       allHistory.push(allArichim);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
       setHasChanges(true);
     } else {
+      if (
+        objectTiles === null ||
+        objectTiles["allHistory"] === null ||
+        objectTiles["setHistory"] === null
+      ) {
+        return
+      }
+      const allHistory =  objectTiles["allHistory"]
+      const setAllHistory = objectTiles['setHistory']
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
     }
@@ -79,7 +114,6 @@ export default function OneTile({
                                   profile === "moderator" ||
                                   profile === "editor"
                                 ) {
-                                  console.log('insideinsdie')
                                   changeColorIndex(color, index);
                                 }
                               }}
