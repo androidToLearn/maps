@@ -99,17 +99,21 @@ export type TypePostSomething =
           }[];
     }
   | {
-      users: ({
-        id: string;
-        name: string;
-        email: string;
-        password: string;
-        role: string;
-      }| typeTileWithString)[];
+      users: (
+        | {
+            id: string;
+            name: string;
+            email: string;
+            password: string;
+            role: string;
+          }
+        | typeTileWithString
+      )[];
       myId: string;
     }
   | typeTile[]
-  | typeTileWithString[] |typeDictUser[]  ;
+  | typeTileWithString[]
+  | typeDictUser[];
 
 export type TypeContentAdminToSave = {
   toSave: TypeUsersToSave;
@@ -207,7 +211,12 @@ export type TypeOneTileDict = {
   color: colorsEnum | colorsEnumWithoutAdd | string;
 };
 
-export type typeDataToken = { message: string, id: string , role : string , name : string}
+export type typeDataToken = {
+  message: string;
+  id: string;
+  role: string;
+  name: string;
+};
 
 export type filterType = {
   dict: filterDictType;
@@ -232,18 +241,16 @@ export type TypeAllTilesDict = {
   }[];
   hasChanges: boolean;
   allHistory: allHistoryType;
-  setAllHistory: (
-    value: allHistoryType,
-  ) => void;
+  setAllHistory: (value: allHistoryType) => void;
   setHasChanges: (value: boolean) => void;
 };
 
 export type allHistoryType = {
-    color: string | colorsEnum | colorsEnumWithoutAdd;
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-  }[][]
+  color: string | colorsEnum | colorsEnumWithoutAdd;
+  id: string;
+  createdAt: Date;
+  updatedAt: Date;
+}[][];
 
 export type TypeRowUser = {
   allUsers: TypeUsersToSave;
@@ -266,19 +273,25 @@ export type TypeUpLineDict = {
 };
 
 export type typeKeeperHistory = {
-  setHistory : ((value: {
-      color: colorsEnum | colorsEnumWithoutAdd | string;
-      id: string;
-      createdAt: Date;
-      updatedAt: Date;
-    }[][] ) => void) | null , 
-     allHistory : {
-      color: colorsEnum | colorsEnumWithoutAdd | string;
-      id: string;
-      createdAt: Date;
-      updatedAt: Date;
-    }[][] | null
-}
+  setHistory:
+    | ((
+        value: {
+          color: colorsEnum | colorsEnumWithoutAdd | string;
+          id: string;
+          createdAt: Date;
+          updatedAt: Date;
+        }[][],
+      ) => void)
+    | null;
+  allHistory:
+    | {
+        color: colorsEnum | colorsEnumWithoutAdd | string;
+        id: string;
+        createdAt: Date;
+        updatedAt: Date;
+      }[][]
+    | null;
+};
 export type TypeAllTilesProperties = {
   profile: string;
   hasChanges: boolean;
@@ -297,19 +310,23 @@ export type typeTileWithString = {
   id: string;
   createdAt: Date;
   updatedAt: Date;
- } ;
+};
 
 export type isSuccessType = {
   setIsSuccess: (value: boolean) => void;
 };
 
-export type typeFunctionToBeWithMutate = () =>  Promise<'bad' |typeDictUser[] | undefined > | Promise<typeTileWithString[]| undefined>
-  
-
+export type typeFunctionToBeWithMutate = () =>
+  | Promise<"bad" | typeDictUser[] | undefined>
+  | Promise<typeTileWithString[] | undefined>;
 
 export type typePropertiesBottomLineAdmin = {
-  saveFunction: () => Promise<['bad' | typeDictUser[] | undefined , boolean]> | any;
-  undoFunction: () => Promise<['bad' | typeDictUser[] | undefined ,boolean]> | any;
+  saveFunction: () =>
+    | Promise<["bad" | typeDictUser[] | undefined, boolean]>
+    | any;
+  undoFunction: () =>
+    | Promise<["bad" | typeDictUser[] | undefined, boolean]>
+    | any;
   arrayIdsToUpdate: string[];
   setArrayIds: (value: string[]) => void;
   setIsSuccess: (value: boolean) => void;
@@ -317,7 +334,7 @@ export type typePropertiesBottomLineAdmin = {
 
 export type TypeInsideMutationSave = {
   setIsSuccess: (value: boolean) => void;
-  toSave: TypeUsersToSave |typeTileWithString[];
+  toSave: TypeUsersToSave | typeTileWithString[];
   arrayIdsToUpdate: string[] | undefined;
   idUser: string;
   setArrayIdsToUpdate: (value: string[]) => void;
@@ -451,10 +468,10 @@ export type typeISuccessDict = {
 };
 
 export type typePropertiesTiles = {
-  saveFunction : ()=> Promise<typeTileWithString[] | typeTile[] | undefined>
-  undoFunction: ()=> Promise<typeTileWithString[] | typeTile[] | undefined>
-  setIsSuccess: (value : boolean)=> void
-}
+  saveFunction: () => Promise<typeTileWithString[] | typeTile[] | undefined>;
+  undoFunction: () => Promise<typeTileWithString[] | typeTile[] | undefined>;
+  setIsSuccess: (value: boolean) => void;
+};
 
 export type typePostAllTiles = {
   toSave: TypePostSomething | typeTileWithString[] | typeDictUser[];
@@ -487,6 +504,8 @@ export type dictMessageAndAccessToken = {
   idUser: string;
   name: string;
 };
+
+export type valueSetUser = (value: User | null) => void;
 
 export type typeEnum =
   | colorsEnum.color1

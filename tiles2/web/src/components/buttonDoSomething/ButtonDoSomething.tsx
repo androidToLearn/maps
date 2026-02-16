@@ -1,4 +1,4 @@
-import classes from "./buttonDoSomething.module.scss";
+import classes from './buttonDoSAomething.module.scss';
 import { useState } from "react";
 
 export default function ButtonDoSomething({

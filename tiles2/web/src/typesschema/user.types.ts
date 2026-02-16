@@ -3,9 +3,9 @@ import { z } from "zod";
 export const usersSchema = z.object({
     name : z.string() ,
     email : z.string() ,
-    age : z.number()
+    role : z.string() ,
+    _id : z.string()
 });
 
-const usersSchemaArray = z.array(z.object(usersSchema))
+export const usersSchemaArray = z.array(usersSchema)
 
-export type usersSchemaArray = z.infer<typeof usersSchemaArray>

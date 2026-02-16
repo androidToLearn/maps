@@ -8,14 +8,16 @@ export default function ProtectedAdmin({ children }: any) {
   const [isLoad, setIsLoad] = useState(true);
   const { user } = useUserContext();
   if (user === null) {
-    navigator("/signIn");
     return <></>;
   }
   if (user.role === "admin" && isLoad) {
     setIsLoad(false);
-  } 
-  else{
-    navigator('/signIn')
+  } else {
+    try {
+      if (user.role !== "admin") {
+        //navigator("/signIn");
+      }
+    } catch (err) {}
   }
 
   return isLoad ? <Loader /> : children;

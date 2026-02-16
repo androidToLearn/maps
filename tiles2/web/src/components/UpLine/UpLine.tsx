@@ -13,7 +13,6 @@ export default function UpLine() {
   const user = getUser()
 
   if (user === null) {
-    navigator("/signIn");
     return <>error2</>;
   }
   if(user === undefined)

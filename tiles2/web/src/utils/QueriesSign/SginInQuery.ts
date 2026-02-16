@@ -14,18 +14,28 @@ export class SignInQuery {
   }
 
   doNavigate(data: dictMessageAndAccessToken, dictValues: typeSignInDict) {
+    console.log('datadata' , data)
     const setUser = dictValues["setUser"];
-    const {addUser} = useAuth()
+    const { addUser } = useAuth();
     if (data["message"] == "bad email or password") {
       dictValues["setMessage"](data["message"]);
     } else {
       if (data["accessToken"] === undefined) {
         return "home";
       }
-        addUser({ name: data['name'], role: data['role'], idUser:  data['idUser'], token: data["accessToken"], isInAdmin: false } , setUser);
-      }
-
-      return data;
+      console.log("addUser", data);
+      addUser(
+        {
+          name: data["name"],
+          role: data["role"],
+          idUser: data["idUser"],
+          token: data["accessToken"],
+          isInAdmin: false,
+        },
+        setUser,
+      );
     }
-  
+
+    return data;
+  }
 }

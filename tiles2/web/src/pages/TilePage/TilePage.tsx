@@ -9,25 +9,28 @@ import { AllTilesQuery } from "../../utils/queriesTiles/AllTilesQuery";
 import { useUserContext } from "../../provider/AuthContext";
 import type { typeTileWithString } from "../../types/typescript";
 import { useNavigate } from "react-router-dom";
-
-
+import { useAuth } from "../../provider/useAuth";
 
 export default function TilePage() {
-
   const [hasChanges, setHasChanges] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
-  const { user } = useUserContext();
+  const { user  , setUser} = useUserContext();
+  const {logout} = useAuth()
   const navigate = useNavigate();
   const { isLoading, data } = useQuery({
     queryKey: ["allTiles"],
     queryFn: async () => {
-      return await new AllTilesQuery().allTilesFetch();
+      const result = await new AllTilesQuery().allTilesFetch(setUser , logout);
+      if(result === 'bad')
+      {
+        navigate('/signIn')
+      }
+      return result
     },
   });
-
-  const {allHistory , setAllHistory} = useUserContext()
-  
+  console.log("datatiles", data);
+  const { allHistory, setAllHistory } = useUserContext();
 
   const dictValuesAllTiles = {
     allHistory: allHistory,
@@ -40,12 +43,9 @@ export default function TilePage() {
       return data;
     },
   });
-  if(allHistory === null)
-  {
-    return <>error allHistory</>
+  if (allHistory === null) {
+    return <>error allHistory</>;
   }
-
-  
 
   useEffect(() => {
     if (data !== undefined && !isLoading && !isSuccess) {
@@ -53,11 +53,11 @@ export default function TilePage() {
     }
   }, [isLoading, data]);
 
-  useEffect(()=>{
-    setTimeout(()=>{
-      setIsSuccess(false)
-    } , 2000)
-  } , [isSuccess])
+  useEffect(() => {
+    setTimeout(() => {
+      setIsSuccess(false);
+    }, 2000);
+  }, [isSuccess]);
 
   if (user === undefined || user === null) {
     return <></>;
@@ -100,8 +100,6 @@ export default function TilePage() {
       }
     }
   };
-
-
 
   const profile = user.role;
   return (

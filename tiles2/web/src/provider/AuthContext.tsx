@@ -5,21 +5,20 @@ import { fetchInstanceWithToken } from "../instance/Instance";
 import { useQuery } from "@tanstack/react-query";
 import type { allHistoryType } from "../types/typescript";
 import { colorsEnum } from "../services/Enum";
+import { tokenSchema } from "../typesschema/token.types";
 
 export type AuthContextType = {
   user: User | null;
   setUser: (user: User | null) => void;
-  allHistory : allHistoryType | null;
-  setAllHistory : (
-      value: allHistoryType | null,
-    ) => void ;
+  allHistory: allHistoryType | null;
+  setAllHistory: (value: allHistoryType | null) => void;
 };
 
 export const AuthContext = createContext<AuthContextType | null>(null);
 
 export const UserProvider = ({ children }: any) => {
   const [user, setUser] = useState<User | null>(null);
-  const [allHistory , setAllHistory] = useState<allHistoryType |  null>([
+  const [allHistory, setAllHistory] = useState<allHistoryType | null>([
     [
       {
         color: colorsEnum.color1,
@@ -28,7 +27,7 @@ export const UserProvider = ({ children }: any) => {
         updatedAt: new Date(),
       },
     ],
-  ])
+  ]);
   const insertDataToUser = (
     data: typeDataToken,
     user: User | null,
@@ -55,16 +54,17 @@ export const UserProvider = ({ children }: any) => {
       return await fetchInstanceWithToken().get("/login/protected");
     },
   });
-
   useEffect(() => {
     if (data !== undefined) {
-      console.log(data);
+      const result = tokenSchema.safeParse(data);
+      if (result.success) {
       insertDataToUser(data, user, setUser);
+      }
     }
   }, [data]);
 
   return (
-    <AuthContext.Provider value={{ user, setUser , allHistory , setAllHistory }}>
+    <AuthContext.Provider value={{ user, setUser, allHistory, setAllHistory }}>
       {children}
     </AuthContext.Provider>
   );
