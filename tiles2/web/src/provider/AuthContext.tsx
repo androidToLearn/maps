@@ -48,7 +48,8 @@ export const UserProvider = ({ children }: any) => {
       });
     }
   };
-  const { isLoading, data } = useQuery({
+
+  const { data } = useQuery({
     queryKey: ["tokenData"],
     queryFn: async () => {
       return await fetchInstanceWithToken().get("/login/protected");
@@ -58,7 +59,7 @@ export const UserProvider = ({ children }: any) => {
     if (data !== undefined) {
       const result = tokenSchema.safeParse(data);
       if (result.success) {
-      insertDataToUser(data, user, setUser);
+        insertDataToUser(data, user, setUser);
       }
     }
   }, [data]);

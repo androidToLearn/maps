@@ -32,7 +32,6 @@ export default function SignIn() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    localStorage.setItem('a' , window.location.href)
     if (user !== null) {
       navigate("/tilePage");
     }

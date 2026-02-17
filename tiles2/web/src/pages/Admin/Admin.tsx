@@ -30,6 +30,12 @@ export default function adminPage() {
   ]);
 
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
+
+  const { user } = useUserContext();
+  if (user === null) {
+    return <></>;
+  }
+  
   const { isLoading, data } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
@@ -50,11 +56,6 @@ export default function adminPage() {
       return data;
     },
   });
-
-  const { user } = useUserContext();
-  if (user === null) {
-    return <></>;
-  }
 
   useEffect(() => {
     if (isSuccess) {
@@ -85,12 +86,11 @@ export default function adminPage() {
   const doSave = async () => {
     if (idUser !== null) {
       const result = await admin_service.clickSave(isChanged, setIsChanged);
-      if (result === 'changed')
-      {
-        return allHistory[allHistory.length - 1]
+      if (result === "changed") {
+        return allHistory[allHistory.length - 1];
       }
+    }
   };
-}
 
   const doUndo = async () => {
     if (idUser !== null) {
@@ -99,10 +99,9 @@ export default function adminPage() {
         isChanged,
         setAllHistory,
         setIsChanged,
-        
       );
     }
-    return false
+    return false;
   };
 
   return (
@@ -158,4 +157,3 @@ export default function adminPage() {
     </div>
   );
 }
-

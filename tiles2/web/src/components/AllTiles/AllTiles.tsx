@@ -40,7 +40,7 @@ export default function AllTiles({
     if (arrayColorsEnum.includes(color)) {
       allArichim.push({
         color: color,
-        id: "",
+        id: "add",
         createdAt: new Date(),
         updatedAt: new Date(),
       }); //-1 is new still not have id

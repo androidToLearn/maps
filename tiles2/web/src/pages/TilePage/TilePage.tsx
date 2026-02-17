@@ -4,8 +4,8 @@ import Loader from "../../components/Loader/Loader";
 import BottomLine from "../../components/BottomLine/BottomLine";
 import AllTiles from "../../components/AllTiles/AllTiles";
 import Success from "../../components/Success/Success";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { AllTilesQuery } from "../../utils/queriesTiles/AllTilesQuery";
+import { useQuery } from "@tanstack/react-query";
+import { tilesService } from "../../utils/queriesTiles/AllTilesQuery";
 import { useUserContext } from "../../provider/AuthContext";
 import type { typeTileWithString } from "../../types/typescript";
 import { useNavigate } from "react-router-dom";
@@ -15,21 +15,19 @@ export default function TilePage() {
   const [hasChanges, setHasChanges] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
 
-  const { user  , setUser} = useUserContext();
-  const {logout} = useAuth()
+  const { user, setUser } = useUserContext();
+  const { logout } = useAuth();
   const navigate = useNavigate();
   const { isLoading, data } = useQuery({
     queryKey: ["allTiles"],
     queryFn: async () => {
-      const result = await new AllTilesQuery().allTilesFetch(setUser , logout);
-      if(result === 'bad')
-      {
-        navigate('/signIn')
+      const result = await tilesService.allTilesFetch(setUser, logout);
+      if (result === "bad") {
+        navigate("/signIn");
       }
-      return result
+      return result;
     },
   });
-  console.log("datatiles", data);
   const { allHistory, setAllHistory } = useUserContext();
 
   const dictValuesAllTiles = {
@@ -37,19 +35,20 @@ export default function TilePage() {
     setAllHistory: setAllHistory,
   };
 
-  const mutationShowTiles = useMutation({
-    mutationFn: async (data: typeTileWithString[]) => {
-      new AllTilesQuery().getAllTiles(data, dictValuesAllTiles);
-      return data;
-    },
-  });
+  // const {} = useMutation({
+  //   mutationFn: async (data: typeTileWithString[]) => {
+  //     console.log(data, "what is data");
+  //     tilesService.getAllTiles(data, dictValuesAllTiles);
+  //     return data;
+  //   },
+  // });
   if (allHistory === null) {
     return <>error allHistory</>;
   }
 
   useEffect(() => {
     if (data !== undefined && !isLoading && !isSuccess) {
-      mutationShowTiles.mutate(data);
+      tilesService.getAllTiles(data, dictValuesAllTiles);
     }
   }, [isLoading, data]);
 
@@ -79,6 +78,7 @@ export default function TilePage() {
   const clickSave = async () => {
     if (hasChanges) {
       const toSave = allHistory[allHistory.length - 1];
+      console.log("toSave", toSave);
       await deleteAndSave(toSave);
       setHasChanges(false);
       return toSave;

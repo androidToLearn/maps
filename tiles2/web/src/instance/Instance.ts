@@ -5,16 +5,13 @@ import {
 import type { TypePostSomething } from "../types/typescript";
 import type { typeSignOrRegister } from "../types/typescript";
 
-
 export const fetchInstanceWithToken = () => {
-  
   return {
     async get(url: string) {
       const response = await authenticatedInstance.get(url);
       if (response.status === 200 || response.status == 201) {
         return response.data;
       } else {
-
         throw new Error("status code " + response.status);
       }
     },
@@ -24,7 +21,6 @@ export const fetchInstanceWithToken = () => {
       if (response.status === 200 || response.status == 201) {
         return response.data;
       } else {
-
         throw new Error("status code " + response.status);
       }
     },
