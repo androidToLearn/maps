@@ -1,5 +1,5 @@
-import type { typePRopertiesOneUserFromServer } from "./../../types/typescript";
-import type { typeAllPropertiesToShowUsers } from "../../types/typescript";
+import type { typePRopertiesOneUserFromServer } from "../../types/typesAllProject";
+import type { typeAllPropertiesToShowUsers } from "../../types/typesAllProject";
 import { fetchInstanceWithToken } from "../../instance/Instance";
 import { usersSchemaArray } from "../../typesschema/user.types";
 export class AllUsersQuery {

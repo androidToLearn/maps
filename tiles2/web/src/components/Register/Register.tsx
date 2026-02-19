@@ -6,7 +6,7 @@ import { schemaRegister, type register } from "../../utils/signPageUtils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { RegisterQuery } from "../../utils/QueriesSign/RegisterQuery";
 import { useMutation } from "@tanstack/react-query";
-import type { typeRegisterMutate } from "../../types/typescript";
+import type { typeRegisterMutate } from "../../types/typesAllProject";
 import classes from "./register.module.scss";
 import { useUserContext } from "../../provider/AuthContext";
 
@@ -22,14 +22,14 @@ export default function Register() {
   const [message, setMessage] = useState<string | undefined>("");
 
   const navigate = useNavigate();
-  
-  const {user , setUser} = useUserContext()
-  
+
+  const { user, setUser } = useUserContext();
+
   const mutationRegister = useMutation({
     mutationFn: async (data: typeRegisterMutate) => {
       const response = await new RegisterQuery().registerMutate(data);
-      if(response !== undefined && response !== null && response === 'good') {
-        navigate('/')
+      if (response !== undefined && response !== null && response === "good") {
+        navigate("/");
       }
       return data;
     },
@@ -43,8 +43,8 @@ export default function Register() {
       name: dataFieldsForm["name"],
       password: dataFieldsForm["password"],
       setMessage: setMessage,
-      user : user ,
-      setUser : setUser
+      user: user,
+      setUser: setUser,
     });
   };
 

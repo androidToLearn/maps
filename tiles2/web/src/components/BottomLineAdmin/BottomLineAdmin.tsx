@@ -1,10 +1,10 @@
 import type {
   typeFunctionToBeWithMutate,
   typePropertiesBottomLineAdmin,
-} from "../../types/typescript";
+} from "../../types/typesAllProject";
 import { useMutation } from "@tanstack/react-query";
 import { SaveAllUsers } from "../../utils/QueryAdmin/SaveAllQuery";
-import type { TypeInsideMutationSave } from "../../types/typescript";
+import type { TypeInsideMutationSave } from "../../types/typesAllProject";
 import classes from "./bottomLineAdmin.module.scss";
 import { useQueryClient } from "@tanstack/react-query";
 import { useUserContext } from "../../provider/AuthContext";
@@ -43,7 +43,7 @@ export default function BottomLineAdmin({
   ) => {
     return parameterFunction().then((response) => {
       if (typeof response === "string") return;
-     
+
       if (response !== undefined) {
         mutationSave.mutate({
           setIsSuccess: setIsSuccess,

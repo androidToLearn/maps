@@ -1,6 +1,10 @@
 import { fetchInstanceWithToken } from "../../instance/Instance";
-import type { typeTileWithString, User, valueSetUser } from "../../types/typescript";
-import type { typeDictForChangesAllTiles } from "../../types/typescript";
+import type {
+  typeTileWithString,
+  User,
+  valueSetUser,
+} from "../../types/typesAllProject";
+import type { typeDictForChangesAllTiles } from "../../types/typesAllProject";
 import { tilesSchemaArray } from "../../typesschema/tile.types";
 export class AllTilesQuery {
   getAllTiles(
@@ -29,7 +33,10 @@ export class AllTilesQuery {
     dictValues["setAllHistory"]([...dictValues["allHistory"]]);
   }
 
-  async allTilesFetch(setUser : valueSetUser , logout : (value : valueSetUser) =>void) {
+  async allTilesFetch(
+    setUser: valueSetUser,
+    logout: (value: valueSetUser) => void,
+  ) {
     try {
       const response = await fetchInstanceWithToken().get("/tiles/all");
       const result = tilesSchemaArray.safeParse(response);
@@ -38,8 +45,8 @@ export class AllTilesQuery {
       }
       return response;
     } catch (err) {
-      logout(setUser)
-      return 'bad'
+      logout(setUser);
+      return "bad";
     }
   }
 }

@@ -1,5 +1,5 @@
-import type { filterDictType } from "../../types/typescript";
-import classes from './filer.module.scss'
+import type { filterDictType } from "../../types/typesAllProject";
+import classes from "./filer.module.scss";
 export default function Filter({ filter, setFilter }: filterDictType) {
   return (
     <div className={classes.menu}>

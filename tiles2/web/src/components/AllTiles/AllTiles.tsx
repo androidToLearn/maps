@@ -1,14 +1,14 @@
 import { useState } from "react";
 import OneTile from "../OneTile/OneTile";
-import { arrayColorsEnum } from "../../services/Enum";
+import { arrayColorsEnum } from "../../types/EnumColors";
 import type {
   TypeAllTilesProperties,
   typeTileWithString,
-} from "../../types/typescript";
+} from "../../types/typesAllProject";
 import { getTypeColorsWithStartColorWithOutAdd } from "../../utils/ColorsServoce";
 import classes from "./allTiles.module.scss";
-import { colorsEnumWithoutAdd } from "../../services/Enum";
-import { Tile_service } from "../../services/tile_service"; 
+import { colorsEnumWithoutAdd } from "../../types/EnumColors";
+import { TileService } from "../../services/TileService";
 import { useUserContext } from "../../provider/AuthContext";
 
 export default function AllTiles({
@@ -22,17 +22,15 @@ export default function AllTiles({
     setIsOpenedColor(true);
   };
 
-  const {allHistory , setAllHistory} = useUserContext()
-  if(allHistory === null)
-  {
-    return <>error allHistory</>
+  const { allHistory, setAllHistory } = useUserContext();
+  if (allHistory === null) {
+    return <>error allHistory</>;
   }
   const allArichim = !hasChanges
-      ? new Tile_service().getCopyLastAllHistory(allHistory)
-      : allHistory[allHistory.length - 1];
-  if(allArichim === undefined)
-  {
-    return <>error all tiles</>
+    ? new TileService().getCopyLastAllHistory(allHistory)
+    : allHistory[allHistory.length - 1];
+  if (allArichim === undefined) {
+    return <>error all tiles</>;
   }
   const clickColor = (color: colorsEnumWithoutAdd) => {
     const lastIsAdd = allArichim[allArichim.length - 1];
@@ -51,13 +49,11 @@ export default function AllTiles({
     setIsOpenedColor(false);
 
     if (!hasChanges) {
-      
       allHistory.push(allArichim);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
       setHasChanges(true);
     } else {
-      
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
     }
@@ -87,7 +83,6 @@ export default function AllTiles({
                                     profile === "admin" ||
                                     profile === "moderator"
                                   ) {
-                                    console.log("inside");
                                     clickColor(color);
                                   }
                                 }}

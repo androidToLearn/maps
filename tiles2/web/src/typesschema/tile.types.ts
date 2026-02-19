@@ -1,4 +1,4 @@
-import { colorsEnum } from "../services/Enum";
+import { colorsEnum } from "../types/EnumColors";
 import { z } from "zod";
 const tilesSchema = z.object({
   color: z.nativeEnum(colorsEnum),

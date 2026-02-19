@@ -1,5 +1,5 @@
-import type { allHistoryType } from "../types/typescript";
-export class Tile_service {
+import type { allHistoryType } from "../types/typesAllProject";
+export class TileService {
   getCopyLastAllHistory(allHistory: allHistoryType | null) {
     if (allHistory === null) return;
     const lastAllHistory = allHistory[allHistory.length - 1];

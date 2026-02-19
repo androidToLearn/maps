@@ -1,4 +1,4 @@
-import type { TypeRowUser } from "../../types/typescript";
+import type { TypeRowUser } from "../../types/typesAllProject";
 import classes from "./rowUser.module.scss";
 export default function RowUser({
   allUsers,
@@ -49,11 +49,7 @@ export default function RowUser({
               changeProfile(e);
             }}
           >
-            <option
-              value="admin"
-            >
-              admin
-            </option>
+            <option value="admin">admin</option>
             <option value="moderator">moderator</option>
             <option value="editor">editor</option>
             <option value="viewer">viewer</option>

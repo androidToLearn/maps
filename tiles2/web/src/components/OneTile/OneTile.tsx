@@ -1,7 +1,10 @@
-import { getTypeColors, getTypeColorsWithStartColor } from "../../utils/ColorsServoce";
-import type { TypeOneTileDict } from "../../types/typescript";
-import classes from './oneTile.module.scss'
-import { colorsEnum } from "../../services/Enum";
+import {
+  getTypeColors,
+  getTypeColorsWithStartColor,
+} from "../../utils/ColorsServoce";
+import type { TypeOneTileDict } from "../../types/typesAllProject";
+import classes from "./oneTile.module.scss";
+import { colorsEnum } from "../../types/EnumColors";
 import { useUserContext } from "../../provider/AuthContext";
 export default function OneTile({
   hasChanges,
@@ -11,11 +14,9 @@ export default function OneTile({
   index,
   color,
 }: TypeOneTileDict) {
-
-  const {allHistory , setAllHistory} = useUserContext()
-  if(allHistory === null)
-  {
-    return <>error all history</>
+  const { allHistory, setAllHistory } = useUserContext();
+  if (allHistory === null) {
+    return <>error all history</>;
   }
   const tileColor = color;
   const clickBin = (i: number) => {
@@ -36,13 +37,11 @@ export default function OneTile({
     allArichim[i]["color"] = color;
 
     if (!hasChanges) {
-      
       allHistory.push(allArichim);
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
       setHasChanges(true);
     } else {
-      
       const newAllHistory = [...allHistory];
       setAllHistory(newAllHistory);
     }
@@ -53,55 +52,57 @@ export default function OneTile({
       <>
         {profile !== "viewer" ? (
           <div className={classes.contentArich}>
-            {Object.values(colorsEnum).map((color: colorsEnum, indexColor: number) => {
-              return (
-                <div className={classes.allColors} key={indexColor}>
-                  {color !== tileColor ? (
-                    <div key={indexColor}>
-                      {indexColor === Object.values(colorsEnum).length - 1 ? (
-                        <div>
-                          {profile === "admin" || profile === "moderator" ? (
-                            <div key={indexColor}>
-                              <img
-                                src="public/bin.png"
-                                className={classes.myBin}
+            {Object.values(colorsEnum).map(
+              (color: colorsEnum, indexColor: number) => {
+                return (
+                  <div className={classes.allColors} key={indexColor}>
+                    {color !== tileColor ? (
+                      <div key={indexColor}>
+                        {indexColor === Object.values(colorsEnum).length - 1 ? (
+                          <div>
+                            {profile === "admin" || profile === "moderator" ? (
+                              <div key={indexColor}>
+                                <img
+                                  src="public/bin.png"
+                                  className={classes.myBin}
+                                  onClick={() => {
+                                    clickBin(index);
+                                  }}
+                                />
+                              </div>
+                            ) : (
+                              <div></div>
+                            )}
+                          </div>
+                        ) : (
+                          <div>
+                            {profile !== "viewer" ? (
+                              <div
+                                key={indexColor}
+                                className={getTypeColorsWithStartColor(color)}
                                 onClick={() => {
-                                  clickBin(index);
+                                  if (
+                                    profile === "admin" ||
+                                    profile === "moderator" ||
+                                    profile === "editor"
+                                  ) {
+                                    changeColorIndex(color, index);
+                                  }
                                 }}
-                              />
-                            </div>
-                          ) : (
-                            <div></div>
-                          )}
-                        </div>
-                      ) : (
-                        <div>
-                          {profile !== "viewer" ? (
-                            <div
-                              key={indexColor}
-                              className={getTypeColorsWithStartColor(color)}
-                              onClick={() => {
-                                if (
-                                  profile === "admin" ||
-                                  profile === "moderator" ||
-                                  profile === "editor"
-                                ) {
-                                  changeColorIndex(color, index);
-                                }
-                              }}
-                            ></div>
-                          ) : (
-                            <></>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-              );
-            })}
+                              ></div>
+                            ) : (
+                              <></>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <></>
+                    )}
+                  </div>
+                );
+              },
+            )}
           </div>
         ) : (
           <div></div>

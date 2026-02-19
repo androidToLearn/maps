@@ -1,6 +1,6 @@
-import type { dictMessageAndAccessToken } from "./../../types/typescript";
+import type { dictMessageAndAccessToken } from "../../types/typesAllProject";
 import { fetchInstance } from "../../instance/Instance";
-import type { typeSignInDict } from "../../types/typescript";
+import type { typeSignInDict } from "../../types/typesAllProject";
 import { useAuth } from "../../provider/useAuth";
 export class SignInQuery {
   async signMutate(data: typeSignInDict) {
@@ -14,7 +14,6 @@ export class SignInQuery {
   }
 
   doNavigate(data: dictMessageAndAccessToken, dictValues: typeSignInDict) {
-    console.log('datadata' , data)
     const setUser = dictValues["setUser"];
     const { addUser } = useAuth();
     if (data["message"] == "bad email or password") {
@@ -23,7 +22,6 @@ export class SignInQuery {
       if (data["accessToken"] === undefined) {
         return "home";
       }
-      console.log("addUser", data);
       addUser(
         {
           name: data["name"],
@@ -35,7 +33,6 @@ export class SignInQuery {
         setUser,
       );
     }
-
     return data;
   }
 }

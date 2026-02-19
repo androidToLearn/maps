@@ -1,13 +1,13 @@
 import type {
   typeFunctionToBeWithMutate,
   typePropertiesTiles,
-} from "../../types/typescript";
+} from "../../types/typesAllProject";
 import { useMutation } from "@tanstack/react-query";
 import classes from "./BottomLine.module.scss";
 import { useQueryClient } from "@tanstack/react-query";
 import { useUserContext } from "../../provider/AuthContext";
 import { saveAllTilesQuery } from "../../utils/queriesTiles/SaveAllTilesQuery";
-import type { typePostAllTiles } from "../../types/typescript";
+import type { typePostAllTiles } from "../../types/typesAllProject";
 import ButtonDoSomething from "../buttonDoSomething/ButtonDoSomething";
 export default function BottomLine({
   saveFunction,
@@ -41,8 +41,6 @@ export default function BottomLine({
       if (typeof response === "string") {
         return response;
       }
-      
-
 
       if (response !== undefined) {
         mutationSave.mutate({
@@ -56,9 +54,7 @@ export default function BottomLine({
   return (
     <div className={classes.lastLine}>
       <ButtonDoSomething
-        functionToDo={() =>
-          functionWithMutate(undoFunction)
-        }
+        functionToDo={() => functionWithMutate(undoFunction)}
         textToShow={"undo"}
       />
 

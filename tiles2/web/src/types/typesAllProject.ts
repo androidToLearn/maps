@@ -1,6 +1,6 @@
-import { colorsEnumWithoutAdd } from "./../services/Enum";
+import { colorsEnumWithoutAdd } from "./EnumColors";
 import type { SubmitHandler } from "react-hook-form";
-import type { colorsEnum } from "../services/Enum";
+import type { colorsEnum } from "./EnumColors";
 export type user_type = {
   id: string;
 

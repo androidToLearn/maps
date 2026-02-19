@@ -3,7 +3,7 @@ import classes from "./admin.module.scss";
 import type {
   typeHistoryUser,
   typePRopertiesOneUserFromServer,
-} from "../../types/typescript";
+} from "../../types/typesAllProject";
 import Filter from "../../components/Filter/Filter";
 import RowUser from "../../components/RowUser/RowUser";
 import { useMutation, useQuery } from "@tanstack/react-query";
@@ -11,7 +11,7 @@ import { AllUsersQuery } from "../../utils/QueryAdmin/AllUserQuery";
 import Success from "../../components/Success/Success";
 import { SaveAllUsers } from "../../utils/QueryAdmin/SaveAllQuery";
 import { useUserContext } from "../../provider/AuthContext";
-import { admin_service } from "../../services/admin_service";
+import { admin_service } from "../../services/AdminService";
 import BottomLineAdmin from "../../components/BottomLineAdmin/BottomLineAdmin";
 export default function adminPage() {
   const [filter, setFilter] = useState<number>(0);
@@ -35,7 +35,7 @@ export default function adminPage() {
   if (user === null) {
     return <></>;
   }
-  
+
   const { isLoading, data } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {

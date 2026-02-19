@@ -1,4 +1,4 @@
-import type { User } from "../types/typescript";
+import type { User } from "../types/typesAllProject";
 import { useUserContext } from "./AuthContext";
 
 export const useAuth = () => {
@@ -19,11 +19,10 @@ export const useAuth = () => {
   };
 
   const getUser = () => {
-     const {user} = useUserContext()
-     if (user !== null)
-     {
-      return user
-     }
+    const { user } = useUserContext();
+    if (user !== null) {
+      return user;
+    }
   };
 
   return { addUser, logout, getUser };

@@ -7,7 +7,7 @@ import Success from "../../components/Success/Success";
 import { useQuery } from "@tanstack/react-query";
 import { tilesService } from "../../utils/queriesTiles/AllTilesQuery";
 import { useUserContext } from "../../provider/AuthContext";
-import type { typeTileWithString } from "../../types/typescript";
+import type { typeTileWithString } from "../../types/typesAllProject";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../provider/useAuth";
 
@@ -35,13 +35,6 @@ export default function TilePage() {
     setAllHistory: setAllHistory,
   };
 
-  // const {} = useMutation({
-  //   mutationFn: async (data: typeTileWithString[]) => {
-  //     console.log(data, "what is data");
-  //     tilesService.getAllTiles(data, dictValuesAllTiles);
-  //     return data;
-  //   },
-  // });
   if (allHistory === null) {
     return <>error allHistory</>;
   }
@@ -78,7 +71,6 @@ export default function TilePage() {
   const clickSave = async () => {
     if (hasChanges) {
       const toSave = allHistory[allHistory.length - 1];
-      console.log("toSave", toSave);
       await deleteAndSave(toSave);
       setHasChanges(false);
       return toSave;

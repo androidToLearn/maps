@@ -8,7 +8,7 @@ import { SignInQuery } from "../../utils/QueriesSign/SginInQuery";
 import { useMutation } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import { useUserContext } from "../../provider/AuthContext";
-import type { typeSignIn } from "../../types/typescript";
+import type { typeSignIn } from "../../types/typesAllProject";
 
 export default function SignIn() {
   const [message, setMessage] = useState<string | undefined>("");

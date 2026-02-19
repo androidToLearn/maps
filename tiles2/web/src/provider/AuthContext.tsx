@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect } from "react";
-import type { typeDataToken, User } from "../types/typescript";
+import type { typeDataToken, User } from "../types/typesAllProject";
 import { useState } from "react";
 import { fetchInstanceWithToken } from "../instance/Instance";
 import { useQuery } from "@tanstack/react-query";
-import type { allHistoryType } from "../types/typescript";
-import { colorsEnum } from "../services/Enum";
+import type { allHistoryType } from "../types/typesAllProject";
+import { colorsEnum } from "../types/EnumColors";
 import { tokenSchema } from "../typesschema/token.types";
 
 export type AuthContextType = {

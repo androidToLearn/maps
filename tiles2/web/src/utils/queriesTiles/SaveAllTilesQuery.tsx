@@ -1,5 +1,5 @@
 import { fetchInstanceWithToken } from "../../instance/Instance";
-import type { typePostAllTiles } from "../../types/typescript";
+import type { typePostAllTiles } from "../../types/typesAllProject";
 export class saveAllTilesQuery {
   async saveAllTiles(data: typePostAllTiles, dictValues: typePostAllTiles) {
     dictValues["isSuccess"](true);

@@ -2,8 +2,8 @@ import {
   authenticatedInstance,
   authenticatedInstanceWithoutToken,
 } from "./CreateRouteInstance";
-import type { TypePostSomething } from "../types/typescript";
-import type { typeSignOrRegister } from "../types/typescript";
+import type { TypePostSomething } from "../types/typesAllProject";
+import type { typeSignOrRegister } from "../types/typesAllProject";
 
 export const fetchInstanceWithToken = () => {
   return {
@@ -39,7 +39,6 @@ export const fetchInstance = () => {
     },
 
     async post(url: string, body: typeSignOrRegister) {
-      console.log(body);
       const response = await authenticatedInstanceWithoutToken.post(url, body);
       if (response.status === 200 || response.status == 201) {
         return response.data;

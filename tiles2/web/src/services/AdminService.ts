@@ -1,4 +1,4 @@
-class Admin_Service {
+class AdminService {
   copyLastHistory(
     allHistory: {
       id: string;
@@ -109,4 +109,4 @@ class Admin_Service {
   }
 }
 
-export const admin_service = new Admin_Service()
+export const admin_service = new AdminService()

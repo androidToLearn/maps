@@ -1,8 +1,8 @@
-import { colorsEnum } from "../services/Enum";
+import { colorsEnum } from "../types/EnumColors";
 
 export function getColors() {
   return [
-    colorsEnum.color1 ,
+    colorsEnum.color1,
     colorsEnum.color2,
     colorsEnum.color3,
     colorsEnum.color4,
@@ -12,7 +12,7 @@ export function getColors() {
 
 export function getColorsForChoose() {
   return [
-    colorsEnum.color1 ,
+    colorsEnum.color1,
     colorsEnum.color2,
     colorsEnum.color3,
     colorsEnum.color4,

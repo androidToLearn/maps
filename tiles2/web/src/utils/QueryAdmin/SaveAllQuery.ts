@@ -2,17 +2,17 @@ import type {
   typeDictUser,
   TypeInsideMutationSave,
   typeTileWithString,
-} from "../../types/typescript";
-import type { TypeUsersToSave } from "../../types/typescript";
+} from "../../types/typesAllProject";
+import type { TypeUsersToSave } from "../../types/typesAllProject";
 import { fetchInstanceWithToken } from "../../instance/Instance";
-import type { isSuccessType } from "../../types/typescript";
+import type { isSuccessType } from "../../types/typesAllProject";
 
 export class SaveAllUsers {
   async saveAllUsers(data: TypeInsideMutationSave, dictValues: isSuccessType) {
     const theUsersToSave = this.getUsersToSave(
       data["toSave"],
       data["arrayIdsToUpdate"],
-      data['setArrayIdsToUpdate']
+      data["setArrayIdsToUpdate"],
     );
 
     const contentUsersToSave = { users: theUsersToSave, myId: data["idUser"] };
@@ -23,7 +23,7 @@ export class SaveAllUsers {
   getUsersToSave(
     toSave: TypeUsersToSave | typeTileWithString[],
     arrayIdsToUpdate: string[] | undefined,
-    setArrayIdsToUpdate : (value : string[]) => void
+    setArrayIdsToUpdate: (value: string[]) => void,
   ) {
     const toSaveUsers = [];
     for (const i in toSave) {
@@ -35,26 +35,25 @@ export class SaveAllUsers {
         toSaveUsers.push(oneUserToSave);
       }
     }
-    setArrayIdsToUpdate([])
+    setArrayIdsToUpdate([]);
     return toSaveUsers;
   }
 
   getMyUserAndMoveToStart(allUsers: typeDictUser[], idUser: string) {
-    const theUsers = []
+    const theUsers = [];
     for (const oneUserIndex in allUsers) {
       if (allUsers[oneUserIndex]["id"] === idUser) {
         const myUser = allUsers[oneUserIndex];
-        theUsers.push(myUser)
-        break
+        theUsers.push(myUser);
+        break;
       }
     }
     for (const oneUserIndex in allUsers) {
-
       if (allUsers[oneUserIndex]["id"] !== idUser) {
         const otherUser = allUsers[oneUserIndex];
-        theUsers.push(otherUser)
+        theUsers.push(otherUser);
       }
     }
-    return theUsers
+    return theUsers;
   }
 }

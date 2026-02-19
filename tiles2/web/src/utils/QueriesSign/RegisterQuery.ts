@@ -1,7 +1,7 @@
 import { fetchInstance } from "../../instance/Instance";
 import { useAuth } from "../../provider/useAuth";
-import type { typeRegisterMutate } from "../../types/typescript";
-import type { typeDataRegister } from "../../types/typescript";
+import type { typeRegisterMutate } from "../../types/typesAllProject";
+import type { typeDataRegister } from "../../types/typesAllProject";
 
 export class RegisterQuery {
   async registerMutate(data: typeRegisterMutate) {
@@ -16,16 +16,24 @@ export class RegisterQuery {
   }
 
   async toDo(data: typeDataRegister, dictValues: typeRegisterMutate) {
-
     if ("message" in data) {
       dictValues["setMessage"](data["message"]);
-      return 'bad'
+      return "bad";
     } else {
       const { addUser } = useAuth();
       const setUser = dictValues["setUser"];
-       
-      addUser({ name: data['name'], role: 'viewer', idUser:  data['idUser'], token: data["accessToken"], isInAdmin: false }, setUser);
-      
+
+      addUser(
+        {
+          name: data["name"],
+          role: "viewer",
+          idUser: data["idUser"],
+          token: data["accessToken"],
+          isInAdmin: false,
+        },
+        setUser,
+      );
+
       return "good";
     }
   }
