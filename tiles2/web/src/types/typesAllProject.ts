@@ -109,11 +109,11 @@ export type TypePostSomething =
           }
         | typeTileWithString
       )[];
-      myId: string;
+      myId: string
     }
   | typeTile[]
   | typeTileWithString[]
-  | typeDictUser[];
+  | typeDictUser[] |({id :string , role : string , name : string , email : string , password : string} | typeTileWithString)[];
 
 export type TypeContentAdminToSave = {
   toSave: TypeUsersToSave;

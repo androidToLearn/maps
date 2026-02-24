@@ -6,6 +6,5 @@ export class saveAllTilesQuery {
 
     await fetchInstanceWithToken()
       .post("/tiles/saveAll", data["toSave"])
-      .catch((error) => {});
   }
 }

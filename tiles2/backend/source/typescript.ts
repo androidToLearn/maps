@@ -1,4 +1,4 @@
-import { IntegerType, ObjectId } from "mongodb";
+import { ObjectId } from "mongodb";
 export type user = {
   id: ObjectId;
 
@@ -22,7 +22,6 @@ export type tile = {
 };
 
 export type UserSchemaTypeSignIn = {
-  //{ email: 'yishay@gmail.com', password: '1@eZz12345' }
   email : string , 
   password : string
 };
@@ -36,28 +35,12 @@ export type UserSchemaTypeRegister = {
 export type typeIdUserDict = 
   {insertedId : string}
  | undefined
-export type TileSchemaType = {};
-
-export type TileSchemaTypeOneTile = {};
-
-export type TileSchemaTypeDelete = {};
 
 export type TileSchemaTypeSaveAll = { _id: ObjectId,
     id: ObjectId,
     color: string,
     createdAt: string,
     updatedAt: string}[];
-
-export type TileSchemaTypePost = {}
-
-
-
-
-export type UserSchemaType = {};
-
-export type UserSchemaTypeOneTile = {};
-
-export type UserSchemaTypeDelete = {};
 
 export type UserSchemaTypeSaveAll = {
     id: string,

@@ -1,7 +1,6 @@
 import { fetchInstanceWithToken } from "../../instance/Instance";
 import type {
   typeTileWithString,
-  User,
   valueSetUser,
 } from "../../types/typesAllProject";
 import type { typeDictForChangesAllTiles } from "../../types/typesAllProject";

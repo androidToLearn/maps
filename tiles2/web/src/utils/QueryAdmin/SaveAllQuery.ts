@@ -16,7 +16,7 @@ export class SaveAllUsers {
     );
 
     const contentUsersToSave = { users: theUsersToSave, myId: data["idUser"] };
-    await fetchInstanceWithToken().post("/users/insertAll", contentUsersToSave);
+    await fetchInstanceWithToken().post("/users/insertAll", contentUsersToSave['users']);
     dictValues["setIsSuccess"](true);
   }
 

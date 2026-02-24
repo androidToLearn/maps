@@ -21,7 +21,7 @@ export default function ProtectedTiles({ children }: any) {
           navigator("/signIn");
         }
       })
-      .catch((err) => {
+      .catch(() => {
         navigator("/signIn");
       });
     return isLoad ? <Loader /> : children;

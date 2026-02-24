@@ -25,7 +25,7 @@ export default function ProtectedAdmin({ children }: any) {
         navigator("/signIn");
       }
     })
-    .catch((err) => {
+    .catch(() => {
       navigator("/signIn");
     });
   return isLoad ? <Loader /> : children;
