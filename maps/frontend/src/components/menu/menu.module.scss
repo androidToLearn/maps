@@ -1,0 +1,38 @@
+.menuAll {
+  width: 20vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: calc(80vw);
+  z-index: 10000;
+  background-color: blue;
+}
+
+.menuOrder {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  height: 100vh;
+  left: 80vw;
+  top: 7vw;
+  position: absolute;
+  z-index: 1000;
+  background-color: white;
+  align-items: center;
+}
+
+.menuUp {
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  flex-direction: row;
+}
+
+.main{
+    width: 90%;
+    height: 100vw;
+    background-color: rgb(212, 201, 201);
+    border-radius: 1VW;
+    margin-top: 0.5VW;
+
+}

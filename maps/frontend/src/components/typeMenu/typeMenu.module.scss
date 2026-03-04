@@ -1,0 +1,24 @@
+
+.oneInMenufalse {
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  background-color: white;
+  padding: 1vw;
+}
+
+.oneInMenutrue {
+  flex-grow: 1;
+  width: 100%;
+  text-align: center;
+  margin: 0px;
+  background-color: aquamarine;
+  padding: 1vw;
+}
+
+.menuUp {
+  display: flex;
+  flex-direction: row;
+  font-size: 1vw;
+}

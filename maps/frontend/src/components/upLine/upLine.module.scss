@@ -1,0 +1,34 @@
+.upLine {
+  width: 100vw;
+  height: 7vw;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  top: 0px;
+  background-color: orange;
+  z-index: 100000000;
+}
+
+.image1 {
+  width: 3vw;
+  height: auto;
+  position: absolute;
+  top: 1vw;
+  left: 5vw;
+}
+
+.image2 {
+  width: 3vw;
+  height: auto;
+  position: absolute;
+  top: 2vw;
+  left: 1vw;
+}
+
+.text {
+  color: black;
+  position: absolute;
+  left: 75vw;
+  font-weight: 1000;
+  font-size: 25px;
+}

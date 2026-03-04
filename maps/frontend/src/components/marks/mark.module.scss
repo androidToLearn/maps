@@ -1,0 +1,48 @@
+.circlered {
+  width: 3vw;
+  height: 3vw;
+  background-color: red;
+  position: relative;
+  z-index: 4000;
+  border-radius: 100%;
+  animation: moveDown 2s ease-out ;
+}
+
+.circleyellow {
+  width: 3vw;
+  height: 3vw;
+  background-color: rgb(255, 251, 0);
+  position: relative;
+  z-index: 4000;
+  border-radius: 100%;
+  animation: moveDown 2s ease-out;
+}
+
+.circleorange {
+  width: 3vw;
+  height: 3vw;
+  background-color: red;
+  position: relative;
+  z-index: 4000;
+  border-radius: 100%;
+  animation: moveDown 2s ease-out;
+}
+
+.circleblue {
+  width: 3vw;
+  height: 3vw;
+  background-color: blue;
+  position: relative;
+  z-index: 4000;
+  border-radius: 100%;
+  animation: moveDown 2s ease-out;
+}
+
+@keyframes moveDown {
+  from {
+    top: -20vw;
+  }
+  to {
+    top: 0px;
+  }
+}
