@@ -1,0 +1,36 @@
+.row {
+  width: 92%;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  height: fit-content;
+  background-color: white;
+  align-items: center;
+  margin: 1vw;
+}
+
+.textShchunaName {
+  width: 90%;
+  text-align: end;
+  margin: 0px;
+}
+
+.colorred {
+  width: 1vw;
+  height: 3vw;
+  background-color: red;
+  border-radius: 0.2vw;
+  margin-left: 2vw;
+}
+
+.coloryellow {
+  width: 2vw;
+  height: 100%;
+  background-color: yellow;
+}
+
+.colororange {
+  width: 2vw;
+  height: 100%;
+  background-color: orange;
+}

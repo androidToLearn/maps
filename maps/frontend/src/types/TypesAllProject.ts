@@ -36,6 +36,17 @@ export type shchunot = {
 
 export type StatePropertiesTypes = {
   state: number;
-  setState: (value : number) => void;
-  stateToShow : number;
+  setState: (value: number) => void;
+  stateToShow: number;
+};
+
+export type typeToSearch = {
+  isToShowEmptyShchunot: boolean;
+  orderToShowInAB: boolean;
+  showColors: string[];
+};
+
+export type typePropertiesListNeighboards = {
+  neighboard: objectShchunaType;
+  setNeighboard: (value: objectShchunaType) => void;
 };

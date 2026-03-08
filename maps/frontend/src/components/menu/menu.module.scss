@@ -1,9 +1,9 @@
 .menuAll {
-  width: 20vw;
+  width: 60vw;
   height: 100vh;
   position: absolute;
   top: 0;
-  left: calc(80vw);
+  left: 80vw;
   z-index: 10000;
   background-color: blue;
 }
@@ -11,15 +11,18 @@
 .menuOrder {
   display: flex;
   flex-direction: column;
-  width: 20vw;
-  height: 100vh;
-  left: 80vw;
+  width: 30vw;
+  height: calc(100vh - 7vw);
+  left: 70vw;
   top: 7vw;
   position: absolute;
-  z-index: 1000;
+  z-index: 100000000;
   background-color: white;
   align-items: center;
 }
+
+
+
 
 .menuUp {
   width: 100%;
@@ -30,9 +33,9 @@
 
 .main{
     width: 90%;
-    height: 100vw;
+    height: 77vh;
     background-color: rgb(212, 201, 201);
-    border-radius: 1VW;
+    border-radius: 1vw;
     margin-top: 0.5VW;
 
 }

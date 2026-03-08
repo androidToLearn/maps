@@ -7,6 +7,7 @@ import { AuthContext } from "./provider/AuthContext";
 import MosadContext from "./provider/MosadContext";
 import ShchunaContext from "./provider/ShchunaContext";
 import StateContext from "./provider/StateContext";
+import TypeSelectedCompon from "./provider/TypeContext";
 
 function App() {
   const queryClient = new QueryClient();
@@ -14,13 +15,15 @@ function App() {
     <Provider store={store}>
       <ShchunaContext>
         <MosadContext>
-          <StateContext>
-            <QueryClientProvider client={queryClient}>
-              <AuthContext>
-                <AllProject />
-              </AuthContext>
-            </QueryClientProvider>
-          </StateContext>
+          <TypeSelectedCompon>
+            <StateContext>
+              <QueryClientProvider client={queryClient}>
+                <AuthContext>
+                  <AllProject />
+                </AuthContext>
+              </QueryClientProvider>
+            </StateContext>
+          </TypeSelectedCompon>
         </MosadContext>
       </ShchunaContext>
     </Provider>

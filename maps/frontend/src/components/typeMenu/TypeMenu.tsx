@@ -3,7 +3,7 @@ export default function TypeMenu({ typeSelected, setTypeSelected }: any) {
   return (
     <div className={classes.menuUp}>
       <div
-        className={classes[`oneInMenu${typeSelected === 0}`]}
+        className={classes[`oneInMenuLeft${typeSelected === 0}`]}
         onClick={() => {
           setTypeSelected(0);
         }}
@@ -19,7 +19,7 @@ export default function TypeMenu({ typeSelected, setTypeSelected }: any) {
         מוסדות
       </div>
       <div
-        className={classes[`oneInMenu${typeSelected === 2}`]}
+        className={classes[`oneInMenuRight${typeSelected === 2}`]}
         onClick={() => {
           setTypeSelected(2);
         }}

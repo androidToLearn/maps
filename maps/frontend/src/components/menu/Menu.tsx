@@ -6,25 +6,47 @@ import ShchunaContent from "../shchunaContent/ShchunaContent";
 import AllShchunot from "../allShchunot/AllShchunot";
 import classes from "./menu.module.scss";
 import TypeMenu from "../typeMenu/TypeMenu";
+import { useTypeSelectedContext } from "../../provider/TypeContext";
+import RelativeMenu from "../relativeMenu/RelativeMenu";
 import { useState } from "react";
 
 export default function Menu() {
-  const { shchuna, setShchuna } = useShchunaContext();
-  const { mosad, setMosad } = useMosadContext();
-  const [typeSelected , setTypeSelected] = useState<number>(0)
+  const { shchuna } = useShchunaContext();
+  const { mosad } = useMosadContext();
+  const { typeSelected, setTypeSelected } = useTypeSelectedContext();
+  const [isShowRelative , setIsShowRelative] = useState<boolean>(false)
+
   if (typeSelected === 2) {
+    if (mosad === null) {
+      return <>error</>;
+    }
     return (
       <div className={classes.menuOrder}>
         <ContentUp />
-        <MosadContent mosad={mosad} />;
+        <div className={classes.main}>
+          <TypeMenu
+            typeSelected={typeSelected}
+            setTypeSelected={setTypeSelected}
+          />
+          {isShowRelative ? <RelativeMenu /> : <></>}
+          <MosadContent mosad={mosad} setIsShowRelative = {setIsShowRelative} isShowRelative = {isShowRelative}/>;
+        </div>
       </div>
     );
-  }
-  else if (typeSelected === 1) {
+  } else if (typeSelected === 1) {
+    if (shchuna === null) {
+      return <>error</>;
+    }
     return (
-      <div>
+      <div className={classes.menuOrder}>
         <ContentUp />
-        <ShchunaContent shchuna={shchuna} />;
+        <div className={classes.main}>
+          <TypeMenu
+            typeSelected={typeSelected}
+            setTypeSelected={setTypeSelected}
+          />
+          <ShchunaContent shchuna={shchuna} />
+        </div>
       </div>
     );
   }
@@ -32,8 +54,11 @@ export default function Menu() {
     <div className={classes.menuOrder}>
       <ContentUp />
       <div className={classes.main}>
-        <TypeMenu typeSelected = {typeSelected}  setTypeSelected = {setTypeSelected}/>
-        <AllShchunot typeSelected = {typeSelected}  setTypeSelected = {setTypeSelected}/>
+        <TypeMenu
+          typeSelected={typeSelected}
+          setTypeSelected={setTypeSelected}
+        />
+        <AllShchunot />
       </div>
     </div>
   );

@@ -17,8 +17,8 @@ export default function AllProject() {
   return (
     <div className={classes.mainProject}>
       <UpLine />
-      <Menu />
       <DataLine />
+      <Menu/>
       <TheMap
         shchunot={neighboards}
         position={[34.79624294387394, 32.130387818159626]}
