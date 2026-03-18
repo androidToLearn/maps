@@ -4,6 +4,9 @@ import { mosdotHelper } from "../../utils/MosadHelper";
 import type { objectMosadType } from "../../typesschema/neighboard.type";
 import RowTransfer from "../rowTransfer/RowTransfer";
 import classes from './allMosadTransfer.module.scss'
+import { schoolsHelper } from "../../utils/SchoolsHelper";
+import { useTypeSearchContext } from "../../provider/TypeSearchContext";
+import { useMosadContext } from "../../provider/MosadContext";
 
 export default function AllMosadTransfer() {
   const neighboards = useSelector(
@@ -12,12 +15,20 @@ export default function AllMosadTransfer() {
   if (neighboards === null) {
     return <></>;
   }
+  const {toSearch} = useTypeSearchContext()
+  const {mosad} = useMosadContext()
+  if(mosad === null)
+  {
+    return <></>
+  }
+  const { schools, shchunot } = mosdotHelper
+    .getAllMosdot(neighboards)
+  const mosadToShow = schoolsHelper.getTheSchoolsTransfer(schools, toSearch, mosad)
   return (
     <div className={classes.allRows}>
-      {mosdotHelper
-        .getAllMosdot(neighboards)
-        .map((school: objectMosadType, index: number) => {
-          return <RowTransfer key={index} school = {school}/>;
+      {
+        mosadToShow.map((school: objectMosadType, index: number) => {
+          return <RowTransfer key={index} school={school} shchuna = {shchunot[index]}/>;
         })}
     </div>
   );

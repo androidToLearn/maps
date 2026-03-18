@@ -1,7 +1,10 @@
 .allRows{
     width: 100%;
-    margin: 1vw;
-    height: 30vh;
     overflow-y: auto;
-   
+    height: 17vh;
+    scrollbar-width: 0px;
+}
+
+.allRows::-webkit-scrollbar{
+    display: none;
 }

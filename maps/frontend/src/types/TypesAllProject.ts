@@ -43,7 +43,10 @@ export type StatePropertiesTypes = {
 export type typeToSearch = {
   isToShowEmptyShchunot: boolean;
   orderToShowInAB: boolean;
-  showColors: string[];
+  showColors: { 'red': boolean, 'yellow': boolean, 'orange': boolean };
+  orderToShowInPrecentMax: boolean;
+  worlds : string;
+  distnace : number;
 };
 
 export type typePropertiesListNeighboards = {

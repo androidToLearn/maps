@@ -1,0 +1,143 @@
+.relativeMenu {
+    position: absolute;
+    height: fit-content;
+    width: 25vw;
+    right: 30vw;
+    background-color: white;
+    border-radius: 1vw;
+}
+
+.divRow {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5vw;
+    align-items: center;
+    width: 90%;
+    justify-content: end;
+}
+
+.buttonUpMenuRelative {
+    width: 3vw;
+    height: 2.5vw;
+    border: none;
+}
+
+.upText {
+    font-size: 2vw;
+    width: 90%;
+    text-align: right;
+    margin: 0px;
+    padding-top: 1vw;
+}
+
+.divColor {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 90%;
+    height: fit-content;
+    align-items: center;
+    gap: 0.5vw;
+
+}
+
+
+.divOneButtonColoryellowtrue {
+    width: 1vw;
+    height: 1vw;
+    background-color: yellow;
+}
+
+.divOneButtonColorredtrue {
+    width: 1vw;
+    height: 1vw;
+    background-color: red;
+}
+
+.divOneButtonColororangetrue {
+    width: 1vw;
+    height: 1vw;
+    background-color: orange;
+}
+
+.divOneButtonColoryellowfalse {
+    background-color: yellow;
+    width: 0.5vw;
+    height: 0.5vw;
+}
+
+.divOneButtonColorredfalse {
+    width: 0.5vw;
+    height: 0.5vw;
+    background-color: red;
+}
+
+.divOneButtonColororangefalse {
+    width: 0.5vw;
+    height: 0.5vw;
+    background-color: orange;
+}
+
+.btnSearch:hover {
+    background-color: gray;
+}
+
+.textUp {
+    margin-left: 1vw;
+    width: 50%;
+    font-size: 1.7vw;
+    text-align: end;
+}
+
+.buttonColors {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 0.5vw;
+    background-color: black;
+    padding: 0.5vw;
+    border-radius: 0.2vw;
+    align-items: center;
+    width: 20%;
+}
+
+.clickFilter {
+    background-color: rgb(219, 214, 214);
+    width: 2vw;
+    height: 2vw;
+    margin-left: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pointFiltertrue {
+    width: 70%;
+    height: 70%;
+    background-color: black;
+    display: block;
+}
+
+.pointFilterfalse {
+    width: 70%;
+    height: 70%;
+    background-color: black;
+    display: none;
+}
+
+.containerFilter {
+    width: 90%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+
+}
+
+.textFilter {
+    font-size: 1.5vw;
+}
+
+.buttonColors button {
+    width: 2vw;
+    height: 2vw;
+}

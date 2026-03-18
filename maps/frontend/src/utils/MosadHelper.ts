@@ -1,13 +1,14 @@
-import type { objectMosadType, objectShchunaType } from "../typesschema/neighboard.type";
+import type { objectShchunaType } from "../typesschema/neighboard.type";
 
 class MosadHelper {
   getAllMosdot(allShchunot : objectShchunaType[]) {
-    console.log(allShchunot)
+    const shchunot = []
     const schools = [];
     for (const shchuna of allShchunot) {
       schools.push(...shchuna.properties.schools);
+      shchunot.push(shchuna)
     }
-    return schools;
+    return {'schools' : schools , 'shchunot' : shchunot};
   }
 }
 

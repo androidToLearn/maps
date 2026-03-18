@@ -1,6 +1,9 @@
 import type { objectMosadType } from "../../typesschema/neighboard.type";
 import classes from "./mosadContent.module.scss";
 import AllMosadTransfer from "../allMosadTransfer/AllMosadTransfer";
+import type {  RootState } from "../../reduxes/StoreNeighboard";
+import {  useSelector } from "react-redux";
+import { useMosadContext } from "../../provider/MosadContext";
 
 export default function MosadContent({
   mosad,
@@ -11,7 +14,19 @@ export default function MosadContent({
   setIsShowRelative: (value: boolean) => void;
   isShowRelative: boolean;
 }) {
- 
+  
+  const { setMosad } = useMosadContext()
+  const clickSendHome = () => {
+    setMosad({ ...mosad, total_students: 0 })
+    const neighboards = useSelector(
+      (state: RootState) => state.neighboards.neighboards,
+    );
+    if (neighboards !== null) {
+      localStorage.setItem("neighboards", JSON.stringify(neighboards));
+
+    }
+  }
+
   return (
     <div>
       <p className={classes.mainP}>{mosad.name}</p>
@@ -36,7 +51,9 @@ export default function MosadContent({
       </div>
       <div className={classes.fourRow}>
         <p className={classes.textRight}>העבר אל</p>
-        <button className={classes.btnHome}>שלח הביתה</button>
+        <button className={classes.btnHome} onClick={() => {
+          clickSendHome()
+        }}>שלח הביתה</button>
         <input
           type="button"
           className={classes.btnSearch}
@@ -46,8 +63,8 @@ export default function MosadContent({
         />
       </div>
 
-       
-    <AllMosadTransfer/>
+
+      <AllMosadTransfer />
     </div>
-  );
+  )
 }

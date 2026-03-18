@@ -1,4 +1,4 @@
-import { number, object, z } from "zod";
+import { object, z } from "zod";
 
 export const schoolSchema = z
   .object({
@@ -62,8 +62,11 @@ export const allJson = z
   })
   .strict();
 
+export const properties = z.array(propery)
+
 export const shchunot = z.array(objectShchuna);
 
 export type theJsonShchunot = z.infer<typeof shchunot>;
 export type objectShchunaType = z.infer<typeof objectShchuna>;
 export type objectMosadType = z.infer<typeof schoolSchema>;
+

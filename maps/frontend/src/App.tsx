@@ -8,6 +8,7 @@ import MosadContext from "./provider/MosadContext";
 import ShchunaContext from "./provider/ShchunaContext";
 import StateContext from "./provider/StateContext";
 import TypeSelectedCompon from "./provider/TypeContext";
+import TypeSearchCompon from "./provider/TypeSearchContext";
 
 function App() {
   const queryClient = new QueryClient();
@@ -17,11 +18,13 @@ function App() {
         <MosadContext>
           <TypeSelectedCompon>
             <StateContext>
-              <QueryClientProvider client={queryClient}>
-                <AuthContext>
-                  <AllProject />
-                </AuthContext>
-              </QueryClientProvider>
+              <TypeSearchCompon>
+                <QueryClientProvider client={queryClient}>
+                  <AuthContext>
+                    <AllProject />
+                  </AuthContext>
+                </QueryClientProvider>
+              </TypeSearchCompon>
             </StateContext>
           </TypeSelectedCompon>
         </MosadContext>

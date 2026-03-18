@@ -18,7 +18,7 @@ export default function Menu() {
 
   if (typeSelected === 2) {
     if (mosad === null) {
-      return <>error</>;
+      return <>error</>
     }
     return (
       <div className={classes.menuOrder}>
@@ -28,8 +28,8 @@ export default function Menu() {
             typeSelected={typeSelected}
             setTypeSelected={setTypeSelected}
           />
-          {isShowRelative ? <RelativeMenu /> : <></>}
-          <MosadContent mosad={mosad} setIsShowRelative = {setIsShowRelative} isShowRelative = {isShowRelative}/>;
+          {isShowRelative ? <RelativeMenu typeMenu={2}/> : <></>}
+          <MosadContent mosad={mosad} setIsShowRelative = {setIsShowRelative} isShowRelative = {isShowRelative}/>
         </div>
       </div>
     );
@@ -48,7 +48,7 @@ export default function Menu() {
           <ShchunaContent shchuna={shchuna} />
         </div>
       </div>
-    );
+    )
   }
   return (
     <div className={classes.menuOrder}>
@@ -61,5 +61,5 @@ export default function Menu() {
         <AllShchunot />
       </div>
     </div>
-  );
+  )
 }

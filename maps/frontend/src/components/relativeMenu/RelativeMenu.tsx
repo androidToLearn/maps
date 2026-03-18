@@ -1,24 +1,15 @@
-import classes from "./relativeMnue.module.scss";
+import RelativeMenuAll from "../relativeMenuAll/RelativeMenuAll";
+import RelativeMenuMosad from "../relativeMenuMosad/RelativeMenuMosad";
+import RelativeMenuTransfer from "../relativeMenuTranfer/RelativeMenuTrasfer";
 
-export default function RelativeMenu() {
-  return (
-    <div className={classes.relativeMenu}>
-      <p className={classes.upText}>סדר לפי</p>
-      <div className={classes.divRow}>
-        <p className={classes.textUp}>אחוז התפוסה</p>
-        <button className={classes.buttonUpMenuRelative}></button>
-        <p className={classes.textUp}>סדר הא-ב</p>
-        <button className={classes.buttonUpMenuRelative}></button>
-      </div>
-      <p className={classes.upText}>סנן לפי</p>
-      <div className={classes.divColor}>
-        <div className={classes.buttonColors}>
-          <button className={classes.divOneButtonColor}></button>
-          <button className={classes.divOneButtonColor}></button>
-          <button className={classes.divOneButtonColor}></button>
-        </div>
-        <p className={classes.textUp}>הצג לפי צבע</p>
-      </div>
-    </div>
-  );
+export default function RelativeMenu({ typeMenu }: { typeMenu: number }) {
+  if (typeMenu === 0) {
+    return <RelativeMenuAll />
+  }
+  if (typeMenu === 1) {
+    return <RelativeMenuMosad />
+  }
+  if (typeMenu === 2) {
+    return <RelativeMenuTransfer />
+  }
 }
