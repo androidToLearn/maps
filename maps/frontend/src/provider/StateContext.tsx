@@ -1,8 +1,8 @@
 import { createContext, useContext, useState } from "react";
 
 export type numberType = {
-  state: number ;
-  setState: (value: number) => void;
+  state: number | string ;
+  setState: (value: number | string) => void;
 };
 export const State = createContext<numberType | null>(null);
 
@@ -11,7 +11,7 @@ export default function ShchunaContext({
 }: {
   children: React.ReactNode;
 }) {
-  const [state, setState] = useState<number>(1);
+  const [state, setState] = useState<number | string>(1);
   return (
     <State.Provider value={{ state, setState }}>
       {children}

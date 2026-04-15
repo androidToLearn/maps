@@ -16,6 +16,8 @@ export default function Menu() {
   const { typeSelected, setTypeSelected } = useTypeSelectedContext();
   const [isShowRelative , setIsShowRelative] = useState<boolean>(false)
 
+  
+
   if (typeSelected === 2) {
     if (mosad === null) {
       return <>error</>
@@ -23,11 +25,13 @@ export default function Menu() {
     return (
       <div className={classes.menuOrder}>
         <ContentUp />
+         
         <div className={classes.main}>
           <TypeMenu
             typeSelected={typeSelected}
             setTypeSelected={setTypeSelected}
           />
+          
           {isShowRelative ? <RelativeMenu typeMenu={2}/> : <></>}
           <MosadContent mosad={mosad} setIsShowRelative = {setIsShowRelative} isShowRelative = {isShowRelative}/>
         </div>

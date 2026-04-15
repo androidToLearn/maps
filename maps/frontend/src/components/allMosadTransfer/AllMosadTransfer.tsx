@@ -7,6 +7,7 @@ import classes from './allMosadTransfer.module.scss'
 import { schoolsHelper } from "../../utils/SchoolsHelper";
 import { useTypeSearchContext } from "../../provider/TypeSearchContext";
 import { useMosadContext } from "../../provider/MosadContext";
+import { useStateContext } from "../../provider/StateContext";
 
 export default function AllMosadTransfer() {
   const neighboards = useSelector(
@@ -15,6 +16,7 @@ export default function AllMosadTransfer() {
   if (neighboards === null) {
     return <></>;
   }
+  const {state} = useStateContext()
   const {toSearch} = useTypeSearchContext()
   const {mosad} = useMosadContext()
   if(mosad === null)
@@ -23,7 +25,9 @@ export default function AllMosadTransfer() {
   }
   const { schools, shchunot } = mosdotHelper
     .getAllMosdot(neighboards)
-  const mosadToShow = schoolsHelper.getTheSchoolsTransfer(schools, toSearch, mosad)
+  const mosadToShow = schoolsHelper.getTheSchoolsTransfer(schools, toSearch, mosad.current['mosad'] , state)
+  if(mosadToShow === undefined)
+    return <></>
   return (
     <div className={classes.allRows}>
       {

@@ -4,11 +4,11 @@ import type {
 } from "../typesschema/neighboard.type";
 
 class ColorHelper {
-  getTheColorSchool(school: objectMosadType) {
+  getTheColorSchool(school: objectMosadType | null, state : number | string) {
     return "red";
   }
 
-  getColorShcuna(shcuna: objectShchunaType) {
+  getColorShcuna(shcuna: objectShchunaType | null, state : number | string) {
     return "red";
   }
 }

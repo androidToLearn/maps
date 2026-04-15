@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import { neighboardFeatcher } from "../utils/NighboardsFetcher";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { replace } from "../reduxes/Neighboards.redux";
-import type { AppDispatch, RootState } from "../reduxes/StoreNeighboard";
+import type { AppDispatch } from "../reduxes/StoreNeighboard";
 import { useEffect } from "react";
 import { allJson } from "../typesschema/neighboard.type";
-import { useMosadContext } from "./MosadContext";
-import { updateMosadHelper } from "../utils/UpdateMosadHelper";
+import AllShchunot from "../components/allShchunot/AllShchunot";
+import { shchunot } from "../typesschema/neighboard.type";
 
 const doQuery = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -28,19 +28,6 @@ const doQuery = () => {
 
 export const AuthContext = ({ children }: any) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { setMosad, mosad } = useMosadContext()
-  const neighboards = useSelector(
-    (state: RootState) => state.neighboards.neighboards,
-  );
-  useEffect(() => {
-    if (mosad !== null && neighboards !== null) {
-      const resultUpdateFrom = updateMosadHelper.findMosadByChosenMosad(neighboards, mosad)
-      if (resultUpdateFrom !== null) {
-        const {mosadUpdated } = resultUpdateFrom
-        setMosad({...mosadUpdated})
-      }
-    }
-  }, [neighboards])
 
   const neighboardsFromLocalStorage = localStorage.getItem("neighboards");
   if (
@@ -50,7 +37,7 @@ export const AuthContext = ({ children }: any) => {
   ) {
     const neighboardsAndPolygons = JSON.parse(neighboardsFromLocalStorage);
     if (neighboardsAndPolygons !== null) {
-      if (allJson.safeParse(neighboardsAndPolygons).success) {
+      if (shchunot.safeParse(neighboardsAndPolygons).success) {
         dispatch(replace(neighboardsAndPolygons));
       }
       else {

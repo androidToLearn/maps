@@ -1,46 +1,33 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useRef, useState } from "react";
 import type { objectMosadType } from "../typesschema/neighboard.type";
 import { updateMosadHelper } from "../utils/UpdateMosadHelper";
 import type { AppDispatch, RootState } from "../reduxes/StoreNeighboard";
 import { useDispatch, useSelector } from "react-redux";
 import { replace } from "../reduxes/Neighboards.redux";
 
-export type objectMosadContext = {
-  mosad: objectMosadType | null;
-  setMosad: (value: objectMosadType | null) => void;
-};
-export const Mosad = createContext<objectMosadContext | null>(null);
+
+export const Mosad = createContext<{ 'mosad': objectMosad, 'setMosad': (value: objectMosad)=>void} | null>(null);
+
+export type objectMosad = { 'mosad': objectMosadType | null }
 
 export default function MosadContext({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [mosad, setMosad] = useState<objectMosadType | null>(null);
+  const [mosad , setMosad] = useState<objectMosad>({'mosad':null})
   const neighboards = useSelector(
     (state: RootState) => state.neighboards.neighboards,
   );
-  const dispatch = useDispatch<AppDispatch>();
-  useEffect(() => {
-    if (mosad !== null && neighboards !== null) {
-      const resultMosadIn = updateMosadHelper.findMosadByChosenMosad(neighboards, mosad)
-      if (resultMosadIn === null) {
-        return
-      }
-      const { mosadUpdated, shchuna } = resultMosadIn
 
-      const neighboardsUpdated = updateMosadHelper.getTheNeighboards(neighboards, mosad, shchuna)
-      
-      if (neighboardsUpdated !== undefined && shchuna !== null && !updateMosadHelper.isSameMosad(mosadUpdated , mosad)) {
-        localStorage.setItem("neighboards", JSON.stringify(neighboards));
-        dispatch(replace(neighboardsUpdated))
-      }
-    }
-  }, [mosad])
+  useEffect(() => {
+    localStorage.setItem("neighboards", JSON.stringify(neighboards));
+  }
+    , [mosad])
 
 
   return (
-    <Mosad.Provider value={{ mosad, setMosad }}>{children}</Mosad.Provider>
+    <Mosad.Provider value={{mosad , setMosad}}>{children}</Mosad.Provider>
   );
 }
 

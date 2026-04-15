@@ -9,6 +9,7 @@ import ShchunaContext from "./provider/ShchunaContext";
 import StateContext from "./provider/StateContext";
 import TypeSelectedCompon from "./provider/TypeContext";
 import TypeSearchCompon from "./provider/TypeSearchContext";
+import SchoolToFill from "./provider/ScoolToFillContext";
 
 function App() {
   const queryClient = new QueryClient();
@@ -17,15 +18,17 @@ function App() {
       <ShchunaContext>
         <MosadContext>
           <TypeSelectedCompon>
-            <StateContext>
-              <TypeSearchCompon>
-                <QueryClientProvider client={queryClient}>
-                  <AuthContext>
-                    <AllProject />
-                  </AuthContext>
-                </QueryClientProvider>
-              </TypeSearchCompon>
-            </StateContext>
+            <SchoolToFill>
+              <StateContext>
+                <TypeSearchCompon>
+                  <QueryClientProvider client={queryClient}>
+                    <AuthContext>
+                      <AllProject />
+                    </AuthContext>
+                  </QueryClientProvider>
+                </TypeSearchCompon>
+              </StateContext>
+            </SchoolToFill>
           </TypeSelectedCompon>
         </MosadContext>
       </ShchunaContext>

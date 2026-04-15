@@ -35,8 +35,8 @@ export type shchunot = {
 };
 
 export type StatePropertiesTypes = {
-  state: number;
-  setState: (value: number) => void;
+  state: number | string;
+  setState: (value: number | string) => void;
   stateToShow: number;
 };
 
